@@ -1,0 +1,524 @@
+- generic [ref=e27]:
+  - navigation [ref=e28]:
+    - generic [ref=e29]: Scrum Toolkit
+    - generic [ref=e30]:
+      - button "Descripcion" [ref=e31] [cursor=pointer]
+      - button "Gestion de Grupos" [ref=e32] [cursor=pointer]
+      - button "Product Backlog" [ref=e33] [cursor=pointer]
+      - button "Sprint Planning" [ref=e34] [cursor=pointer]
+      - button "Tareas y Poker" [ref=e35] [cursor=pointer]
+      - button "Daily Meeting" [ref=e36] [cursor=pointer]
+      - button "Review y Retro" [ref=e37] [cursor=pointer]
+      - button "Evaluacion Sprint" [ref=e38] [cursor=pointer]
+    - generic [ref=e39]:
+      - generic [ref=e40]: Estudiante
+      - button "SA" [ref=e42] [cursor=pointer]
+  - generic [ref=e43]:
+    - complementary [ref=e44]:
+      - generic [ref=e45]: Proyectos
+      - generic [ref=e46]:
+        - button "Uniconnect Ing. Software III" [ref=e47] [cursor=pointer]:
+          - generic [ref=e49]:
+            - generic [ref=e50]: Uniconnect
+            - generic [ref=e51]: Ing. Software III
+        - button "COIL UdeCaldas × UMB" [ref=e52] [cursor=pointer]:
+          - generic [ref=e54]:
+            - generic [ref=e55]: COIL
+            - generic [ref=e56]: UdeCaldas × UMB
+      - generic [ref=e58]: Evaluacion
+      - button "Notas del Curso Por sprint · automatizado" [ref=e60] [cursor=pointer]:
+        - generic [ref=e62]:
+          - generic [ref=e63]: Notas del Curso
+          - generic [ref=e64]: Por sprint · automatizado
+    - main [ref=e66]:
+      - generic [ref=e68]:
+        - generic [ref=e69]:
+          - heading "Gestion de Grupos" [level=1] [ref=e70]
+          - paragraph [ref=e71]: Administra integrantes del grupo y asigna roles por sprint. Product Owner queda fijo en la docente para todos los equipos.
+        - generic [ref=e72]: Grupo cargado para edicion
+        - generic [ref=e73]:
+          - generic [ref=e74]:
+            - textbox "Nombre del grupo" [ref=e76]: Grupo 1
+            - heading "Integrantes del grupo" [level=2] [ref=e78]
+            - table [ref=e80]:
+              - rowgroup [ref=e81]:
+                - row "Nombre" [ref=e82]:
+                  - columnheader "Nombre" [ref=e83]
+                  - columnheader [ref=e84]
+              - rowgroup [ref=e85]:
+                - row "Henao Garcia, Luis Miguel" [ref=e86]:
+                  - cell "Henao Garcia, Luis Miguel" [ref=e87]:
+                    - combobox [ref=e88]:
+                      - option "Selecciona estudiante"
+                      - option "Henao Garcia, Luis Miguel" [selected]
+                      - option "Adames Tobon, Arcenio"
+                      - option "Ceballos Aguirre, Natalia"
+                      - option "Ceballos Yepes, Melody"
+                      - option "Espinosa Jaramillo, Sofia"
+                      - option "Franco Tabares, Daniel Alejandro"
+                      - option "Gamboa Clavijo, Juan Jose"
+                      - option "Garcia Medina, Santiago"
+                      - option "Gomez Posada, Carlos Alberto"
+                      - option "Hernandez Osorio, Maria Fernanda"
+                      - option "Jimenez Ospina, Nicolas"
+                      - option "Martinez Jimenez, Juan Sebastian"
+                      - option "Moreno Trejos, Juliana Del Pilar"
+                      - option "Osorio Granada, Cristian Camilo"
+                      - option "Osorio Grisales, Johan Stiven"
+                      - option "Pelaez Roman, Juan Felipe"
+                      - option "Pineda Gomez, Alejandro"
+                      - option "Rincon, David"
+                      - option "Rivera Aguilera, Jackeline"
+                      - option "Buitrago, Johan"
+                      - option "Coronado, Miguel"
+                      - option "Currea, Andres"
+                      - option "Delgado, Jhunior"
+                      - option "Lopez, Ingrith"
+                      - option "Ortiz, Jose"
+                      - option "Quijano, Juan"
+                      - option "Reyes, Juan"
+                      - option "Tautiva, Juan"
+                - row "Cardona Diaz, Jaime Andres" [ref=e89]:
+                  - cell "Cardona Diaz, Jaime Andres" [ref=e90]:
+                    - combobox [ref=e91]:
+                      - option "Selecciona estudiante"
+                      - option "Cardona Diaz, Jaime Andres" [selected]
+                      - option "Adames Tobon, Arcenio"
+                      - option "Ceballos Aguirre, Natalia"
+                      - option "Ceballos Yepes, Melody"
+                      - option "Espinosa Jaramillo, Sofia"
+                      - option "Franco Tabares, Daniel Alejandro"
+                      - option "Gamboa Clavijo, Juan Jose"
+                      - option "Garcia Medina, Santiago"
+                      - option "Gomez Posada, Carlos Alberto"
+                      - option "Hernandez Osorio, Maria Fernanda"
+                      - option "Jimenez Ospina, Nicolas"
+                      - option "Martinez Jimenez, Juan Sebastian"
+                      - option "Moreno Trejos, Juliana Del Pilar"
+                      - option "Osorio Granada, Cristian Camilo"
+                      - option "Osorio Grisales, Johan Stiven"
+                      - option "Pelaez Roman, Juan Felipe"
+                      - option "Pineda Gomez, Alejandro"
+                      - option "Rincon, David"
+                      - option "Rivera Aguilera, Jackeline"
+                      - option "Buitrago, Johan"
+                      - option "Coronado, Miguel"
+                      - option "Currea, Andres"
+                      - option "Delgado, Jhunior"
+                      - option "Lopez, Ingrith"
+                      - option "Ortiz, Jose"
+                      - option "Quijano, Juan"
+                      - option "Reyes, Juan"
+                      - option "Tautiva, Juan"
+                - row "Salazar Colorado, Daner Alejandro" [ref=e92]:
+                  - cell "Salazar Colorado, Daner Alejandro" [ref=e93]:
+                    - combobox [ref=e94]:
+                      - option "Selecciona estudiante"
+                      - option "Salazar Colorado, Daner Alejandro" [selected]
+                      - option "Adames Tobon, Arcenio"
+                      - option "Ceballos Aguirre, Natalia"
+                      - option "Ceballos Yepes, Melody"
+                      - option "Espinosa Jaramillo, Sofia"
+                      - option "Franco Tabares, Daniel Alejandro"
+                      - option "Gamboa Clavijo, Juan Jose"
+                      - option "Garcia Medina, Santiago"
+                      - option "Gomez Posada, Carlos Alberto"
+                      - option "Hernandez Osorio, Maria Fernanda"
+                      - option "Jimenez Ospina, Nicolas"
+                      - option "Martinez Jimenez, Juan Sebastian"
+                      - option "Moreno Trejos, Juliana Del Pilar"
+                      - option "Osorio Granada, Cristian Camilo"
+                      - option "Osorio Grisales, Johan Stiven"
+                      - option "Pelaez Roman, Juan Felipe"
+                      - option "Pineda Gomez, Alejandro"
+                      - option "Rincon, David"
+                      - option "Rivera Aguilera, Jackeline"
+                      - option "Buitrago, Johan"
+                      - option "Coronado, Miguel"
+                      - option "Currea, Andres"
+                      - option "Delgado, Jhunior"
+                      - option "Lopez, Ingrith"
+                      - option "Ortiz, Jose"
+                      - option "Quijano, Juan"
+                      - option "Reyes, Juan"
+                      - option "Tautiva, Juan"
+                - row "Lopez Florez, Mariana" [ref=e95]:
+                  - cell "Lopez Florez, Mariana" [ref=e96]:
+                    - combobox [ref=e97]:
+                      - option "Selecciona estudiante"
+                      - option "Lopez Florez, Mariana" [selected]
+                      - option "Adames Tobon, Arcenio"
+                      - option "Ceballos Aguirre, Natalia"
+                      - option "Ceballos Yepes, Melody"
+                      - option "Espinosa Jaramillo, Sofia"
+                      - option "Franco Tabares, Daniel Alejandro"
+                      - option "Gamboa Clavijo, Juan Jose"
+                      - option "Garcia Medina, Santiago"
+                      - option "Gomez Posada, Carlos Alberto"
+                      - option "Hernandez Osorio, Maria Fernanda"
+                      - option "Jimenez Ospina, Nicolas"
+                      - option "Martinez Jimenez, Juan Sebastian"
+                      - option "Moreno Trejos, Juliana Del Pilar"
+                      - option "Osorio Granada, Cristian Camilo"
+                      - option "Osorio Grisales, Johan Stiven"
+                      - option "Pelaez Roman, Juan Felipe"
+                      - option "Pineda Gomez, Alejandro"
+                      - option "Rincon, David"
+                      - option "Rivera Aguilera, Jackeline"
+                      - option "Buitrago, Johan"
+                      - option "Coronado, Miguel"
+                      - option "Currea, Andres"
+                      - option "Delgado, Jhunior"
+                      - option "Lopez, Ingrith"
+                      - option "Ortiz, Jose"
+                      - option "Quijano, Juan"
+                      - option "Reyes, Juan"
+                      - option "Tautiva, Juan"
+            - generic [ref=e98]:
+              - heading "Roles por sprint" [level=2] [ref=e99]
+              - combobox [ref=e101]:
+                - option "Sprint 1" [selected]
+                - option "Sprint 2"
+                - option "Sprint 3"
+                - option "Sprint 4"
+                - option "Sprint 5"
+              - generic [ref=e102]:
+                - generic [ref=e103]: Roles que participan en este sprint
+                - generic [ref=e104]:
+                  - button "✓ Dev Front" [ref=e105] [cursor=pointer]
+                  - button "✓ Dev Back" [ref=e106] [cursor=pointer]
+                  - button "✓ QA" [ref=e107] [cursor=pointer]
+                  - button "✓ SM" [ref=e108] [cursor=pointer]
+                  - button "Lead Developer" [ref=e109] [cursor=pointer]
+                  - button "Inference & AI Engineer" [ref=e110] [cursor=pointer]
+                  - button "QA & DevOps Engineer" [ref=e111] [cursor=pointer]
+              - generic [ref=e112]:
+                - generic [ref=e113]:
+                  - generic [ref=e114]:
+                    - text: Dev Front
+                    - generic [ref=e115]: (1 persona)
+                  - generic [ref=e116]:
+                    - button "Henao Garcia, Luis Miguel" [ref=e117] [cursor=pointer]
+                    - button "✓ Cardona Diaz, Jaime Andres" [ref=e118] [cursor=pointer]
+                    - button "Salazar Colorado, Daner Alejandro" [ref=e119] [cursor=pointer]
+                    - button "Lopez Florez, Mariana" [ref=e120] [cursor=pointer]
+                    - button "Yaneth Mejia" [ref=e121] [cursor=pointer]
+                - generic [ref=e122]:
+                  - generic [ref=e123]:
+                    - text: Dev Back
+                    - generic [ref=e124]: (1 persona)
+                  - generic [ref=e125]:
+                    - button "Henao Garcia, Luis Miguel" [ref=e126] [cursor=pointer]
+                    - button "Cardona Diaz, Jaime Andres" [ref=e127] [cursor=pointer]
+                    - button "✓ Salazar Colorado, Daner Alejandro" [ref=e128] [cursor=pointer]
+                    - button "Lopez Florez, Mariana" [ref=e129] [cursor=pointer]
+                    - button "Yaneth Mejia" [ref=e130] [cursor=pointer]
+                - generic [ref=e131]:
+                  - generic [ref=e132]:
+                    - text: QA
+                    - generic [ref=e133]: (1 persona)
+                  - generic [ref=e134]:
+                    - button "✓ Henao Garcia, Luis Miguel" [ref=e135] [cursor=pointer]
+                    - button "Cardona Diaz, Jaime Andres" [ref=e136] [cursor=pointer]
+                    - button "Salazar Colorado, Daner Alejandro" [ref=e137] [cursor=pointer]
+                    - button "Lopez Florez, Mariana" [ref=e138] [cursor=pointer]
+                    - button "Yaneth Mejia" [ref=e139] [cursor=pointer]
+                - generic [ref=e140]:
+                  - generic [ref=e141]:
+                    - text: SM
+                    - generic [ref=e142]: (1 persona)
+                  - generic [ref=e143]:
+                    - button "Henao Garcia, Luis Miguel" [ref=e144] [cursor=pointer]
+                    - button "Cardona Diaz, Jaime Andres" [ref=e145] [cursor=pointer]
+                    - button "Salazar Colorado, Daner Alejandro" [ref=e146] [cursor=pointer]
+                    - button "✓ Lopez Florez, Mariana" [ref=e147] [cursor=pointer]
+                    - button "Yaneth Mejia" [ref=e148] [cursor=pointer]
+              - generic [ref=e149]: "Product Owner: Yaneth Mejia (docente)"
+              - button "Guardar roles del sprint" [ref=e151] [cursor=pointer]
+              - generic [ref=e152]:
+                - button "Sprint 4 - 5 roles asignados" [ref=e153] [cursor=pointer]:
+                  - strong [ref=e154]: Sprint 4
+                  - text: "- 5 roles asignados"
+                - button "Sprint 3 - 5 roles asignados" [ref=e155] [cursor=pointer]:
+                  - strong [ref=e156]: Sprint 3
+                  - text: "- 5 roles asignados"
+                - button "Sprint 1 - 5 roles asignados" [ref=e157] [cursor=pointer]:
+                  - strong [ref=e158]: Sprint 1
+                  - text: "- 5 roles asignados"
+            - generic [ref=e159]:
+              - generic [ref=e160]:
+                - heading "Conexión GitHub" [level=2] [ref=e161]
+                - generic [ref=e162]: Token configurado
+              - paragraph [ref=e163]:
+                - text: Ingresa un
+                - strong [ref=e164]: Personal Access Token (PAT)
+                - text: de GitHub con permiso
+                - code [ref=e165]: repo
+                - text: . El equipo podrá vincular sus repositorios a las tareas del tablero.
+              - generic [ref=e166]:
+                - generic [ref=e167]: Token de GitHub configurado. No necesitas ingresarlo de nuevo para añadir repositorios.
+                - button "Cambiar token" [ref=e168] [cursor=pointer]
+                - button "Ver repos" [ref=e169] [cursor=pointer]
+              - generic [ref=e170]:
+                - text: Token guardado. Haz clic en
+                - strong [ref=e171]: Recargar repos
+                - text: para ver los repositorios disponibles.
+            - generic [ref=e172]:
+              - generic [ref=e173]:
+                - heading "URLs de Despliegue" [level=2] [ref=e174]
+                - generic [ref=e175]: Configuradas
+              - paragraph [ref=e176]: Registra las URLs públicas donde el equipo tiene desplegado su backend y dashboard (US-15, US-16). Se usan para los scripts de auditoría del 30%.
+              - generic [ref=e177]:
+                - generic [ref=e178]:
+                  - generic [ref=e179]: Backend URL
+                  - textbox "https://mi-grupo-backend.fly.dev" [ref=e180]: https://uniconnect-backend-core-black-wave-3099.fly.dev/
+                - generic [ref=e181]:
+                  - generic [ref=e182]: Frontend / Dashboard URL
+                  - textbox "https://mi-grupo-dashboard.fly.dev" [ref=e183]: https://uniconnect-frontend-uc.fly.dev/
+                - generic [ref=e184]:
+                  - button "Guardar URLs" [ref=e185] [cursor=pointer]
+                  - link "Abrir Backend ↗" [ref=e186] [cursor=pointer]:
+                    - /url: https://uniconnect-backend-core-black-wave-3099.fly.dev/
+                  - link "Abrir Frontend ↗" [ref=e187] [cursor=pointer]:
+                    - /url: https://uniconnect-frontend-uc.fly.dev/
+          - generic [ref=e188]:
+            - heading "Tu grupo" [level=3] [ref=e189]
+            - button "Grupo 1 Uniconnect 4 integrantes · 3 sprints" [ref=e191] [cursor=pointer]:
+              - generic [ref=e192]: Grupo 1
+              - generic [ref=e193]: Uniconnect
+              - generic [ref=e194]: 4 integrantes · 3 sprints
+            - generic [ref=e195]:
+              - heading "Detalle del equipo" [level=4] [ref=e196]
+              - generic [ref=e197]:
+                - generic [ref=e198]: Grupo 1
+                - generic [ref=e199]: Uniconnect
+              - generic [ref=e200]: Integrantes
+              - generic [ref=e201]:
+                - generic [ref=e202]:
+                  - generic [ref=e203]:
+                    - generic [ref=e204]: Henao Garcia, Luis Miguel
+                    - generic [ref=e205]: UdeC
+                  - link "📱 3044583144" [ref=e206] [cursor=pointer]:
+                    - /url: https://wa.me/573044583144
+                    - generic [ref=e207]: 📱
+                    - text: "3044583144"
+                - generic [ref=e208]:
+                  - generic [ref=e209]:
+                    - generic [ref=e210]: Cardona Diaz, Jaime Andres
+                    - generic [ref=e211]: UdeC
+                  - link "📱 3053721414" [ref=e212] [cursor=pointer]:
+                    - /url: https://wa.me/573053721414
+                    - generic [ref=e213]: 📱
+                    - text: "3053721414"
+                - generic [ref=e214]:
+                  - generic [ref=e215]:
+                    - generic [ref=e216]: Salazar Colorado, Daner Alejandro
+                    - generic [ref=e217]: UdeC
+                  - link "📱 3145919465" [ref=e218] [cursor=pointer]:
+                    - /url: https://wa.me/573145919465
+                    - generic [ref=e219]: 📱
+                    - text: "3145919465"
+                - generic [ref=e220]:
+                  - generic [ref=e221]:
+                    - generic [ref=e222]: Lopez Florez, Mariana
+                    - generic [ref=e223]: UdeC
+                  - link "📱 3042141305" [ref=e224] [cursor=pointer]:
+                    - /url: https://wa.me/573042141305
+                    - generic [ref=e225]: 📱
+                    - text: "3042141305"
+              - generic [ref=e226]: Vista por sprint con responsables
+              - generic [ref=e227]:
+                - generic [ref=e228]:
+                  - generic [ref=e229]: Sprint 4
+                  - generic [ref=e230]:
+                    - generic [ref=e231]:
+                      - generic [ref=e232]: Dev Front
+                      - generic [ref=e233]: Lopez Florez, Mariana
+                    - generic [ref=e234]:
+                      - generic [ref=e235]: Dev Back
+                      - generic [ref=e236]: Henao Garcia, Luis Miguel
+                    - generic [ref=e237]:
+                      - generic [ref=e238]: QA
+                      - generic [ref=e239]: Cardona Diaz, Jaime Andres
+                    - generic [ref=e240]:
+                      - generic [ref=e241]: Product Owner
+                      - generic [ref=e242]: Yaneth Mejia
+                    - generic [ref=e243]:
+                      - generic [ref=e244]: SM
+                      - generic [ref=e245]: Salazar Colorado, Daner Alejandro
+                    - generic [ref=e246]:
+                      - generic [ref=e247]: Lead Developer
+                      - generic [ref=e248]: "-"
+                    - generic [ref=e249]:
+                      - generic [ref=e250]: Inference & AI Engineer
+                      - generic [ref=e251]: "-"
+                    - generic [ref=e252]:
+                      - generic [ref=e253]: QA & DevOps Engineer
+                      - generic [ref=e254]: "-"
+                - generic [ref=e255]:
+                  - generic [ref=e256]: Sprint 3
+                  - generic [ref=e257]:
+                    - generic [ref=e258]:
+                      - generic [ref=e259]: Dev Front
+                      - generic [ref=e260]: Cardona Diaz, Jaime Andres
+                    - generic [ref=e261]:
+                      - generic [ref=e262]: Dev Back
+                      - generic [ref=e263]: Salazar Colorado, Daner Alejandro
+                    - generic [ref=e264]:
+                      - generic [ref=e265]: QA
+                      - generic [ref=e266]: Henao Garcia, Luis Miguel
+                    - generic [ref=e267]:
+                      - generic [ref=e268]: Product Owner
+                      - generic [ref=e269]: Yaneth Mejia
+                    - generic [ref=e270]:
+                      - generic [ref=e271]: SM
+                      - generic [ref=e272]: Lopez Florez, Mariana
+                    - generic [ref=e273]:
+                      - generic [ref=e274]: Lead Developer
+                      - generic [ref=e275]: "-"
+                    - generic [ref=e276]:
+                      - generic [ref=e277]: Inference & AI Engineer
+                      - generic [ref=e278]: "-"
+                    - generic [ref=e279]:
+                      - generic [ref=e280]: QA & DevOps Engineer
+                      - generic [ref=e281]: "-"
+                - generic [ref=e282]:
+                  - generic [ref=e283]: Sprint 1
+                  - generic [ref=e284]:
+                    - generic [ref=e285]:
+                      - generic [ref=e286]: Dev Front
+                      - generic [ref=e287]: Cardona Diaz, Jaime Andres
+                    - generic [ref=e288]:
+                      - generic [ref=e289]: Dev Back
+                      - generic [ref=e290]: Salazar Colorado, Daner Alejandro
+                    - generic [ref=e291]:
+                      - generic [ref=e292]: QA
+                      - generic [ref=e293]: Henao Garcia, Luis Miguel
+                    - generic [ref=e294]:
+                      - generic [ref=e295]: Product Owner
+                      - generic [ref=e296]: Yaneth Mejia
+                    - generic [ref=e297]:
+                      - generic [ref=e298]: SM
+                      - generic [ref=e299]: Lopez Florez, Mariana
+                    - generic [ref=e300]:
+                      - generic [ref=e301]: Lead Developer
+                      - generic [ref=e302]: "-"
+                    - generic [ref=e303]:
+                      - generic [ref=e304]: Inference & AI Engineer
+                      - generic [ref=e305]: "-"
+                    - generic [ref=e306]:
+                      - generic [ref=e307]: QA & DevOps Engineer
+                      - generic [ref=e308]: "-"
+              - generic [ref=e309]: Historial de roles por integrante
+              - generic [ref=e310]:
+                - generic [ref=e311]:
+                  - generic [ref=e312]:
+                    - generic [ref=e313]:
+                      - generic [ref=e314]: Cardona Diaz, Jaime Andres
+                      - generic [ref=e315]: Integrante actual · 3 asignaciones
+                    - generic [ref=e316]:
+                      - generic [ref=e317]: QA
+                      - generic [ref=e318]: Dev Front
+                  - generic [ref=e319]:
+                    - generic [ref=e320]:
+                      - generic [ref=e321]: Sprint 4
+                      - generic [ref=e322]: QA
+                    - generic [ref=e323]:
+                      - generic [ref=e324]: Sprint 3
+                      - generic [ref=e325]: Dev Front
+                    - generic [ref=e326]:
+                      - generic [ref=e327]: Sprint 1
+                      - generic [ref=e328]: Dev Front
+                - generic [ref=e329]:
+                  - generic [ref=e330]:
+                    - generic [ref=e331]:
+                      - generic [ref=e332]: Henao Garcia, Luis Miguel
+                      - generic [ref=e333]: Integrante actual · 3 asignaciones
+                    - generic [ref=e334]:
+                      - generic [ref=e335]: Dev Back
+                      - generic [ref=e336]: QA
+                  - generic [ref=e337]:
+                    - generic [ref=e338]:
+                      - generic [ref=e339]: Sprint 4
+                      - generic [ref=e340]: Dev Back
+                    - generic [ref=e341]:
+                      - generic [ref=e342]: Sprint 3
+                      - generic [ref=e343]: QA
+                    - generic [ref=e344]:
+                      - generic [ref=e345]: Sprint 1
+                      - generic [ref=e346]: QA
+                - generic [ref=e347]:
+                  - generic [ref=e348]:
+                    - generic [ref=e349]:
+                      - generic [ref=e350]: Lopez Florez, Mariana
+                      - generic [ref=e351]: Integrante actual · 3 asignaciones
+                    - generic [ref=e352]:
+                      - generic [ref=e353]: Dev Front
+                      - generic [ref=e354]: SM
+                  - generic [ref=e355]:
+                    - generic [ref=e356]:
+                      - generic [ref=e357]: Sprint 4
+                      - generic [ref=e358]: Dev Front
+                    - generic [ref=e359]:
+                      - generic [ref=e360]: Sprint 3
+                      - generic [ref=e361]: SM
+                    - generic [ref=e362]:
+                      - generic [ref=e363]: Sprint 1
+                      - generic [ref=e364]: SM
+                - generic [ref=e365]:
+                  - generic [ref=e366]:
+                    - generic [ref=e367]:
+                      - generic [ref=e368]: Salazar Colorado, Daner Alejandro
+                      - generic [ref=e369]: Integrante actual · 3 asignaciones
+                    - generic [ref=e370]:
+                      - generic [ref=e371]: SM
+                      - generic [ref=e372]: Dev Back
+                  - generic [ref=e373]:
+                    - generic [ref=e374]:
+                      - generic [ref=e375]: Sprint 4
+                      - generic [ref=e376]: SM
+                    - generic [ref=e377]:
+                      - generic [ref=e378]: Sprint 3
+                      - generic [ref=e379]: Dev Back
+                    - generic [ref=e380]:
+                      - generic [ref=e381]: Sprint 1
+                      - generic [ref=e382]: Dev Back
+                - generic [ref=e383]:
+                  - generic [ref=e384]:
+                    - generic [ref=e385]:
+                      - generic [ref=e386]: Yaneth Mejia
+                      - generic [ref=e387]: Histórico · 3 asignaciones
+                    - generic [ref=e389]: Product Owner
+                  - generic [ref=e390]:
+                    - generic [ref=e391]:
+                      - generic [ref=e392]: Sprint 4
+                      - generic [ref=e393]: Product Owner
+                    - generic [ref=e394]:
+                      - generic [ref=e395]: Sprint 3
+                      - generic [ref=e396]: Product Owner
+                    - generic [ref=e397]:
+                      - generic [ref=e398]: Sprint 1
+                      - generic [ref=e399]: Product Owner
+              - generic [ref=e400]:
+                - generic [ref=e401]: Repositorios y despliegue
+                - generic [ref=e402]:
+                  - link "⌥ Uniconnect-Frontend" [ref=e403] [cursor=pointer]:
+                    - /url: https://github.com/Uniconnect-Frontend
+                    - generic [ref=e404]: ⌥
+                    - text: Uniconnect-Frontend
+                  - link "⌥ UniconnectComplete" [ref=e405] [cursor=pointer]:
+                    - /url: https://github.com/UniconnectComplete
+                    - generic [ref=e406]: ⌥
+                    - text: UniconnectComplete
+                  - link "⌥ Uniconnect-Backend-Core" [ref=e407] [cursor=pointer]:
+                    - /url: https://github.com/Uniconnect-Backend-Core
+                    - generic [ref=e408]: ⌥
+                    - text: Uniconnect-Backend-Core
+                - generic [ref=e409]:
+                  - generic [ref=e410]: "Backend:"
+                  - link "https://uniconnect-backend-core-black-wave-3099.fly.dev/" [ref=e411] [cursor=pointer]:
+                    - /url: https://uniconnect-backend-core-black-wave-3099.fly.dev/
+                - generic [ref=e412]:
+                  - generic [ref=e413]: "Frontend:"
+                  - link "https://uniconnect-frontend-uc.fly.dev/" [ref=e414] [cursor=pointer]:
+                    - /url: https://uniconnect-frontend-uc.fly.dev/

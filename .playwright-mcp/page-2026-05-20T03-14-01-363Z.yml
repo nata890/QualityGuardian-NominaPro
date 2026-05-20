@@ -1,0 +1,111 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]: Scrum Toolkit
+    - generic [ref=e6]:
+      - button "Descripcion" [ref=e7] [cursor=pointer]
+      - button "Gestion de Grupos" [ref=e8] [cursor=pointer]
+      - button "Product Backlog" [ref=e9] [cursor=pointer]
+      - button "Sprint Planning" [ref=e10] [cursor=pointer]
+      - button "Tareas y Poker" [ref=e11] [cursor=pointer]
+      - button "Daily Meeting" [ref=e12] [cursor=pointer]
+      - button "Review y Retro" [ref=e13] [cursor=pointer]
+      - button "Evaluacion Sprint" [ref=e14] [cursor=pointer]
+    - generic [ref=e15]:
+      - generic [ref=e16]: Estudiante
+      - button "SA" [ref=e18] [cursor=pointer]
+  - main [ref=e21]:
+    - generic [ref=e23]:
+      - generic [ref=e24]:
+        - heading "Gestion de Grupos" [level=1] [ref=e25]
+        - paragraph [ref=e26]: Administra integrantes del grupo y asigna roles por sprint. Product Owner queda fijo en la docente para todos los equipos.
+      - generic [ref=e27]:
+        - generic [ref=e28]:
+          - textbox "Nombre del grupo" [ref=e30]: Grupo 1
+          - heading "Integrantes del grupo" [level=2] [ref=e32]
+          - table [ref=e34]:
+            - rowgroup [ref=e35]:
+              - row "Nombre" [ref=e36]:
+                - columnheader "Nombre" [ref=e37]
+                - columnheader [ref=e38]
+            - rowgroup [ref=e39]:
+              - row "Selecciona estudiante" [ref=e40]:
+                - cell "Selecciona estudiante" [ref=e41]:
+                  - combobox [ref=e42]:
+                    - option "Selecciona estudiante" [selected]
+                    - option "Adames Tobon, Arcenio"
+                    - option "Cardona Diaz, Jaime Andres"
+                    - option "Ceballos Aguirre, Natalia"
+                    - option "Ceballos Yepes, Melody"
+                    - option "Espinosa Jaramillo, Sofia"
+                    - option "Franco Tabares, Daniel Alejandro"
+                    - option "Gamboa Clavijo, Juan Jose"
+                    - option "Garcia Medina, Santiago"
+                    - option "Gomez Posada, Carlos Alberto"
+                    - option "Henao Garcia, Luis Miguel"
+                    - option "Hernandez Osorio, Maria Fernanda"
+                    - option "Jimenez Ospina, Nicolas"
+                    - option "Lopez Florez, Mariana"
+                    - option "Martinez Jimenez, Juan Sebastian"
+                    - option "Moreno Trejos, Juliana Del Pilar"
+                    - option "Osorio Granada, Cristian Camilo"
+                    - option "Osorio Grisales, Johan Stiven"
+                    - option "Pelaez Roman, Juan Felipe"
+                    - option "Pineda Gomez, Alejandro"
+                    - option "Rincon, David"
+                    - option "Rivera Aguilera, Jackeline"
+                    - option "Salazar Colorado, Daner Alejandro"
+                    - option "Buitrago, Johan"
+                    - option "Coronado, Miguel"
+                    - option "Currea, Andres"
+                    - option "Delgado, Jhunior"
+                    - option "Lopez, Ingrith"
+                    - option "Ortiz, Jose"
+                    - option "Quijano, Juan"
+                    - option "Reyes, Juan"
+                    - option "Tautiva, Juan"
+          - generic [ref=e43]:
+            - heading "Roles por sprint" [level=2] [ref=e44]
+            - combobox [disabled] [ref=e46]:
+              - option "Sprint 1" [selected]
+              - option "Sprint 2"
+              - option "Sprint 3"
+              - option "Sprint 4"
+              - option "Sprint 5"
+            - generic [ref=e47]:
+              - generic [ref=e48]: Roles que participan en este sprint
+              - generic [ref=e49]:
+                - button "Dev Front" [ref=e50]
+                - button "Dev Back" [ref=e51]
+                - button "QA" [ref=e52]
+                - button "SM" [ref=e53]
+                - button "Lead Developer" [ref=e54]
+                - button "Inference & AI Engineer" [ref=e55]
+                - button "QA & DevOps Engineer" [ref=e56]
+            - generic [ref=e57]: Selecciona los roles que participan en este sprint para asignar integrantes.
+            - generic [ref=e58]: "Product Owner: Yaneth Mejia (docente)"
+            - button "Guardar roles del sprint" [disabled] [ref=e60]
+          - generic [ref=e61]:
+            - heading "Conexión GitHub" [level=2] [ref=e63]
+            - paragraph [ref=e64]:
+              - text: Ingresa un
+              - strong [ref=e65]: Personal Access Token (PAT)
+              - text: de GitHub con permiso
+              - code [ref=e66]: repo
+              - text: . El equipo podrá vincular sus repositorios a las tareas del tablero.
+            - generic [ref=e67]:
+              - textbox "ghp_xxxxxxxxxxxxxxxxxxxx" [disabled] [ref=e68]
+              - button "Conectar" [disabled] [ref=e69]
+          - generic [ref=e70]:
+            - heading "URLs de Despliegue" [level=2] [ref=e72]
+            - paragraph [ref=e73]: Registra las URLs públicas donde el equipo tiene desplegado su backend y dashboard (US-15, US-16). Se usan para los scripts de auditoría del 30%.
+            - generic [ref=e74]:
+              - generic [ref=e75]:
+                - generic [ref=e76]: Backend URL
+                - textbox "https://mi-grupo-backend.fly.dev" [disabled] [ref=e77]
+              - generic [ref=e78]:
+                - generic [ref=e79]: Frontend / Dashboard URL
+                - textbox "https://mi-grupo-dashboard.fly.dev" [disabled] [ref=e80]
+              - button "Guardar URLs" [disabled] [ref=e82]
+        - generic [ref=e83]:
+          - heading "Tu grupo" [level=3] [ref=e84]
+          - paragraph [ref=e85]: Aun no hay grupos guardados.

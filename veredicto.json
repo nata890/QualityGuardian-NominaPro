@@ -1,0 +1,82 @@
+{
+  "escenarios": [
+    {
+      "id": "test_R1_Nominal",
+      "descripcion": "Test test_R1_Nominal",
+      "resultado": "PASS",
+      "duracion_ms": 0
+    },
+    {
+      "id": "test_R1_Cero",
+      "descripcion": "Test test_R1_Cero",
+      "resultado": "PASS",
+      "duracion_ms": 0
+    },
+    {
+      "id": "test_R2_Nominal",
+      "descripcion": "Test test_R2_Nominal",
+      "resultado": "PASS",
+      "duracion_ms": 0
+    },
+    {
+      "id": "test_R2_Cero",
+      "descripcion": "Test test_R2_Cero",
+      "resultado": "PASS",
+      "duracion_ms": 0
+    },
+    {
+      "id": "test_R3_Nominal",
+      "descripcion": "Test test_R3_Nominal",
+      "resultado": "PASS",
+      "duracion_ms": 0
+    },
+    {
+      "id": "test_R3_Sin_Extras",
+      "descripcion": "Test test_R3_Sin_Extras",
+      "resultado": "PASS",
+      "duracion_ms": 0
+    },
+    {
+      "id": "test_R4_Aplica",
+      "descripcion": "Test test_R4_Aplica",
+      "resultado": "PASS",
+      "duracion_ms": 0
+    },
+    {
+      "id": "test_R4_No_Aplica",
+      "descripcion": "Test test_R4_No_Aplica",
+      "resultado": "PASS",
+      "duracion_ms": 0
+    },
+    {
+      "id": "test_R4_En_El_Tope",
+      "descripcion": "Test test_R4_En_El_Tope",
+      "resultado": "PASS",
+      "duracion_ms": 0
+    },
+    {
+      "id": "test_R5_Salario_Invalido",
+      "descripcion": "Test test_R5_Salario_Invalido",
+      "resultado": "PASS",
+      "duracion_ms": 0
+    },
+    {
+      "id": "test_R5_Horas_Negativas",
+      "descripcion": "Test test_R5_Horas_Negativas",
+      "resultado": "PASS",
+      "duracion_ms": 0
+    }
+  ],
+  "resumen": {
+    "total": 11,
+    "pasaron": 11,
+    "fallaron": 0,
+    "cobertura": "N/A"
+  },
+  "metadata": {
+    "modelo": "baidu/cobuddy",
+    "timestamp": "2026-05-20T04:38:46Z",
+    "oraculo": "casos_prueba.md",
+    "duracion_total_ms": 0
+  }
+}

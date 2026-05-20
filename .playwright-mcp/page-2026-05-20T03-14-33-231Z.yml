@@ -1,0 +1,281 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]: Scrum Toolkit
+    - generic [ref=e6]:
+      - button "Descripcion" [ref=e7] [cursor=pointer]
+      - button "Gestion de Grupos" [ref=e8] [cursor=pointer]
+      - button "Product Backlog" [ref=e9] [cursor=pointer]
+      - button "Sprint Planning" [active] [ref=e10] [cursor=pointer]
+      - button "Tareas y Poker" [ref=e11] [cursor=pointer]
+      - button "Daily Meeting" [ref=e12] [cursor=pointer]
+      - button "Review y Retro" [ref=e13] [cursor=pointer]
+      - button "Evaluacion Sprint" [ref=e14] [cursor=pointer]
+    - generic [ref=e15]:
+      - generic [ref=e16]: Estudiante
+      - button "SA" [ref=e18] [cursor=pointer]
+  - generic [ref=e19]:
+    - complementary [ref=e86]:
+      - generic [ref=e87]: Proyectos
+      - generic [ref=e88]:
+        - button "Uniconnect Ing. Software III" [ref=e89] [cursor=pointer]:
+          - generic [ref=e91]:
+            - generic [ref=e92]: Uniconnect
+            - generic [ref=e93]: Ing. Software III
+        - button "COIL UdeCaldas × UMB" [ref=e94] [cursor=pointer]:
+          - generic [ref=e96]:
+            - generic [ref=e97]: COIL
+            - generic [ref=e98]: UdeCaldas × UMB
+      - generic [ref=e100]: Evaluacion
+      - button "Notas del Curso Por sprint · automatizado" [ref=e102] [cursor=pointer]:
+        - generic [ref=e104]:
+          - generic [ref=e105]: Notas del Curso
+          - generic [ref=e106]: Por sprint · automatizado
+    - generic [ref=e20]:
+      - region "Progreso del flujo Scrum" [ref=e107]:
+        - tablist "Pasos del flujo Scrum" [ref=e108]:
+          - tab "Product Backlog. Completo." [ref=e567] [cursor=pointer]:
+            - generic [ref=e112]: "1"
+            - generic [ref=e113]: Product Backlog
+          - tab "Sprint Planning. Actual." [disabled] [selected] [ref=e568]:
+            - generic [ref=e117]: "2"
+            - generic [ref=e118]: Sprint Planning
+          - tab "Tareas / Poker. Pendiente." [ref=e121] [cursor=pointer]:
+            - generic [ref=e122]: "3"
+            - generic [ref=e123]: Tareas / Poker
+          - tab "Daily Meeting. Pendiente." [ref=e126] [cursor=pointer]:
+            - generic [ref=e127]: "4"
+            - generic [ref=e128]: Daily Meeting
+          - tab "Review / Retro. Pendiente." [ref=e130] [cursor=pointer]:
+            - generic [ref=e131]: "5"
+            - generic [ref=e132]: Review / Retro
+      - main [ref=e21]:
+        - generic [ref=e569]:
+          - generic [ref=e570]:
+            - generic [ref=e571]:
+              - heading "Sprint Planning" [level=1] [ref=e572]
+              - paragraph [ref=e573]: Paso 3 del flujo. Aqui eliges que historias priorizadas entran realmente al sprint, validando capacidad real y compromiso del equipo.
+            - generic [ref=e575]:
+              - text: "Estado:"
+              - strong [ref=e576]: Borrador
+          - generic [ref=e577]:
+            - text: Aquí defines el alcance real del sprint. Puedes
+            - strong [ref=e578]: marcar y desmarcar historias
+            - text: hasta confirmar el commitment — una vez confirmado, el sprint queda congelado y no se puede editar. Las historias comprometidas en un borrador anterior aparecen preseleccionadas y también se pueden retirar.
+          - generic [ref=e579]:
+            - combobox [ref=e580]:
+              - option "Sprint 1 ✓" [selected]
+              - option "Sprint 2 ✓"
+              - option "Sprint 4 ✓"
+              - option "Sprint 5 ✓"
+            - textbox [ref=e581]
+            - textbox [ref=e582]
+            - button "Guardar borrador" [ref=e583] [cursor=pointer]
+            - button "Confirmar commitment" [ref=e584] [cursor=pointer]
+          - generic [ref=e585]:
+            - generic [ref=e586]:
+              - generic [ref=e587]:
+                - generic [ref=e588]:
+                  - generic [ref=e589]: Sprint Goal
+                  - textbox [ref=e590]
+                - generic [ref=e591]:
+                  - generic [ref=e592]: Decisiones y supuestos del planning
+                  - generic [ref=e593]:
+                    - generic [ref=e594] [cursor=pointer]:
+                      - checkbox "Hay dependencias externas o de otros equipos" [ref=e595]
+                      - generic [ref=e596]: Hay dependencias externas o de otros equipos
+                    - generic [ref=e597] [cursor=pointer]:
+                      - checkbox "Existen riesgos técnicos o funcionales relevantes" [ref=e598]
+                      - generic [ref=e599]: Existen riesgos técnicos o funcionales relevantes
+                    - generic [ref=e600] [cursor=pointer]:
+                      - checkbox "Se dejaron historias por bloqueos o impedimentos" [ref=e601]
+                      - generic [ref=e602]: Se dejaron historias por bloqueos o impedimentos
+                    - generic [ref=e603] [cursor=pointer]:
+                      - checkbox "La capacidad del equipo limitó el compromiso" [ref=e604]
+                      - generic [ref=e605]: La capacidad del equipo limitó el compromiso
+                    - generic [ref=e606] [cursor=pointer]:
+                      - checkbox "La prioridad del Product Backlog definió la selección" [ref=e607]
+                      - generic [ref=e608]: La prioridad del Product Backlog definió la selección
+                    - generic [ref=e609] [cursor=pointer]:
+                      - checkbox "Se aplicó un criterio de corte para dejar historias fuera" [ref=e610]
+                      - generic [ref=e611]: Se aplicó un criterio de corte para dejar historias fuera
+                  - textbox "Observaciones adicionales del planning, decisiones particulares o aclaraciones del equipo..." [ref=e612]
+              - generic [ref=e613]:
+                - heading "Resumen del sprint" [level=2] [ref=e614]
+                - generic [ref=e615]:
+                  - generic [ref=e616]:
+                    - generic [ref=e617]: "0"
+                    - generic [ref=e618]: Historias comprometidas
+                  - generic [ref=e619]:
+                    - generic [ref=e620]: "0"
+                    - generic [ref=e621]: Story Points
+                  - generic [ref=e622]:
+                    - generic [ref=e623]: 192.0 h
+                    - generic [ref=e624]: Capacidad total
+                  - generic [ref=e625]:
+                    - generic [ref=e626]: "67"
+                    - generic [ref=e627]: Velocity
+                - generic [ref=e628]:
+                  - generic [ref=e629]: Compromiso dentro de capacidad
+                  - generic [ref=e630]: La selección actual respeta la capacidad estimada del sprint.
+                - generic [ref=e631]:
+                  - text: "Historias bloqueadas detectadas:"
+                  - strong [ref=e632]: "0"
+              - generic [ref=e634]:
+                - generic [ref=e635]: Backlog comprometido
+                - generic [ref=e636]: Sin historias seleccionadas
+              - generic [ref=e637]:
+                - generic [ref=e638]:
+                  - generic [ref=e639]:
+                    - heading "Historias sugeridas para el sprint" [level=2] [ref=e640]
+                    - paragraph [ref=e641]: Vienen del Product Backlog priorizado. Aqui decides el Sprint Backlog real, no la creacion de historias.
+                  - generic [ref=e642]: 3 historias
+                - generic [ref=e644]:
+                  - generic [ref=e647]: ↩ Deuda · 3
+                  - generic [ref=e649]:
+                    - button "US-W04 US-W04 · Gestor de eventos universitarios por categoria Should 3pt !" [disabled] [ref=e650]:
+                      - generic [ref=e652]: US-W04
+                      - generic [ref=e653]: US-W04 · Gestor de eventos universitarios por categoria
+                      - generic [ref=e654]:
+                        - generic [ref=e655]: Should
+                        - generic [ref=e656]: 3pt
+                        - generic "Ya comprometida en Sprint 4" [ref=e657]: "!"
+                    - button "US-D02 US-D02 · Decorator de perfil de estudiante con estadisticas Should 3pt !" [disabled] [ref=e658]:
+                      - generic [ref=e660]: US-D02
+                      - generic [ref=e661]: US-D02 · Decorator de perfil de estudiante con estadisticas
+                      - generic [ref=e662]:
+                        - generic [ref=e663]: Should
+                        - generic [ref=e664]: 3pt
+                        - generic "Ya comprometida en Sprint 4" [ref=e665]: "!"
+                    - button "US-O03 US-O03 · Observer para nuevos eventos universitarios Should 3pt !" [disabled] [ref=e666]:
+                      - generic [ref=e668]: US-O03
+                      - generic [ref=e669]: US-O03 · Observer para nuevos eventos universitarios
+                      - generic [ref=e670]:
+                        - generic [ref=e671]: Should
+                        - generic [ref=e672]: 3pt
+                        - generic "Ya comprometida en Sprint 4" [ref=e673]: "!"
+            - generic [ref=e675]:
+              - generic [ref=e676]:
+                - heading "Capacity Planning del sprint" [level=2] [ref=e677]
+                - paragraph [ref=e678]: "Aquí registras la capacidad real del equipo para este sprint: días disponibles, ausencias, horas por día, foco y restricciones por integrante."
+              - generic [ref=e679]:
+                - generic [ref=e680]:
+                  - generic [ref=e681]:
+                    - text: Duración del sprint
+                    - textbox "Duración del sprint" [ref=e682]: Define fecha de inicio y fin
+                  - generic [ref=e683]:
+                    - text: Velocity esperada
+                    - textbox "Velocity esperada" [ref=e684]: 67 pts
+                - generic [ref=e685]: La velocity se calcula automáticamente como el promedio de story points comprometidos en los sprints anteriores confirmados del equipo.
+                - generic [ref=e686]: Product Owner no se asigna aqui. Queda fijo como Yaneth Mejia (docente) para todos los equipos.
+                - generic [ref=e687]:
+                  - generic [ref=e688]:
+                    - generic [ref=e689]:
+                      - textbox "Nombre del integrante" [ref=e690]: Henao Garcia, Luis Miguel
+                      - combobox [ref=e691]:
+                        - option "Dev Front" [selected]
+                        - option "Dev Back"
+                        - option "QA"
+                        - option "SM"
+                        - option "Lead Developer"
+                        - option "Inference & AI Engineer"
+                        - option "QA & DevOps Engineer"
+                    - generic [ref=e692]:
+                      - generic [ref=e693]: 48.0 h
+                      - button "Quitar" [ref=e694] [cursor=pointer]
+                  - generic [ref=e695]:
+                    - generic [ref=e696]:
+                      - text: Días disponibles
+                      - spinbutton "Días disponibles" [ref=e697]: "10"
+                    - generic [ref=e698]:
+                      - text: Días no disponibles
+                      - spinbutton "Días no disponibles" [ref=e699]: "0"
+                    - generic [ref=e700]:
+                      - text: Horas por día
+                      - spinbutton "Horas por día" [ref=e701]: "6"
+                    - generic [ref=e702]:
+                      - text: Foco (0 a 1)
+                      - spinbutton "Foco (0 a 1)" [ref=e703]: "0.8"
+                - generic [ref=e704]:
+                  - generic [ref=e705]:
+                    - generic [ref=e706]:
+                      - textbox "Nombre del integrante" [ref=e707]: Cardona Diaz, Jaime Andres
+                      - combobox [ref=e708]:
+                        - option "Dev Front" [selected]
+                        - option "Dev Back"
+                        - option "QA"
+                        - option "SM"
+                        - option "Lead Developer"
+                        - option "Inference & AI Engineer"
+                        - option "QA & DevOps Engineer"
+                    - generic [ref=e709]:
+                      - generic [ref=e710]: 48.0 h
+                      - button "Quitar" [ref=e711] [cursor=pointer]
+                  - generic [ref=e712]:
+                    - generic [ref=e713]:
+                      - text: Días disponibles
+                      - spinbutton "Días disponibles" [ref=e714]: "10"
+                    - generic [ref=e715]:
+                      - text: Días no disponibles
+                      - spinbutton "Días no disponibles" [ref=e716]: "0"
+                    - generic [ref=e717]:
+                      - text: Horas por día
+                      - spinbutton "Horas por día" [ref=e718]: "6"
+                    - generic [ref=e719]:
+                      - text: Foco (0 a 1)
+                      - spinbutton "Foco (0 a 1)" [ref=e720]: "0.8"
+                - generic [ref=e721]:
+                  - generic [ref=e722]:
+                    - generic [ref=e723]:
+                      - textbox "Nombre del integrante" [ref=e724]: Salazar Colorado, Daner Alejandro
+                      - combobox [ref=e725]:
+                        - option "Dev Front" [selected]
+                        - option "Dev Back"
+                        - option "QA"
+                        - option "SM"
+                        - option "Lead Developer"
+                        - option "Inference & AI Engineer"
+                        - option "QA & DevOps Engineer"
+                    - generic [ref=e726]:
+                      - generic [ref=e727]: 48.0 h
+                      - button "Quitar" [ref=e728] [cursor=pointer]
+                  - generic [ref=e729]:
+                    - generic [ref=e730]:
+                      - text: Días disponibles
+                      - spinbutton "Días disponibles" [ref=e731]: "10"
+                    - generic [ref=e732]:
+                      - text: Días no disponibles
+                      - spinbutton "Días no disponibles" [ref=e733]: "0"
+                    - generic [ref=e734]:
+                      - text: Horas por día
+                      - spinbutton "Horas por día" [ref=e735]: "6"
+                    - generic [ref=e736]:
+                      - text: Foco (0 a 1)
+                      - spinbutton "Foco (0 a 1)" [ref=e737]: "0.8"
+                - generic [ref=e738]:
+                  - generic [ref=e739]:
+                    - generic [ref=e740]:
+                      - textbox "Nombre del integrante" [ref=e741]: Lopez Florez, Mariana
+                      - combobox [ref=e742]:
+                        - option "Dev Front" [selected]
+                        - option "Dev Back"
+                        - option "QA"
+                        - option "SM"
+                        - option "Lead Developer"
+                        - option "Inference & AI Engineer"
+                        - option "QA & DevOps Engineer"
+                    - generic [ref=e743]:
+                      - generic [ref=e744]: 48.0 h
+                      - button "Quitar" [ref=e745] [cursor=pointer]
+                  - generic [ref=e746]:
+                    - generic [ref=e747]:
+                      - text: Días disponibles
+                      - spinbutton "Días disponibles" [ref=e748]: "10"
+                    - generic [ref=e749]:
+                      - text: Días no disponibles
+                      - spinbutton "Días no disponibles" [ref=e750]: "0"
+                    - generic [ref=e751]:
+                      - text: Horas por día
+                      - spinbutton "Horas por día" [ref=e752]: "6"
+                    - generic [ref=e753]:
+                      - text: Foco (0 a 1)
+                      - spinbutton "Foco (0 a 1)" [ref=e754]: "0.8"

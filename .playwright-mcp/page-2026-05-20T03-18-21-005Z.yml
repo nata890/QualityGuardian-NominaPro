@@ -1,0 +1,132 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]: Scrum Toolkit
+    - generic [ref=e6]:
+      - button "Descripcion" [ref=e7] [cursor=pointer]
+      - button "Gestion de Grupos" [ref=e8] [cursor=pointer]
+      - button "Product Backlog" [ref=e9] [cursor=pointer]
+      - button "Sprint Planning" [ref=e10] [cursor=pointer]
+      - button "Tareas y Poker" [ref=e11] [cursor=pointer]
+      - button "Daily Meeting" [ref=e12] [cursor=pointer]
+      - button "Review y Retro" [ref=e13] [cursor=pointer]
+      - button "Evaluacion Sprint" [ref=e14] [cursor=pointer]
+    - generic [ref=e15]:
+      - generic [ref=e16]: Estudiante
+      - button "SA" [ref=e18] [cursor=pointer]
+  - generic [ref=e20]:
+    - region "Progreso del flujo Scrum" [ref=e21]:
+      - tablist "Pasos del flujo Scrum" [ref=e22]:
+        - tab "Product Backlog. Completo." [ref=e25] [cursor=pointer]:
+          - generic [ref=e26]: "1"
+          - generic [ref=e27]: Product Backlog
+        - tab "Sprint Planning. Actual." [disabled] [selected] [ref=e30]:
+          - generic [ref=e31]: "2"
+          - generic [ref=e32]: Sprint Planning
+        - tab "Tareas / Poker. Pendiente." [ref=e35] [cursor=pointer]:
+          - generic [ref=e36]: "3"
+          - generic [ref=e37]: Tareas / Poker
+        - tab "Daily Meeting. Pendiente." [ref=e40] [cursor=pointer]:
+          - generic [ref=e41]: "4"
+          - generic [ref=e42]: Daily Meeting
+        - tab "Review / Retro. Pendiente." [ref=e44] [cursor=pointer]:
+          - generic [ref=e45]: "5"
+          - generic [ref=e46]: Review / Retro
+    - main [ref=e47]:
+      - generic [ref=e48]:
+        - generic [ref=e49]:
+          - generic [ref=e50]:
+            - heading "Sprint Planning" [level=1] [ref=e51]
+            - paragraph [ref=e52]: Paso 3 del flujo. Aqui eliges que historias priorizadas entran realmente al sprint, validando capacidad real y compromiso del equipo.
+          - generic [ref=e54]:
+            - text: "Estado:"
+            - strong [ref=e55]: Borrador
+        - generic [ref=e56]:
+          - text: Aquí defines el alcance real del sprint. Puedes
+          - strong [ref=e57]: marcar y desmarcar historias
+          - text: hasta confirmar el commitment — una vez confirmado, el sprint queda congelado y no se puede editar. Las historias comprometidas en un borrador anterior aparecen preseleccionadas y también se pueden retirar.
+        - generic [ref=e58]:
+          - combobox [ref=e59]:
+            - option "Sprint 1" [selected]
+            - option "Sprint 2"
+            - option "Sprint 3"
+            - option "Sprint 4"
+            - option "Sprint 5"
+          - textbox [ref=e60]
+          - textbox [ref=e61]
+          - button "Guardar borrador" [disabled] [ref=e62]
+          - button "Confirmar commitment" [disabled] [ref=e63]
+        - generic [ref=e64]:
+          - generic [ref=e65]:
+            - generic [ref=e66]:
+              - generic [ref=e67]:
+                - generic [ref=e68]: Sprint Goal
+                - textbox [ref=e69]
+              - generic [ref=e70]:
+                - generic [ref=e71]: Decisiones y supuestos del planning
+                - generic [ref=e72]:
+                  - generic [ref=e73] [cursor=pointer]:
+                    - checkbox "Hay dependencias externas o de otros equipos" [ref=e74]
+                    - generic [ref=e75]: Hay dependencias externas o de otros equipos
+                  - generic [ref=e76] [cursor=pointer]:
+                    - checkbox "Existen riesgos técnicos o funcionales relevantes" [ref=e77]
+                    - generic [ref=e78]: Existen riesgos técnicos o funcionales relevantes
+                  - generic [ref=e79] [cursor=pointer]:
+                    - checkbox "Se dejaron historias por bloqueos o impedimentos" [ref=e80]
+                    - generic [ref=e81]: Se dejaron historias por bloqueos o impedimentos
+                  - generic [ref=e82] [cursor=pointer]:
+                    - checkbox "La capacidad del equipo limitó el compromiso" [ref=e83]
+                    - generic [ref=e84]: La capacidad del equipo limitó el compromiso
+                  - generic [ref=e85] [cursor=pointer]:
+                    - checkbox "La prioridad del Product Backlog definió la selección" [ref=e86]
+                    - generic [ref=e87]: La prioridad del Product Backlog definió la selección
+                  - generic [ref=e88] [cursor=pointer]:
+                    - checkbox "Se aplicó un criterio de corte para dejar historias fuera" [ref=e89]
+                    - generic [ref=e90]: Se aplicó un criterio de corte para dejar historias fuera
+                - textbox "Observaciones adicionales del planning, decisiones particulares o aclaraciones del equipo..." [ref=e91]
+            - generic [ref=e92]:
+              - heading "Resumen del sprint" [level=2] [ref=e93]
+              - generic [ref=e94]:
+                - generic [ref=e95]:
+                  - generic [ref=e96]: "0"
+                  - generic [ref=e97]: Historias comprometidas
+                - generic [ref=e98]:
+                  - generic [ref=e99]: "0"
+                  - generic [ref=e100]: Story Points
+                - generic [ref=e101]:
+                  - generic [ref=e102]: 0.0 h
+                  - generic [ref=e103]: Capacidad total
+                - generic [ref=e104]:
+                  - generic [ref=e105]: "0"
+                  - generic [ref=e106]: Velocity
+              - generic [ref=e107]:
+                - generic [ref=e108]: Compromiso dentro de capacidad
+                - generic [ref=e109]: La selección actual respeta la capacidad estimada del sprint.
+              - generic [ref=e110]:
+                - text: "Historias bloqueadas detectadas:"
+                - strong [ref=e111]: "0"
+            - generic [ref=e113]:
+              - generic [ref=e114]: Backlog comprometido
+              - generic [ref=e115]: Sin historias seleccionadas
+            - generic [ref=e116]:
+              - generic [ref=e117]:
+                - generic [ref=e118]:
+                  - heading "Historias sugeridas para el sprint" [level=2] [ref=e119]
+                  - paragraph [ref=e120]: Vienen del Product Backlog priorizado. Aqui decides el Sprint Backlog real, no la creacion de historias.
+                - generic [ref=e121]: 0 historias
+              - generic [ref=e123]: Cargando planning...
+          - generic [ref=e125]:
+            - generic [ref=e126]:
+              - heading "Capacity Planning del sprint" [level=2] [ref=e127]
+              - paragraph [ref=e128]: "Aquí registras la capacidad real del equipo para este sprint: días disponibles, ausencias, horas por día, foco y restricciones por integrante."
+            - generic [ref=e129]:
+              - generic [ref=e130]:
+                - generic [ref=e131]:
+                  - text: Duración del sprint
+                  - textbox "Duración del sprint" [ref=e132]: Define fecha de inicio y fin
+                - generic [ref=e133]:
+                  - text: Velocity esperada
+                  - textbox "Velocity esperada" [ref=e134]: Sin histórico aún
+              - generic [ref=e135]: La velocity se calcula automáticamente como el promedio de story points comprometidos en los sprints anteriores confirmados del equipo.
+              - generic [ref=e136]: Product Owner no se asigna aqui. Queda fijo como Yaneth Mejia (docente) para todos los equipos.
+              - button "Agregar integrante" [ref=e138] [cursor=pointer]
+              - generic [ref=e139]: Este equipo no tiene integrantes configurados todavía. Crea o actualiza el grupo y luego vuelve a Sprint Planning, o agrega un integrante extra manualmente si lo necesitas.

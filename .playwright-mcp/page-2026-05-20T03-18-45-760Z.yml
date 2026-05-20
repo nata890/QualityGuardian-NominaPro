@@ -1,0 +1,479 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]: Scrum Toolkit
+    - generic [ref=e6]:
+      - button "Descripcion" [ref=e7] [cursor=pointer]
+      - button "Gestion de Grupos" [ref=e8] [cursor=pointer]
+      - button "Product Backlog" [active] [ref=e9] [cursor=pointer]
+      - button "Sprint Planning" [ref=e10] [cursor=pointer]
+      - button "Tareas y Poker" [ref=e11] [cursor=pointer]
+      - button "Daily Meeting" [ref=e12] [cursor=pointer]
+      - button "Review y Retro" [ref=e13] [cursor=pointer]
+      - button "Evaluacion Sprint" [ref=e14] [cursor=pointer]
+    - generic [ref=e15]:
+      - generic [ref=e16]: Estudiante
+      - button "SA" [ref=e18] [cursor=pointer]
+  - generic [ref=e19]:
+    - complementary [ref=e140]:
+      - generic [ref=e141]: Proyectos
+      - generic [ref=e142]:
+        - button "Uniconnect Ing. Software III" [ref=e143] [cursor=pointer]:
+          - generic [ref=e145]:
+            - generic [ref=e146]: Uniconnect
+            - generic [ref=e147]: Ing. Software III
+        - button "COIL UdeCaldas × UMB" [ref=e148] [cursor=pointer]:
+          - generic [ref=e150]:
+            - generic [ref=e151]: COIL
+            - generic [ref=e152]: UdeCaldas × UMB
+      - generic [ref=e154]: Evaluacion
+      - button "Notas del Curso Por sprint · automatizado" [ref=e156] [cursor=pointer]:
+        - generic [ref=e158]:
+          - generic [ref=e159]: Notas del Curso
+          - generic [ref=e160]: Por sprint · automatizado
+    - generic [ref=e20]:
+      - region "Progreso del flujo Scrum" [ref=e21]:
+        - tablist "Pasos del flujo Scrum" [ref=e22]:
+          - tab "Product Backlog. Actual." [disabled] [selected] [ref=e161]:
+            - generic [ref=e26]: "1"
+            - generic [ref=e27]: Product Backlog
+          - tab "Sprint Planning. Pendiente." [ref=e162] [cursor=pointer]:
+            - generic [ref=e31]: "2"
+            - generic [ref=e32]: Sprint Planning
+          - tab "Tareas / Poker. Pendiente." [ref=e35] [cursor=pointer]:
+            - generic [ref=e36]: "3"
+            - generic [ref=e37]: Tareas / Poker
+          - tab "Daily Meeting. Pendiente." [ref=e40] [cursor=pointer]:
+            - generic [ref=e41]: "4"
+            - generic [ref=e42]: Daily Meeting
+          - tab "Review / Retro. Pendiente." [ref=e44] [cursor=pointer]:
+            - generic [ref=e45]: "5"
+            - generic [ref=e46]: Review / Retro
+      - main [ref=e47]:
+        - generic [ref=e163]:
+          - generic [ref=e164]:
+            - generic [ref=e165]:
+              - heading "Product Backlog" [level=1] [ref=e166]
+              - paragraph [ref=e167]: Define HUs, criterios de aceptación y prioridad MoSCoW. Selecciona una historia para ver y editar sus criterios en el panel derecho.
+            - generic [ref=e168]:
+              - button "Recargar" [ref=e169] [cursor=pointer]
+              - button "Guardar backlog" [ref=e170] [cursor=pointer]
+          - generic [ref=e171]:
+            - generic [ref=e172]: Product Goal
+            - textbox "Objetivo general del producto que guia este backlog" [ref=e173]: Entregar el backlog base de UniConnect para Sprint 3 con dashboard web, patrones Decorator y Observer, dockerizacion, despliegue en Fly.io y pruebas automatizadas.
+          - generic [ref=e174]:
+            - generic [ref=e175]:
+              - generic [ref=e176]: "3"
+              - generic [ref=e177]: puntos de deuda técnica
+            - generic [ref=e179]:
+              - generic [ref=e180]:
+                - generic [ref=e181]: ✕ No iniciadas
+                - generic [ref=e182]: 0 puntos
+              - generic [ref=e183]:
+                - generic [ref=e184]: ↗ En progreso
+                - generic [ref=e185]: 3 puntos
+            - generic [ref=e186]: 1 historia = 1 punto · Sprint 4
+          - generic [ref=e187]:
+            - generic [ref=e188]:
+              - generic [ref=e189]:
+                - generic [ref=e190]:
+                  - text: Historias
+                  - generic [ref=e191]: 38 HU
+                - button "+ Nueva HU" [ref=e192] [cursor=pointer]
+              - generic [ref=e193]:
+                - generic [ref=e194]:
+                  - generic [ref=e195]:
+                    - generic [ref=e197]: Deuda técnica pendiente
+                    - generic [ref=e198]: 3 HU
+                  - 'button "US-W04 Must DEUDA S3 #5 Como estudiante, quiero explorar los eventos de la universidad filtrados por categoria desde el dashboard web para planear mi participacion. ↗ En progreso (0%) falta 100% 3 criterios definidos" [ref=e199] [cursor=pointer]':
+                    - generic [ref=e200]:
+                      - generic [ref=e201]: US-W04
+                      - generic [ref=e202]: Must
+                      - generic "Deuda técnica del Sprint 3" [ref=e203]: DEUDA S3
+                      - generic [ref=e204]: "#5"
+                    - generic [ref=e205]: Como estudiante, quiero explorar los eventos de la universidad filtrados por categoria desde el dashboard web para planear mi participacion.
+                    - generic [ref=e207]:
+                      - generic [ref=e208]: ↗ En progreso (0%)
+                      - generic [ref=e209]: falta 100%
+                    - generic [ref=e211]: 3 criterios definidos
+                  - 'button "US-D02 Must DEUDA S3 #11 Como equipo de desarrollo, necesitamos aplicar el patron Decorator al perfil del estudiante para que el sistema pueda mostrar versiones enriquecidas del perfil sin acoplar las estadisticas al modelo base. ↗ En progreso (0%) falta 100% 5 criterios definidos" [ref=e212] [cursor=pointer]':
+                    - generic [ref=e213]:
+                      - generic [ref=e214]: US-D02
+                      - generic [ref=e215]: Must
+                      - generic "Deuda técnica del Sprint 3" [ref=e216]: DEUDA S3
+                      - generic [ref=e217]: "#11"
+                    - generic [ref=e218]: Como equipo de desarrollo, necesitamos aplicar el patron Decorator al perfil del estudiante para que el sistema pueda mostrar versiones enriquecidas del perfil sin acoplar las estadisticas al modelo base.
+                    - generic [ref=e220]:
+                      - generic [ref=e221]: ↗ En progreso (0%)
+                      - generic [ref=e222]: falta 100%
+                    - generic [ref=e224]: 5 criterios definidos
+                  - 'button "US-O03 Must DEUDA S3 #16 Como estudiante, quiero suscribirme a categorias de eventos universitarios para recibir notificacion automatica cuando se publique un nuevo evento de esa categoria. ↗ En progreso (0%) falta 100% 4 criterios definidos" [ref=e225] [cursor=pointer]':
+                    - generic [ref=e226]:
+                      - generic [ref=e227]: US-O03
+                      - generic [ref=e228]: Must
+                      - generic "Deuda técnica del Sprint 3" [ref=e229]: DEUDA S3
+                      - generic [ref=e230]: "#16"
+                    - generic [ref=e231]: Como estudiante, quiero suscribirme a categorias de eventos universitarios para recibir notificacion automatica cuando se publique un nuevo evento de esa categoria.
+                    - generic [ref=e233]:
+                      - generic [ref=e234]: ↗ En progreso (0%)
+                      - generic [ref=e235]: falta 100%
+                    - generic [ref=e237]: 4 criterios definidos
+                - generic [ref=e238]:
+                  - generic [ref=e239]:
+                    - generic [ref=e241]: HU Sprint 4 · Pendientes
+                    - generic [ref=e242]: 15 HU
+                  - 'button "US-INF07 Must SPRINT 4 #3 Como equipo, necesitamos generar builds firmados de la app móvil mediante EAS Build para poder distribuirla al docente y a los pares evaluadores sin depender de Expo Go. 5 criterios definidos" [ref=e243] [cursor=pointer]':
+                    - generic [ref=e244]:
+                      - generic [ref=e245]: US-INF07
+                      - generic [ref=e246]: Must
+                      - generic [ref=e247]: SPRINT 4
+                      - generic [ref=e248]: "#3"
+                    - generic [ref=e249]: Como equipo, necesitamos generar builds firmados de la app móvil mediante EAS Build para poder distribuirla al docente y a los pares evaluadores sin depender de Expo Go.
+                    - generic [ref=e250]: 5 criterios definidos
+                  - 'button "US-CH01 Must SPRINT 4 #6 Como equipo de desarrollo, queremos aplicar el patrón Chain of Responsibility sobre la publicación de mensajes en el chat para que cada validación (tamaño, contenido, menciones, permisos, adjunto) sea un handler independiente y la cadena pueda extenderse sin modificar los handlers existentes. 7 criterios definidos" [ref=e251] [cursor=pointer]':
+                    - generic [ref=e252]:
+                      - generic [ref=e253]: US-CH01
+                      - generic [ref=e254]: Must
+                      - generic [ref=e255]: SPRINT 4
+                      - generic [ref=e256]: "#6"
+                    - generic [ref=e257]: Como equipo de desarrollo, queremos aplicar el patrón Chain of Responsibility sobre la publicación de mensajes en el chat para que cada validación (tamaño, contenido, menciones, permisos, adjunto) sea un handler independiente y la cadena pueda extenderse sin modificar los handlers existentes.
+                    - generic [ref=e258]: 7 criterios definidos
+                  - 'button "US-S01 Must SPRINT 4 #8 Como equipo de desarrollo, queremos implementar el patrón Strategy sobre el envío de notificaciones para que cada canal (in-app, email, push) sea intercambiable y configurable por usuario sin modificar el código del NotificacionService. 7 criterios definidos" [ref=e259] [cursor=pointer]':
+                    - generic [ref=e260]:
+                      - generic [ref=e261]: US-S01
+                      - generic [ref=e262]: Must
+                      - generic [ref=e263]: SPRINT 4
+                      - generic [ref=e264]: "#8"
+                    - generic [ref=e265]: Como equipo de desarrollo, queremos implementar el patrón Strategy sobre el envío de notificaciones para que cada canal (in-app, email, push) sea intercambiable y configurable por usuario sin modificar el código del NotificacionService.
+                    - generic [ref=e266]: 7 criterios definidos
+                  - 'button "US-ST01 Must SPRINT 4 #10 Como equipo, necesitamos refactorizar el flujo de transferencia de admin del Sprint 3 usando el patron State con cinco estados como clases independientes y emision de eventos. 7 criterios definidos" [ref=e267] [cursor=pointer]':
+                    - generic [ref=e268]:
+                      - generic [ref=e269]: US-ST01
+                      - generic [ref=e270]: Must
+                      - generic [ref=e271]: SPRINT 4
+                      - generic [ref=e272]: "#10"
+                    - generic [ref=e273]: Como equipo, necesitamos refactorizar el flujo de transferencia de admin del Sprint 3 usando el patron State con cinco estados como clases independientes y emision de eventos.
+                    - generic [ref=e274]: 7 criterios definidos
+                  - 'button "US-V05 Must SPRINT 4 #15 Como estudiante, quiero un foro de preguntas y respuestas por asignatura con una cadena CoR independiente, sistema de votos con reordenamiento dinamico y validacion de matricula, accesible desde web y movil. 7 criterios definidos" [ref=e275] [cursor=pointer]':
+                    - generic [ref=e276]:
+                      - generic [ref=e277]: US-V05
+                      - generic [ref=e278]: Must
+                      - generic [ref=e279]: SPRINT 4
+                      - generic [ref=e280]: "#15"
+                    - generic [ref=e281]: Como estudiante, quiero un foro de preguntas y respuestas por asignatura con una cadena CoR independiente, sistema de votos con reordenamiento dinamico y validacion de matricula, accesible desde web y movil.
+                    - generic [ref=e282]: 7 criterios definidos
+                  - 'button "US-V03 Must SPRINT 4 #17 Como estudiante, quiero una biblioteca colaborativa de recursos con un nuevo caso de Decorator con tres variantes, extraccion Open Graph, permisos diferenciados y acceso desde web y movil. 7 criterios definidos" [ref=e283] [cursor=pointer]':
+                    - generic [ref=e284]:
+                      - generic [ref=e285]: US-V03
+                      - generic [ref=e286]: Must
+                      - generic [ref=e287]: SPRINT 4
+                      - generic [ref=e288]: "#17"
+                    - generic [ref=e289]: Como estudiante, quiero una biblioteca colaborativa de recursos con un nuevo caso de Decorator con tres variantes, extraccion Open Graph, permisos diferenciados y acceso desde web y movil.
+                    - generic [ref=e290]: 7 criterios definidos
+                  - 'button "US-V02 Must SPRINT 4 #19 Como estudiante, quiero programar sesiones de estudio con generacion de series recurrentes, recordatorios temporizados via NotificacionService y acceso dual desde web y movil. 7 criterios definidos" [ref=e291] [cursor=pointer]':
+                    - generic [ref=e292]:
+                      - generic [ref=e293]: US-V02
+                      - generic [ref=e294]: Must
+                      - generic [ref=e295]: SPRINT 4
+                      - generic [ref=e296]: "#19"
+                    - generic [ref=e297]: Como estudiante, quiero programar sesiones de estudio con generacion de series recurrentes, recordatorios temporizados via NotificacionService y acceso dual desde web y movil.
+                    - generic [ref=e298]: 7 criterios definidos
+                  - 'button "US-V04 Must SPRINT 4 #21 Como estudiante, quiero crear encuestas rapidas en el chat del grupo con un Decorator componible con los del Sprint 3, votacion en tiempo real y auto-cierre programado. 7 criterios definidos" [ref=e299] [cursor=pointer]':
+                    - generic [ref=e300]:
+                      - generic [ref=e301]: US-V04
+                      - generic [ref=e302]: Must
+                      - generic [ref=e303]: SPRINT 4
+                      - generic [ref=e304]: "#21"
+                    - generic [ref=e305]: Como estudiante, quiero crear encuestas rapidas en el chat del grupo con un Decorator componible con los del Sprint 3, votacion en tiempo real y auto-cierre programado.
+                    - generic [ref=e306]: 7 criterios definidos
+                  - 'button "US-T07 Must SPRINT 4 #23 Como equipo, queremos pruebas de integracion y E2E que cubran los endpoints nuevos del Sprint 4, usando Detox o Maestro y contratos Zod compartidos entre web y movil. 7 criterios definidos" [ref=e307] [cursor=pointer]':
+                    - generic [ref=e308]:
+                      - generic [ref=e309]: US-T07
+                      - generic [ref=e310]: Must
+                      - generic [ref=e311]: SPRINT 4
+                      - generic [ref=e312]: "#23"
+                    - generic [ref=e313]: Como equipo, queremos pruebas de integracion y E2E que cubran los endpoints nuevos del Sprint 4, usando Detox o Maestro y contratos Zod compartidos entre web y movil.
+                    - generic [ref=e314]: 7 criterios definidos
+                  - 'button "US-INF09 Must SPRINT 4 #25 Como equipo de DevOps, queremos un pipeline de integracion y entrega continua que automatice las pruebas, el build y el despliegue de los tres proyectos (dashboard web, app movil y backend) para reducir el tiempo de release y eliminar despliegues manuales propensos a error. 7 criterios definidos" [ref=e315] [cursor=pointer]':
+                    - generic [ref=e316]:
+                      - generic [ref=e317]: US-INF09
+                      - generic [ref=e318]: Must
+                      - generic [ref=e319]: SPRINT 4
+                      - generic [ref=e320]: "#25"
+                    - generic [ref=e321]: Como equipo de DevOps, queremos un pipeline de integracion y entrega continua que automatice las pruebas, el build y el despliegue de los tres proyectos (dashboard web, app movil y backend) para reducir el tiempo de release y eliminar despliegues manuales propensos a error.
+                    - generic [ref=e322]: 7 criterios definidos
+                  - 'button "US-SM01 Must SPRINT 4 #27 Como Scrum Master, quiero un tablero centralizado con las metricas del equipo (velocidad, cumplimiento, burn-down) y la trazabilidad entre Historias de Usuario, commits y despliegues para tomar decisiones informadas en cada ceremonia. 7 criterios definidos" [ref=e323] [cursor=pointer]':
+                    - generic [ref=e324]:
+                      - generic [ref=e325]: US-SM01
+                      - generic [ref=e326]: Must
+                      - generic [ref=e327]: SPRINT 4
+                      - generic [ref=e328]: "#27"
+                    - generic [ref=e329]: Como Scrum Master, quiero un tablero centralizado con las metricas del equipo (velocidad, cumplimiento, burn-down) y la trazabilidad entre Historias de Usuario, commits y despliegues para tomar decisiones informadas en cada ceremonia.
+                    - generic [ref=e330]: 7 criterios definidos
+                  - 'button "US-INF06 Must SPRINT 4 #28 Como equipo, necesitamos que cada merge a la rama main ejecute automaticamente las pruebas y, si pasan, despliegue la version actualizada en Fly.io. 4 criterios definidos" [ref=e331] [cursor=pointer]':
+                    - generic [ref=e332]:
+                      - generic [ref=e333]: US-INF06
+                      - generic [ref=e334]: Must
+                      - generic [ref=e335]: SPRINT 4
+                      - generic [ref=e336]: "#28"
+                    - generic [ref=e337]: Como equipo, necesitamos que cada merge a la rama main ejecute automaticamente las pruebas y, si pasan, despliegue la version actualizada en Fly.io.
+                    - generic [ref=e338]: 4 criterios definidos
+                  - 'button "US-DEV01 Must SPRINT 4 #29 Como desarrollador, quiero una documentacion viva del API del backend en formato OpenAPI 3 y tipos TypeScript autogenerados consumibles desde web y movil para evitar inconsistencias entre cliente y servidor. 7 criterios definidos" [ref=e339] [cursor=pointer]':
+                    - generic [ref=e340]:
+                      - generic [ref=e341]: US-DEV01
+                      - generic [ref=e342]: Must
+                      - generic [ref=e343]: SPRINT 4
+                      - generic [ref=e344]: "#29"
+                    - generic [ref=e345]: Como desarrollador, quiero una documentacion viva del API del backend en formato OpenAPI 3 y tipos TypeScript autogenerados consumibles desde web y movil para evitar inconsistencias entre cliente y servidor.
+                    - generic [ref=e346]: 7 criterios definidos
+                  - 'button "US-T04 Must SPRINT 4 #33 Como equipo, necesitamos que el sistema de CI genere automaticamente el reporte de cobertura para verificar que se cumple el umbral minimo del 70%. 5 criterios definidos" [ref=e347] [cursor=pointer]':
+                    - generic [ref=e348]:
+                      - generic [ref=e349]: US-T04
+                      - generic [ref=e350]: Must
+                      - generic [ref=e351]: SPRINT 4
+                      - generic [ref=e352]: "#33"
+                    - generic [ref=e353]: Como equipo, necesitamos que el sistema de CI genere automaticamente el reporte de cobertura para verificar que se cumple el umbral minimo del 70%.
+                    - generic [ref=e354]: 5 criterios definidos
+                  - 'button "US-T05 Must SPRINT 4 #34 Como equipo, necesitamos una prueba end-to-end que valide el flujo mas critico del dashboard web desde el navegador real. 4 criterios definidos" [ref=e355] [cursor=pointer]':
+                    - generic [ref=e356]:
+                      - generic [ref=e357]: US-T05
+                      - generic [ref=e358]: Must
+                      - generic [ref=e359]: SPRINT 4
+                      - generic [ref=e360]: "#34"
+                    - generic [ref=e361]: Como equipo, necesitamos una prueba end-to-end que valide el flujo mas critico del dashboard web desde el navegador real.
+                    - generic [ref=e362]: 4 criterios definidos
+                - generic [ref=e363]:
+                  - generic [ref=e364]:
+                    - generic [ref=e366]: Atendidas · Sprint 3
+                    - generic [ref=e367]: 20 HU
+                    - generic [ref=e368]: Solo lectura
+                  - generic [ref=e369]:
+                    - generic [ref=e370]:
+                      - generic [ref=e371]: US-W01
+                      - generic [ref=e372]: Must
+                      - generic [ref=e373]: Atendida ✓
+                      - generic [ref=e374]: "#1"
+                    - generic [ref=e375]: Como estudiante, quiero iniciar sesion en el dashboard web con mi correo @ucaldas.edu.co para acceder a la plataforma desde el navegador.
+                  - generic [ref=e376]:
+                    - generic [ref=e377]:
+                      - generic [ref=e378]: US-W02
+                      - generic [ref=e379]: Must
+                      - generic [ref=e380]: Atendida ✓
+                      - generic [ref=e381]: "#2"
+                    - generic [ref=e382]: Como estudiante administrador, quiero gestionar mi grupo de estudio desde el dashboard web para ver solicitudes pendientes, aceptarlas o rechazarlas, y gestionar la transferencia de administracion.
+                  - generic [ref=e383]:
+                    - generic [ref=e384]:
+                      - generic [ref=e385]: US-W03
+                      - generic [ref=e386]: Must
+                      - generic [ref=e387]: Atendida ✓
+                      - generic [ref=e388]: "#4"
+                    - generic [ref=e389]: Como estudiante, quiero acceder al chat de mi grupo de estudio desde el dashboard web para enviar mensajes, archivos y mencionar companeros.
+                  - generic [ref=e390]:
+                    - generic [ref=e391]:
+                      - generic [ref=e392]: US-W05
+                      - generic [ref=e393]: Must
+                      - generic [ref=e394]: Atendida ✓
+                      - generic [ref=e395]: "#7"
+                    - generic [ref=e396]: Como estudiante, quiero ver todas mis notificaciones pendientes en un panel centralizado del dashboard para no perderme solicitudes ni invitaciones.
+                  - generic [ref=e397]:
+                    - generic [ref=e398]:
+                      - generic [ref=e399]: US-D01
+                      - generic [ref=e400]: Must
+                      - generic [ref=e401]: Atendida ✓
+                      - generic [ref=e402]: "#9"
+                    - generic [ref=e403]: Como equipo de desarrollo, necesitamos implementar el patron Decorator sobre los mensajes del chat para anadir capacidades de forma modular sin modificar la clase base.
+                  - generic [ref=e404]:
+                    - generic [ref=e405]:
+                      - generic [ref=e406]: US-D03
+                      - generic [ref=e407]: Must
+                      - generic [ref=e408]: Atendida ✓
+                      - generic [ref=e409]: "#12"
+                    - generic [ref=e410]: Como equipo, necesitamos decorar las notificaciones del sistema para anadirles metadatos de prioridad y acciones embebidas sin modificar la notificacion base.
+                  - generic [ref=e411]:
+                    - generic [ref=e412]:
+                      - generic [ref=e413]: US-O01
+                      - generic [ref=e414]: Must
+                      - generic [ref=e415]: Atendida ✓
+                      - generic [ref=e416]: "#13"
+                    - generic [ref=e417]: Como equipo, necesitamos que el grupo de estudio actue como Subject y notifique automaticamente a los observers cuando ocurren eventos relevantes (solicitud de ingreso, transferencia de admin, nuevo miembro).
+                  - generic [ref=e418]:
+                    - generic [ref=e419]:
+                      - generic [ref=e420]: US-O02
+                      - generic [ref=e421]: Must
+                      - generic [ref=e422]: Atendida ✓
+                      - generic [ref=e423]: "#14"
+                    - generic [ref=e424]: Como equipo, necesitamos que el servicio de chat implemente Observer para que el envio de un mensaje notifique automaticamente a todos los participantes del grupo conectados, tanto en web como en mobile.
+                  - generic [ref=e425]:
+                    - generic [ref=e426]:
+                      - generic [ref=e427]: US-INF01
+                      - generic [ref=e428]: Must
+                      - generic [ref=e429]: Atendida ✓
+                      - generic [ref=e430]: "#18"
+                    - generic [ref=e431]: Como equipo, necesitamos que el backend Node.js tenga un Dockerfile de produccion con multi-stage build para reducir el tamano de la imagen final.
+                  - generic [ref=e432]:
+                    - generic [ref=e433]:
+                      - generic [ref=e434]: US-INF02
+                      - generic [ref=e435]: Must
+                      - generic [ref=e436]: Atendida ✓
+                      - generic [ref=e437]: "#20"
+                    - generic [ref=e438]: Como equipo, necesitamos que el dashboard web tenga su propio Dockerfile con build estatico servido por Nginx.
+                  - generic [ref=e439]:
+                    - generic [ref=e440]:
+                      - generic [ref=e441]: US-INF03
+                      - generic [ref=e442]: Must
+                      - generic [ref=e443]: Atendida ✓
+                      - generic [ref=e444]: "#22"
+                    - generic [ref=e445]: Como equipo, necesitamos un archivo docker-compose.yml que levante el entorno completo de desarrollo con un unico comando.
+                  - generic [ref=e446]:
+                    - generic [ref=e447]:
+                      - generic [ref=e448]: US-INF04
+                      - generic [ref=e449]: Must
+                      - generic [ref=e450]: Atendida ✓
+                      - generic [ref=e451]: "#24"
+                    - generic [ref=e452]: Como equipo, necesitamos tener el backend desplegado en Fly.io y accesible publicamente con una URL estable.
+                  - generic [ref=e453]:
+                    - generic [ref=e454]:
+                      - generic [ref=e455]: US-INF05
+                      - generic [ref=e456]: Must
+                      - generic [ref=e457]: Atendida ✓
+                      - generic [ref=e458]: "#26"
+                    - generic [ref=e459]: Como equipo, necesitamos que el dashboard web este desplegado en Fly.io y accesible con una URL publica estable.
+                  - generic [ref=e460]:
+                    - generic [ref=e461]:
+                      - generic [ref=e462]: US-T01
+                      - generic [ref=e463]: Must
+                      - generic [ref=e464]: Atendida ✓
+                      - generic [ref=e465]: "#30"
+                    - generic [ref=e466]: Como equipo, necesitamos pruebas unitarias que verifiquen que cada decorador de mensaje y de perfil anade correctamente su responsabilidad sin romper el comportamiento base.
+                  - generic [ref=e467]:
+                    - generic [ref=e468]:
+                      - generic [ref=e469]: US-T02
+                      - generic [ref=e470]: Must
+                      - generic [ref=e471]: Atendida ✓
+                      - generic [ref=e472]: "#31"
+                    - generic [ref=e473]: "Como equipo, necesitamos pruebas unitarias que verifiquen el ciclo completo del patron Observer: suscripcion, notificacion y desuscripcion."
+                  - generic [ref=e474]:
+                    - generic [ref=e475]:
+                      - generic [ref=e476]: US-T03
+                      - generic [ref=e477]: Must
+                      - generic [ref=e478]: Atendida ✓
+                      - generic [ref=e479]: "#32"
+                    - generic [ref=e480]: Como equipo, necesitamos pruebas de integracion sobre los endpoints mas importantes del API para garantizar que el contrato entre backend y clientes no se rompa con cambios futuros.
+                  - generic [ref=e481]:
+                    - generic [ref=e482]:
+                      - generic [ref=e483]: US-M01
+                      - generic [ref=e484]: Must
+                      - generic [ref=e485]: Atendida ✓
+                      - generic [ref=e486]: "#35"
+                    - generic [ref=e487]: Como estudiante, quiero iniciar sesión en la app móvil con mi correo @ucaldas.edu.co para acceder a UniConnect desde mi celular usando el mismo backend que el dashboard web.
+                  - generic [ref=e488]:
+                    - generic [ref=e489]:
+                      - generic [ref=e490]: US-W06
+                      - generic [ref=e491]: Must
+                      - generic [ref=e492]: Atendida ✓
+                      - generic [ref=e493]: "#36"
+                    - generic [ref=e494]: Como estudiante, quiero abrir conversaciones privadas con compañeros de mis grupos desde el dashboard web para coordinar tareas sin saturar el chat grupal.
+                  - generic [ref=e495]:
+                    - generic [ref=e496]:
+                      - generic [ref=e497]: US-M02
+                      - generic [ref=e498]: Must
+                      - generic [ref=e499]: Atendida ✓
+                      - generic [ref=e500]: "#37"
+                    - generic [ref=e501]: Como estudiante, quiero ver el listado de grupos de estudio y el detalle de cada uno desde la app movil para gestionar mi participacion.
+                  - generic [ref=e502]:
+                    - generic [ref=e503]:
+                      - generic [ref=e504]: US-M03
+                      - generic [ref=e505]: Must
+                      - generic [ref=e506]: Atendida ✓
+                      - generic [ref=e507]: "#38"
+                    - generic [ref=e508]: Como estudiante, quiero acceder al chat grupal en tiempo real desde la app movil para comunicarme con los integrantes de mi grupo de estudio.
+            - generic [ref=e510]:
+              - generic [ref=e511]:
+                - generic [ref=e512]: US-INF07
+                - generic [ref=e513]: Sprint 4
+                - combobox [ref=e514]:
+                  - option "Must" [selected]
+                  - option "Should"
+                  - option "Could"
+                  - option "Won't"
+                - generic [ref=e515]:
+                  - button "↑" [ref=e516] [cursor=pointer]
+                  - button "↓" [ref=e517] [cursor=pointer]
+                  - button "Eliminar" [ref=e518] [cursor=pointer]
+              - generic [ref=e519]:
+                - generic [ref=e520]: Descripción de la Historia
+                - textbox "Como [rol], quiero [objetivo] para [beneficio]" [ref=e521]: Como equipo, necesitamos generar builds firmados de la app móvil mediante EAS Build para poder distribuirla al docente y a los pares evaluadores sin depender de Expo Go.
+              - generic [ref=e522]:
+                - generic [ref=e523]:
+                  - generic [ref=e524]: Criterios de aceptación(mín. 3 · Dado / Cuando / Entonces)
+                  - button "+ Criterio" [ref=e525] [cursor=pointer]
+                - generic [ref=e526]:
+                  - generic [ref=e527]:
+                    - generic [ref=e528]:
+                      - generic [ref=e529]: Criterio 1
+                      - button "×" [ref=e530] [cursor=pointer]
+                    - generic [ref=e531]:
+                      - generic [ref=e532]:
+                        - generic [ref=e533]: Dado que
+                        - textbox "Dado que... (contexto o precondición)" [ref=e534]: el proyecto móvil tiene un archivo eas.json configurado con perfiles development, preview y production
+                      - generic [ref=e535]:
+                        - generic [ref=e536]: Cuando
+                        - textbox "Cuando... (acción del usuario)" [ref=e537]: se valida el requerimiento en el flujo correspondiente
+                      - generic [ref=e538]:
+                        - generic [ref=e539]: Entonces
+                        - textbox "Entonces... (resultado esperado)" [ref=e540]: el sistema cumple la condición descrita
+                  - generic [ref=e541]:
+                    - generic [ref=e542]:
+                      - generic [ref=e543]: Criterio 2
+                      - button "×" [ref=e544] [cursor=pointer]
+                    - generic [ref=e545]:
+                      - generic [ref=e546]:
+                        - generic [ref=e547]: Dado que
+                        - textbox "Dado que... (contexto o precondición)" [ref=e548]: se ejecuta eas build --profile preview --platform android
+                      - generic [ref=e549]:
+                        - generic [ref=e550]: Cuando
+                        - textbox "Cuando... (acción del usuario)" [ref=e551]: termina el build
+                      - generic [ref=e552]:
+                        - generic [ref=e553]: Entonces
+                        - textbox "Entonces... (resultado esperado)" [ref=e554]: se genera un APK firmado descargable desde la URL pública del build
+                  - generic [ref=e555]:
+                    - generic [ref=e556]:
+                      - generic [ref=e557]: Criterio 3
+                      - button "×" [ref=e558] [cursor=pointer]
+                    - generic [ref=e559]:
+                      - generic [ref=e560]:
+                        - generic [ref=e561]: Dado que
+                        - textbox "Dado que... (contexto o precondición)" [ref=e562]: el APK preview se instala en un dispositivo Android real
+                      - generic [ref=e563]:
+                        - generic [ref=e564]: Cuando
+                        - textbox "Cuando... (acción del usuario)" [ref=e565]: el usuario abre la app
+                      - generic [ref=e566]:
+                        - generic [ref=e567]: Entonces
+                        - textbox "Entonces... (resultado esperado)" [ref=e568]: puede autenticarse, ver sus grupos y enviar mensajes contra el backend de producción en Fly.io
+                  - generic [ref=e569]:
+                    - generic [ref=e570]:
+                      - generic [ref=e571]: Criterio 4
+                      - button "×" [ref=e572] [cursor=pointer]
+                    - generic [ref=e573]:
+                      - generic [ref=e574]:
+                        - generic [ref=e575]: Dado que
+                        - textbox "Dado que... (contexto o precondición)" [ref=e576]: las variables sensibles (clientId de OAuth, URL del backend) se inyectan en build
+                      - generic [ref=e577]:
+                        - generic [ref=e578]: Cuando
+                        - textbox "Cuando... (acción del usuario)" [ref=e579]: se inspecciona el bundle
+                      - generic [ref=e580]:
+                        - generic [ref=e581]: Entonces
+                        - textbox "Entonces... (resultado esperado)" [ref=e582]: no aparecen credenciales hardcodeadas en código fuente del repositorio
+                  - generic [ref=e583]:
+                    - generic [ref=e584]:
+                      - generic [ref=e585]: Criterio 5
+                      - button "×" [ref=e586] [cursor=pointer]
+                    - generic [ref=e587]:
+                      - generic [ref=e588]:
+                        - generic [ref=e589]: Dado que
+                        - textbox "Dado que... (contexto o precondición)" [ref=e590]: el README del proyecto móvil
+                      - generic [ref=e591]:
+                        - generic [ref=e592]: Cuando
+                        - textbox "Cuando... (acción del usuario)" [ref=e593]: se documenta la distribución
+                      - generic [ref=e594]:
+                        - generic [ref=e595]: Entonces
+                        - textbox "Entonces... (resultado esperado)" [ref=e596]: incluye el enlace al último APK preview y las instrucciones para instalarlo

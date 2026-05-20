@@ -1,0 +1,227 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]: Scrum Toolkit
+    - generic [ref=e6]:
+      - button "Descripcion" [ref=e7] [cursor=pointer]
+      - button "Gestion de Grupos" [ref=e8] [cursor=pointer]
+      - button "Product Backlog" [active] [ref=e9] [cursor=pointer]
+      - button "Sprint Planning" [ref=e10] [cursor=pointer]
+      - button "Tareas y Poker" [ref=e11] [cursor=pointer]
+      - button "Daily Meeting" [ref=e12] [cursor=pointer]
+      - button "Review y Retro" [ref=e13] [cursor=pointer]
+    - generic [ref=e15]:
+      - generic [ref=e16]: Estudiante
+      - button "SA" [ref=e18] [cursor=pointer]
+  - generic [ref=e19]:
+    - complementary [ref=e140]:
+      - generic [ref=e141]: Proyectos
+      - generic [ref=e142]:
+        - button "Uniconnect Ing. Software III" [ref=e143] [cursor=pointer]:
+          - generic [ref=e145]:
+            - generic [ref=e146]: Uniconnect
+            - generic [ref=e147]: Ing. Software III
+        - button "COIL UdeCaldas × UMB" [ref=e148] [cursor=pointer]:
+          - generic [ref=e150]:
+            - generic [ref=e151]: COIL
+            - generic [ref=e152]: UdeCaldas × UMB
+      - generic [ref=e154]: Evaluacion
+      - button "Notas del Curso Por sprint · automatizado" [ref=e156] [cursor=pointer]:
+        - generic [ref=e158]:
+          - generic [ref=e159]: Notas del Curso
+          - generic [ref=e160]: Por sprint · automatizado
+    - generic [ref=e20]:
+      - region "Progreso del flujo Scrum" [ref=e811]:
+        - tablist "Pasos del flujo Scrum" [ref=e812]:
+          - tab "Product Backlog. Actual." [disabled] [selected] [ref=e815]:
+            - generic [ref=e816]: "1"
+            - generic [ref=e817]: Product Backlog
+          - tab "Sprint Planning. Pendiente." [ref=e820] [cursor=pointer]:
+            - generic [ref=e821]: "2"
+            - generic [ref=e822]: Sprint Planning
+          - tab "Tareas / Poker. Pendiente." [ref=e825] [cursor=pointer]:
+            - generic [ref=e826]: "3"
+            - generic [ref=e827]: Tareas / Poker
+          - tab "Daily Meeting. Pendiente." [ref=e830] [cursor=pointer]:
+            - generic [ref=e831]: "4"
+            - generic [ref=e832]: Daily Meeting
+          - tab "Review / Retro. Pendiente." [ref=e834] [cursor=pointer]:
+            - generic [ref=e835]: "5"
+            - generic [ref=e836]: Review / Retro
+      - main [ref=e47]:
+        - generic [ref=e837]:
+          - generic [ref=e838]:
+            - generic [ref=e839]:
+              - heading "Product Backlog" [level=1] [ref=e840]
+              - paragraph [ref=e841]: Define HUs, criterios de aceptación y prioridad MoSCoW. Selecciona una historia para ver y editar sus criterios en el panel derecho.
+            - generic [ref=e842]:
+              - button "Recargar" [ref=e843] [cursor=pointer]
+              - button "Cargar HU Quality Guardian" [ref=e844] [cursor=pointer]
+              - button "Guardar backlog" [ref=e845] [cursor=pointer]
+          - generic [ref=e846]:
+            - generic [ref=e847]: Product Goal
+            - textbox "Objetivo general del producto que guia este backlog" [ref=e848]: "Entregar un pipeline reproducible que contenga: la función liquidar_nomina implementada y cubierta por un oráculo formal (casos_prueba.md), la ejecución automatizada de esos escenarios como pruebas Pytest dentro de contenedores Docker, y reportes auditable que permitan la revisión por la célula compañera."
+          - generic [ref=e849]:
+            - generic [ref=e850]:
+              - generic [ref=e851]: "3"
+              - generic [ref=e852]: puntos de deuda técnica
+            - generic [ref=e854]:
+              - generic [ref=e855]:
+                - generic [ref=e856]: ✕ No iniciadas
+                - generic [ref=e857]: 0 puntos
+              - generic [ref=e858]:
+                - generic [ref=e859]: ↗ En progreso
+                - generic [ref=e860]: 0 puntos
+            - generic [ref=e861]: 1 historia = 1 punto · Sprint 4
+          - generic [ref=e862]:
+            - generic [ref=e863]:
+              - generic [ref=e864]:
+                - generic [ref=e865]:
+                  - text: Historias
+                  - generic [ref=e866]: 3 HU
+                - button "+ Nueva HU" [ref=e867] [cursor=pointer]
+              - generic [ref=e869]:
+                - generic [ref=e870]:
+                  - generic [ref=e872]: Deuda técnica pendiente
+                  - generic [ref=e873]: 3 HU
+                - 'button "US-NOM01 Must DEUDA S3 #1 Como Lead Developer de la UdeC, quiero implementar la función liquidar_nomina en engine.py siguiendo las reglas colombianas para que el Quality Guardian de la célula compañera pueda auditar el código y validar las reglas de negocio. 7 criterios definidos" [ref=e874] [cursor=pointer]':
+                  - generic [ref=e875]:
+                    - generic [ref=e876]: US-NOM01
+                    - generic [ref=e877]: Must
+                    - generic "Deuda técnica del Sprint 3" [ref=e878]: DEUDA S3
+                    - generic [ref=e879]: "#1"
+                  - generic [ref=e880]: Como Lead Developer de la UdeC, quiero implementar la función liquidar_nomina en engine.py siguiendo las reglas colombianas para que el Quality Guardian de la célula compañera pueda auditar el código y validar las reglas de negocio.
+                  - generic [ref=e881]: 7 criterios definidos
+                - 'button "US-NOM02 Must DEUDA S3 #2 Como célula completa, queremos redactar casos_prueba.md con al menos diez escenarios que cubran las reglas R1 a R5 para que el Quality Guardian tenga un oráculo claro sobre el cual generar las pruebas automáticas. 6 criterios definidos" [ref=e882] [cursor=pointer]':
+                  - generic [ref=e883]:
+                    - generic [ref=e884]: US-NOM02
+                    - generic [ref=e885]: Must
+                    - generic "Deuda técnica del Sprint 3" [ref=e886]: DEUDA S3
+                    - generic [ref=e887]: "#2"
+                  - generic [ref=e888]: Como célula completa, queremos redactar casos_prueba.md con al menos diez escenarios que cubran las reglas R1 a R5 para que el Quality Guardian tenga un oráculo claro sobre el cual generar las pruebas automáticas.
+                  - generic [ref=e889]: 6 criterios definidos
+                - 'button "US-NOM03 Must DEUDA S3 #3 Como estudiante de la UMB, quiero configurar un Agente Guardian con LangChain y Llama 3 8B vía Ollama que genere pruebas Pytest a partir del oráculo y las ejecute en un contenedor Docker aislado para emitir un veredicto auditable sobre engine.py. 7 criterios definidos" [ref=e890] [cursor=pointer]':
+                  - generic [ref=e891]:
+                    - generic [ref=e892]: US-NOM03
+                    - generic [ref=e893]: Must
+                    - generic "Deuda técnica del Sprint 3" [ref=e894]: DEUDA S3
+                    - generic [ref=e895]: "#3"
+                  - generic [ref=e896]: Como estudiante de la UMB, quiero configurar un Agente Guardian con LangChain y Llama 3 8B vía Ollama que genere pruebas Pytest a partir del oráculo y las ejecute en un contenedor Docker aislado para emitir un veredicto auditable sobre engine.py.
+                  - generic [ref=e897]: 7 criterios definidos
+            - generic [ref=e899]:
+              - generic [ref=e900]:
+                - generic [ref=e901]: US-NOM01
+                - combobox [ref=e902]:
+                  - option "Must" [selected]
+                  - option "Should"
+                  - option "Could"
+                  - option "Won't"
+                - generic [ref=e903]:
+                  - button "↑" [disabled] [ref=e904]
+                  - button "↓" [ref=e905] [cursor=pointer]
+                  - button "Eliminar" [ref=e906] [cursor=pointer]
+              - generic [ref=e907]:
+                - generic [ref=e908]: Descripción de la Historia
+                - textbox "Como [rol], quiero [objetivo] para [beneficio]" [ref=e909]: Como Lead Developer de la UdeC, quiero implementar la función liquidar_nomina en engine.py siguiendo las reglas colombianas para que el Quality Guardian de la célula compañera pueda auditar el código y validar las reglas de negocio.
+              - generic [ref=e910]:
+                - generic [ref=e911]:
+                  - generic [ref=e912]: Criterios de aceptación(mín. 3 · Dado / Cuando / Entonces)
+                  - button "+ Criterio" [ref=e913] [cursor=pointer]
+                - generic [ref=e914]:
+                  - generic [ref=e915]:
+                    - generic [ref=e916]:
+                      - generic [ref=e917]: Criterio 1
+                      - button "×" [ref=e918] [cursor=pointer]
+                    - generic [ref=e919]:
+                      - generic [ref=e920]:
+                        - generic [ref=e921]: Dado que
+                        - textbox "Dado que... (contexto o precondición)" [ref=e922]: existe el archivo engine.py escrito en Python 3.11+
+                      - generic [ref=e923]:
+                        - generic [ref=e924]: Cuando
+                        - textbox "Cuando... (acción del usuario)" [ref=e925]: se inspecciona
+                      - generic [ref=e926]:
+                        - generic [ref=e927]: Entonces
+                        - textbox "Entonces... (resultado esperado)" [ref=e928]: "contiene la función liquidar_nomina(salario_base: float, horas_extras_diurnas: int, horas_extras_nocturnas: int, vlr_hora: float) -> dict con tipado completo y docstring"
+                  - generic [ref=e929]:
+                    - generic [ref=e930]:
+                      - generic [ref=e931]: Criterio 2
+                      - button "×" [ref=e932] [cursor=pointer]
+                    - generic [ref=e933]:
+                      - generic [ref=e934]:
+                        - generic [ref=e935]: Dado que
+                        - textbox "Dado que... (contexto o precondición)" [ref=e936]: el motor calcula horas extras diurnas (R1)
+                      - generic [ref=e937]:
+                        - generic [ref=e938]: Cuando
+                        - textbox "Cuando... (acción del usuario)" [ref=e939]: se invoca con un caso válido
+                      - generic [ref=e940]:
+                        - generic [ref=e941]: Entonces
+                        - textbox "Entonces... (resultado esperado)" [ref=e942]: aplica un recargo del 25% sobre el valor de la hora ordinaria
+                  - generic [ref=e943]:
+                    - generic [ref=e944]:
+                      - generic [ref=e945]: Criterio 3
+                      - button "×" [ref=e946] [cursor=pointer]
+                    - generic [ref=e947]:
+                      - generic [ref=e948]:
+                        - generic [ref=e949]: Dado que
+                        - textbox "Dado que... (contexto o precondición)" [ref=e950]: el motor calcula horas extras nocturnas (R2)
+                      - generic [ref=e951]:
+                        - generic [ref=e952]: Cuando
+                        - textbox "Cuando... (acción del usuario)" [ref=e953]: se invoca con un caso válido
+                      - generic [ref=e954]:
+                        - generic [ref=e955]: Entonces
+                        - textbox "Entonces... (resultado esperado)" [ref=e956]: aplica un recargo del 75% sobre el valor de la hora ordinaria
+                  - generic [ref=e957]:
+                    - generic [ref=e958]:
+                      - generic [ref=e959]: Criterio 4
+                      - button "×" [ref=e960] [cursor=pointer]
+                    - generic [ref=e961]:
+                      - generic [ref=e962]:
+                        - generic [ref=e963]: Dado que
+                        - textbox "Dado que... (contexto o precondición)" [ref=e964]: el motor descuenta seguridad social (R3)
+                      - generic [ref=e965]:
+                        - generic [ref=e966]: Cuando
+                        - textbox "Cuando... (acción del usuario)" [ref=e967]: termina el cálculo
+                      - generic [ref=e968]:
+                        - generic [ref=e969]: Entonces
+                        - textbox "Entonces... (resultado esperado)" [ref=e970]: resta 4% de salud y 4% de pensión sobre el total devengado (salario base más extras)
+                  - generic [ref=e971]:
+                    - generic [ref=e972]:
+                      - generic [ref=e973]: Criterio 5
+                      - button "×" [ref=e974] [cursor=pointer]
+                    - generic [ref=e975]:
+                      - generic [ref=e976]:
+                        - generic [ref=e977]: Dado que
+                        - textbox "Dado que... (contexto o precondición)" [ref=e978]: el salario base es menor o igual a $2.600.000 (R4)
+                      - generic [ref=e979]:
+                        - generic [ref=e980]: Cuando
+                        - textbox "Cuando... (acción del usuario)" [ref=e981]: se liquida la nómina
+                      - generic [ref=e982]:
+                        - generic [ref=e983]: Entonces
+                        - textbox "Entonces... (resultado esperado)" [ref=e984]: se suma auxilio de transporte por $162.000
+                  - generic [ref=e985]:
+                    - generic [ref=e986]:
+                      - generic [ref=e987]: Criterio 6
+                      - button "×" [ref=e988] [cursor=pointer]
+                    - generic [ref=e989]:
+                      - generic [ref=e990]:
+                        - generic [ref=e991]: Dado que
+                        - textbox "Dado que... (contexto o precondición)" [ref=e992]: el salario base es menor a $1.300.000 o alguna cantidad de horas es negativa (R5)
+                      - generic [ref=e993]:
+                        - generic [ref=e994]: Cuando
+                        - textbox "Cuando... (acción del usuario)" [ref=e995]: se invoca la función
+                      - generic [ref=e996]:
+                        - generic [ref=e997]: Entonces
+                        - textbox "Entonces... (resultado esperado)" [ref=e998]: lanza una excepción tipada con mensaje claro
+                  - generic [ref=e999]:
+                    - generic [ref=e1000]:
+                      - generic [ref=e1001]: Criterio 7
+                      - button "×" [ref=e1002] [cursor=pointer]
+                    - generic [ref=e1003]:
+                      - generic [ref=e1004]:
+                        - generic [ref=e1005]: Dado que
+                        - textbox "Dado que... (contexto o precondición)" [ref=e1006]: el código será leído por un LLM en otra máquina
+                      - generic [ref=e1007]:
+                        - generic [ref=e1008]: Cuando
+                        - textbox "Cuando... (acción del usuario)" [ref=e1009]: se evalúa la calidad
+                      - generic [ref=e1010]:
+                        - generic [ref=e1011]: Entonces
+                        - textbox "Entonces... (resultado esperado)" [ref=e1012]: el archivo tiene tipado consistente, comentarios y formato limpio que permitan al modelo analizarlo correctamente

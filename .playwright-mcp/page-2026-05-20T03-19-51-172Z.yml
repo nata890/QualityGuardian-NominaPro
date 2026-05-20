@@ -1,0 +1,259 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]: Scrum Toolkit
+    - generic [ref=e6]:
+      - button "Descripcion" [ref=e7] [cursor=pointer]
+      - button "Gestion de Grupos" [ref=e8] [cursor=pointer]
+      - button "Product Backlog" [ref=e9] [cursor=pointer]
+      - button "Sprint Planning" [active] [ref=e10] [cursor=pointer]
+      - button "Tareas y Poker" [ref=e11] [cursor=pointer]
+      - button "Daily Meeting" [ref=e12] [cursor=pointer]
+      - button "Review y Retro" [ref=e13] [cursor=pointer]
+    - generic [ref=e15]:
+      - generic [ref=e16]: Estudiante
+      - button "SA" [ref=e18] [cursor=pointer]
+  - generic [ref=e19]:
+    - complementary [ref=e140]:
+      - generic [ref=e141]: Proyectos
+      - generic [ref=e142]:
+        - button "Uniconnect Ing. Software III" [ref=e143] [cursor=pointer]:
+          - generic [ref=e145]:
+            - generic [ref=e146]: Uniconnect
+            - generic [ref=e147]: Ing. Software III
+        - button "COIL UdeCaldas × UMB" [ref=e148] [cursor=pointer]:
+          - generic [ref=e150]:
+            - generic [ref=e151]: COIL
+            - generic [ref=e152]: UdeCaldas × UMB
+      - generic [ref=e154]: Evaluacion
+      - button "Notas del Curso Por sprint · automatizado" [ref=e156] [cursor=pointer]:
+        - generic [ref=e158]:
+          - generic [ref=e159]: Notas del Curso
+          - generic [ref=e160]: Por sprint · automatizado
+    - generic [ref=e20]:
+      - region "Progreso del flujo Scrum" [ref=e811]:
+        - tablist "Pasos del flujo Scrum" [ref=e812]:
+          - tab "Product Backlog. Completo." [ref=e1013] [cursor=pointer]:
+            - generic [ref=e816]: "1"
+            - generic [ref=e817]: Product Backlog
+          - tab "Sprint Planning. Actual." [disabled] [selected] [ref=e1014]:
+            - generic [ref=e821]: "2"
+            - generic [ref=e822]: Sprint Planning
+          - tab "Tareas / Poker. Pendiente." [ref=e825] [cursor=pointer]:
+            - generic [ref=e826]: "3"
+            - generic [ref=e827]: Tareas / Poker
+          - tab "Daily Meeting. Pendiente." [ref=e830] [cursor=pointer]:
+            - generic [ref=e831]: "4"
+            - generic [ref=e832]: Daily Meeting
+          - tab "Review / Retro. Pendiente." [ref=e834] [cursor=pointer]:
+            - generic [ref=e835]: "5"
+            - generic [ref=e836]: Review / Retro
+      - main [ref=e47]:
+        - generic [ref=e1015]:
+          - generic [ref=e1016]:
+            - generic [ref=e1017]:
+              - heading "Sprint Planning" [level=1] [ref=e1018]
+              - paragraph [ref=e1019]: Paso 3 del flujo. Aqui eliges que historias priorizadas entran realmente al sprint, validando capacidad real y compromiso del equipo.
+            - generic [ref=e1020]:
+              - generic [ref=e1021]:
+                - text: "Estado:"
+                - strong [ref=e1022]: Comprometido
+              - generic [ref=e1023]:
+                - text: "Confirmado:"
+                - strong [ref=e1024]: 11/5/2026, 10:21:43 a. m.
+          - generic [ref=e1025]:
+            - text: El alcance de este sprint está
+            - strong [ref=e1026]: congelado
+            - text: . Las historias comprometidas ya no pueden modificarse porque el commitment fue confirmado.
+          - generic [ref=e1027]:
+            - combobox [ref=e1028]:
+              - option "Sprint 1 ✓" [selected]
+              - option "Sprint 2 ✓"
+              - option "Sprint 3 ✓"
+              - option "Sprint 4 ✓"
+              - option "Sprint 5"
+              - option "Sprint 6 ✓"
+            - textbox [disabled] [ref=e1029]: 2026-05-14
+            - textbox [disabled] [ref=e1030]: 2026-05-28
+            - button "Guardar borrador" [disabled] [ref=e1031]
+            - button "Congelado" [disabled] [ref=e1032]
+          - generic [ref=e1033]:
+            - generic [ref=e1034]:
+              - generic [ref=e1035]:
+                - generic [ref=e1036]:
+                  - generic [ref=e1037]: Sprint Goal
+                  - textbox [disabled] [ref=e1038]: Implementar la función liquidar_nomina y entregar un oráculo formal con 10 escenarios ejecutables en Pytest; dejar la infraestructura mínima en Docker y CI para ejecutar las pruebas (MVP auditable).
+                - generic [ref=e1039]:
+                  - generic [ref=e1040]: Decisiones y supuestos del planning
+                  - generic [ref=e1041]:
+                    - generic [ref=e1042]:
+                      - checkbox "Hay dependencias externas o de otros equipos" [disabled] [ref=e1043]
+                      - generic [ref=e1044]: Hay dependencias externas o de otros equipos
+                    - generic [ref=e1045]:
+                      - checkbox "Existen riesgos técnicos o funcionales relevantes" [disabled] [ref=e1046]
+                      - generic [ref=e1047]: Existen riesgos técnicos o funcionales relevantes
+                    - generic [ref=e1048]:
+                      - checkbox "Se dejaron historias por bloqueos o impedimentos" [disabled] [ref=e1049]
+                      - generic [ref=e1050]: Se dejaron historias por bloqueos o impedimentos
+                    - generic [ref=e1051]:
+                      - checkbox "La capacidad del equipo limitó el compromiso" [disabled] [ref=e1052]
+                      - generic [ref=e1053]: La capacidad del equipo limitó el compromiso
+                    - generic [ref=e1054]:
+                      - checkbox "La prioridad del Product Backlog definió la selección" [disabled] [ref=e1055]
+                      - generic [ref=e1056]: La prioridad del Product Backlog definió la selección
+                    - generic [ref=e1057]:
+                      - checkbox "Se aplicó un criterio de corte para dejar historias fuera" [disabled] [ref=e1058]
+                      - generic [ref=e1059]: Se aplicó un criterio de corte para dejar historias fuera
+                  - textbox "Observaciones adicionales del planning, decisiones particulares o aclaraciones del equipo..." [disabled] [ref=e1060]
+              - generic [ref=e1061]:
+                - heading "Resumen del sprint" [level=2] [ref=e1062]
+                - generic [ref=e1063]:
+                  - generic [ref=e1064]:
+                    - generic [ref=e1065]: "3"
+                    - generic [ref=e1066]: Historias comprometidas
+                  - generic [ref=e1067]:
+                    - generic [ref=e1068]: "3"
+                    - generic [ref=e1069]: Story Points
+                  - generic [ref=e1070]:
+                    - generic [ref=e1071]: 144.0 h
+                    - generic [ref=e1072]: Capacidad total
+                  - generic [ref=e1073]:
+                    - generic [ref=e1074]: "0"
+                    - generic [ref=e1075]: Velocity
+                - generic [ref=e1076]:
+                  - generic [ref=e1077]: Compromiso dentro de capacidad
+                  - generic [ref=e1078]: La selección actual respeta la capacidad estimada del sprint.
+                - generic [ref=e1079]:
+                  - text: "Historias bloqueadas detectadas:"
+                  - strong [ref=e1080]: "0"
+              - generic [ref=e1082]:
+                - generic [ref=e1083]: Backlog comprometido · 3 HU · 3pt
+                - generic [ref=e1084]:
+                  - text: US-NOM01
+                  - generic [ref=e1085]: · 3pt
+                - generic [ref=e1086]: US-NOM02
+                - generic [ref=e1087]: US-NOM03
+              - generic [ref=e1088]:
+                - generic [ref=e1089]:
+                  - generic [ref=e1090]:
+                    - heading "Historias sugeridas para el sprint" [level=2] [ref=e1091]
+                    - paragraph [ref=e1092]: Vienen del Product Backlog priorizado. Aqui decides el Sprint Backlog real, no la creacion de historias.
+                  - generic [ref=e1093]: 3 historias
+                - generic [ref=e1095]:
+                  - generic [ref=e1098]: Nueva · 3
+                  - generic [ref=e1100]:
+                    - button "US-NOM01 Como Lead Developer de la UdeC, quiero implementar la función liquidar_nomina en engine.py siguiendo las reglas colombianas para que el Quality Guardian de la célula compañera pueda auditar el código y validar las reglas de negocio. Must 3pt" [disabled] [ref=e1101]:
+                      - generic [ref=e1103]: US-NOM01
+                      - generic [ref=e1104]: Como Lead Developer de la UdeC, quiero implementar la función liquidar_nomina en engine.py siguiendo las reglas colombianas para que el Quality Guardian de la célula compañera pueda auditar el código y validar las reglas de negocio.
+                      - generic [ref=e1105]:
+                        - generic [ref=e1106]: Must
+                        - generic [ref=e1107]: 3pt
+                    - button "US-NOM02 Como célula completa, queremos redactar casos_prueba.md con al menos diez escenarios que cubran las reglas R1 a R5 para que el Quality Guardian tenga un oráculo claro sobre el cual generar las pruebas automáticas. Must 0pt" [disabled] [ref=e1108]:
+                      - generic [ref=e1110]: US-NOM02
+                      - generic [ref=e1111]: Como célula completa, queremos redactar casos_prueba.md con al menos diez escenarios que cubran las reglas R1 a R5 para que el Quality Guardian tenga un oráculo claro sobre el cual generar las pruebas automáticas.
+                      - generic [ref=e1112]:
+                        - generic [ref=e1113]: Must
+                        - generic [ref=e1114]: 0pt
+                    - button "US-NOM03 Como estudiante de la UMB, quiero configurar un Agente Guardian con LangChain y Llama 3 8B vía Ollama que genere pruebas Pytest a partir del oráculo y las ejecute en un contenedor Docker aislado para emitir un veredicto auditable sobre engine.py. Must 0pt" [disabled] [ref=e1115]:
+                      - generic [ref=e1117]: US-NOM03
+                      - generic [ref=e1118]: Como estudiante de la UMB, quiero configurar un Agente Guardian con LangChain y Llama 3 8B vía Ollama que genere pruebas Pytest a partir del oráculo y las ejecute en un contenedor Docker aislado para emitir un veredicto auditable sobre engine.py.
+                      - generic [ref=e1119]:
+                        - generic [ref=e1120]: Must
+                        - generic [ref=e1121]: 0pt
+            - generic [ref=e1123]:
+              - generic [ref=e1124]:
+                - heading "Capacity Planning del sprint" [level=2] [ref=e1125]
+                - paragraph [ref=e1126]: "Aquí registras la capacidad real del equipo para este sprint: días disponibles, ausencias, horas por día, foco y restricciones por integrante."
+              - generic [ref=e1127]:
+                - generic [ref=e1128]:
+                  - generic [ref=e1129]:
+                    - text: Duración del sprint
+                    - textbox "Duración del sprint" [ref=e1130]: 15 días
+                  - generic [ref=e1131]:
+                    - text: Velocity esperada
+                    - textbox "Velocity esperada" [ref=e1132]: Sin histórico aún
+                - generic [ref=e1133]: La velocity se calcula automáticamente como el promedio de story points comprometidos en los sprints anteriores confirmados del equipo.
+                - generic [ref=e1134]: Product Owner no se asigna aqui. Queda fijo como Yaneth Mejia (docente) para todos los equipos.
+                - generic [ref=e1135]:
+                  - generic [ref=e1136]:
+                    - generic [ref=e1137]:
+                      - textbox "Nombre del integrante" [disabled] [ref=e1138]: Ceballos Aguirre, Natalia
+                      - combobox [disabled] [ref=e1139]:
+                        - option "Dev Front"
+                        - option "Dev Back"
+                        - option "QA"
+                        - option "SM"
+                        - option "Lead Developer" [selected]
+                        - option "Inference & AI Engineer"
+                        - option "QA & DevOps Engineer"
+                    - generic [ref=e1140]:
+                      - generic [ref=e1141]: 48.0 h
+                      - button "Quitar" [disabled] [ref=e1142]
+                  - generic [ref=e1143]:
+                    - generic [ref=e1144]:
+                      - text: Días disponibles
+                      - spinbutton "Días disponibles" [disabled] [ref=e1145]: "10"
+                    - generic [ref=e1146]:
+                      - text: Días no disponibles
+                      - spinbutton "Días no disponibles" [disabled] [ref=e1147]: "0"
+                    - generic [ref=e1148]:
+                      - text: Horas por día
+                      - spinbutton "Horas por día" [disabled] [ref=e1149]: "6"
+                    - generic [ref=e1150]:
+                      - text: Foco (0 a 1)
+                      - spinbutton "Foco (0 a 1)" [disabled] [ref=e1151]: "0.8"
+                - generic [ref=e1152]:
+                  - generic [ref=e1153]:
+                    - generic [ref=e1154]:
+                      - textbox "Nombre del integrante" [disabled] [ref=e1155]: Coronado, Miguel
+                      - combobox [disabled] [ref=e1156]:
+                        - option "Dev Front"
+                        - option "Dev Back"
+                        - option "QA"
+                        - option "SM"
+                        - option "Lead Developer"
+                        - option "Inference & AI Engineer"
+                        - option "QA & DevOps Engineer" [selected]
+                    - generic [ref=e1157]:
+                      - generic [ref=e1158]: 48.0 h
+                      - button "Quitar" [disabled] [ref=e1159]
+                  - generic [ref=e1160]:
+                    - generic [ref=e1161]:
+                      - text: Días disponibles
+                      - spinbutton "Días disponibles" [disabled] [ref=e1162]: "10"
+                    - generic [ref=e1163]:
+                      - text: Días no disponibles
+                      - spinbutton "Días no disponibles" [disabled] [ref=e1164]: "0"
+                    - generic [ref=e1165]:
+                      - text: Horas por día
+                      - spinbutton "Horas por día" [disabled] [ref=e1166]: "6"
+                    - generic [ref=e1167]:
+                      - text: Foco (0 a 1)
+                      - spinbutton "Foco (0 a 1)" [disabled] [ref=e1168]: "0.8"
+                - generic [ref=e1169]:
+                  - generic [ref=e1170]:
+                    - generic [ref=e1171]:
+                      - textbox "Nombre del integrante" [disabled] [ref=e1172]: Salazar Colorado, Daner Alejandro
+                      - combobox [disabled] [ref=e1173]:
+                        - option "Dev Front"
+                        - option "Dev Back"
+                        - option "QA"
+                        - option "SM"
+                        - option "Lead Developer"
+                        - option "Inference & AI Engineer" [selected]
+                        - option "QA & DevOps Engineer"
+                    - generic [ref=e1174]:
+                      - generic [ref=e1175]: 48.0 h
+                      - button "Quitar" [disabled] [ref=e1176]
+                  - generic [ref=e1177]:
+                    - generic [ref=e1178]:
+                      - text: Días disponibles
+                      - spinbutton "Días disponibles" [disabled] [ref=e1179]: "10"
+                    - generic [ref=e1180]:
+                      - text: Días no disponibles
+                      - spinbutton "Días no disponibles" [disabled] [ref=e1181]: "0"
+                    - generic [ref=e1182]:
+                      - text: Horas por día
+                      - spinbutton "Horas por día" [disabled] [ref=e1183]: "6"
+                    - generic [ref=e1184]:
+                      - text: Foco (0 a 1)
+                      - spinbutton "Foco (0 a 1)" [disabled] [ref=e1185]: "0.8"
