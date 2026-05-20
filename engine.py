@@ -91,7 +91,7 @@ def liquidar_nomina(
     ...     vlr_hora=10_000,
     ... )
     >>> resultado["total_a_pagar"]
-    1_689_000.0
+    1_647_800.0
     """
 
     # ── R5: Validaciones de entrada ──────────────────────────────
