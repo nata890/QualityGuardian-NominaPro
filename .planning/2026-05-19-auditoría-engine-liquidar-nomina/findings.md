@@ -38,13 +38,24 @@ US-NOM01 completada exitosamente. engine.py validado contra C1-C7 y versionado e
 - Python Decimal docs: https://docs.python.org/3/library/decimal.html
 
 ## US-NOM03 Progress
-- Configurado cliente OpenRouter en `guardia_api.py` para modelo `baidu/cobuddy` vía endpoint `https://openrouter.ai/api/v1/chat/completions`.
+- Configurado cliente OpenRouter en `guardia_api.py` para modelo `baidu/cobuddy:free` vía endpoint `https://openrouter.ai/api/v1/chat/completions`.
 - Key cargada desde variable de entorno `OPENROUTER_API_KEY` (archivo `.env`). Seguridad validada: `.env` en `.gitignore`, clave nunca hardcodeada en código.
-- Cliente implementa manejo de timeouts (30s), reintentos (2 con backoff exponencial), y errores HTTP (4xx/5xx).
+- Cliente implementa manejo de timeouts (60s), reintentos (2 con backoff exponencial), y errores HTTP (4xx/5xx).
 - `guardian_client.py` espera `casos_prueba.md` (oráculo de Miguel/Oracle — US-NOM02) para generar `test_engine.py`.
 - `veredicto.json` estructura definida (pass/fail + resumen + metadata).
 - `Dockerfile` multi-stage con usuario no-root (`guardian`).
 - CI pipeline (`ci.yml`) configurado.
+
+## VALIDACIÓN DE CONECTIVIDAD US-NOM03
+- **Fecha:** 2026-05-20
+- **Endpoint:** `https://openrouter.ai/api/v1/chat/completions`
+- **Modelo solicitado:** `baidu/cobuddy:free`
+- **Modelo retornado:** `baidu/cobuddy-20260430:free`
+- **HTTP Status:** 200 OK
+- **Latencia:** 9565 ms
+- **Respuesta:** "OK"
+- **ALERTA: LATENCIA ELEVADA EN US-NOM03** — 9565 ms (umbral: 2000 ms). Posible cold start del tier free. Timeout ajustado a 60s.
+- **VEREDICTO:** CONEXIÓN EXITOSA — modelo responde correctamente. Latencia aceptable para CI con timeout extendido.
 
 ## PURGA DE ARCHIVOS US-NOM02
 - Archivo eliminado: `casos_prueba.md` (artefacto de Miguel Coronado, US-NOM02).

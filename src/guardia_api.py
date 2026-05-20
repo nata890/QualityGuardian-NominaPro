@@ -14,8 +14,8 @@ from typing import Optional
 import requests
 
 OPENROUTER_ENDPOINT = "https://openrouter.ai/api/v1/chat/completions"
-OPENROUTER_MODEL = "baidu/cobuddy"
-TIMEOUT_SECONDS = 30
+OPENROUTER_MODEL = "baidu/cobuddy:free"
+TIMEOUT_SECONDS = 60
 MAX_RETRIES = 2
 
 
@@ -78,7 +78,7 @@ def inferir(prompt: str, system_prompt: Optional[str] = None) -> str:
             data = response.json()
             return data["choices"][0]["message"]["content"]
 
-        except requests.exceptions.TimeError:
+        except requests.exceptions.Timeout:
             wait = min(2 ** (attempt + 1), 30)
             time.sleep(wait)
             last_error = TimeoutError(

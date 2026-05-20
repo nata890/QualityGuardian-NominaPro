@@ -3,7 +3,7 @@
 Sprint 1 COIL UdeCaldas × UMB (Grupo 2, Caso Nómina Pro). 3 HU comprometidas:
 - **US-NOM01** (3pt): Natalia implementa `liquidar_nomina` en `engine.py` — 7 CA
 - **US-NOM02** (0pt): Miguel redacta `casos_prueba.md` con ≥10 escenarios — 6 CA
-- **US-NOM03** (0pt): Daner configura Agente Guardian LangChain + OpenRouter API (modelo remoto `baidu/cobuddy`) + Docker + CI/CD — 7 CA
+- **US-NOM03** (0pt): Daner configura Agente Guardian LangChain + OpenRouter API (modelo remoto `baidu/cobuddy:free`) + Docker + CI/CD — 7 CA
 
 Se requiere un `AGENTS.md` en la raíz del repositorio que formalice el ecosistema de agentes con roles inmutables, System Prompts y Tool Access Policies.
 
@@ -116,7 +116,7 @@ El Guardian Agent DEBE emitir un archivo `veredicto.json` con esta estructura:
     "cobertura": "72.5%"
   },
   "metadata": {
-    "modelo": "baidu/cobuddy",
+    "modelo": "baidu/cobuddy:free",
     "timestamp": "2026-05-20T10:00:00Z",
     "oraculo": "casos_prueba.md"
   }
@@ -138,4 +138,4 @@ El Guardian Agent DEBE emitir un archivo `veredicto.json` con esta estructura:
 - ¿OpenRouter API key se inyecta como secret de GitHub Actions o variable de entorno local? → **Ambas**: `OPENROUTER_API_KEY` como variable de entorno local para desarrollo, y como GitHub Secret para CI. Nunca hardcodeada.
 - ¿La validación del veredicto JSON se hace con schema (JSON Schema, Zod) o validación manual? → Propuesta: JSON Schema en CI.
 - ¿Timeout de API aceptable para inferencia? → Propuesta: 30s con 2 reintentos (backoff exponencial).
-- Modelo utilizado: `baidu/cobuddy` vía endpoint `https://openrouter.ai/api/v1/chat/completions`.
+- Modelo utilizado: `baidu/cobuddy:free` vía endpoint `https://openrouter.ai/api/v1/chat/completions`.

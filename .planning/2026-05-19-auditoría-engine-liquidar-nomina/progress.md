@@ -31,4 +31,5 @@
 ### Next Steps
 - ✅ Tarea 1.8: Revisión de engine.py por célula compañera — COMPLETADA.
 - ✅ Tarea 1.9: Commit de engine.py (6e32de5) — COMPLETADO. Mensaje: "US-NOM01: Implement liquidar_nomina with R1-R5 business rules"
+- ✅ Validación de conectividad US-NOM03: HTTP 200, modelo `baidu/cobuddy-20260430:free`, latencia 9565ms (ALERTA: elevada, timeout ajustado a 60s). Conexión exitosa.
 - Siguiente: US-NOM02 (Miguel/Oracle) — Redactar casos_prueba.md con ≥10 escenarios Gherkin.

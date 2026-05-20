@@ -85,7 +85,7 @@ Lead Dev (Natalia) ── engine.py ──→ Oracle (Miguel) ── casos_prueb
 - **Rol:** Guardian Agent
 - **Propósito:** Configurar un agente con LangChain + OpenRouter API (inferencia remota) que lea el oráculo, genere pruebas Pytest, las ejecute en Docker aislado y emita un veredicto JSON auditable.
 - **Responsabilidades:**
-  - Configurar variable de entorno `OPENROUTER_API_KEY` y cliente LangChain para el endpoint `https://openrouter.ai/api/v1/chat/completions` (modelo `baidu/cobuddy`).
+  - Configurar variable de entorno `OPENROUTER_API_KEY` y cliente LangChain para el endpoint `https://openrouter.ai/api/v1/chat/completions` (modelo `baidu/cobuddy:free`).
   - Validar conectividad a la API, manejar timeouts, rate limits y errores HTTP (4xx/5xx) con retry y backoff.
   - Implementar script LangChain que lea `casos_prueba.md` como contexto.
   - Generar `test_engine.py` con funciones Pytest a partir de cada escenario Gherkin.
@@ -157,10 +157,10 @@ Lead Dev (Natalia) ── engine.py ──→ Oracle (Miguel) ── casos_prueb
 | Agente | Puede leer | Puede escribir | Prohibido |
 |---|---|---|---|
 | **Orchestrator** | `planning/`, `openspec/changes/`, `AGENTS.md` | `task_plan.md`, `progress.md`, `AGENTS.md` (revisiones) | Modificar código o specs |
-| **Lead Dev** | `engine.py`, especificación R1–R5, `AGENTS.md` | Propuestas (snippets) en `.planning/` | Commit sin aprobación humana |
-| **Oracle** | `engine.py`, R1–R5, `AGENTS.md` | DRAFT `casos_prueba.md` en `.planning/` | Modificar `engine.py` |
-| **Guardian** | `casos_prueba.md`, `engine.py` (read-only), `AGENTS.md` | `test_engine.py`, `veredicto.json` en `.planning/` | Ejecutar fuera de contenedor Docker |
-| **DevOps** | Dockerfiles, `.github/workflows/`, `AGENTS.md` | Propuestas de `Dockerfile`, `ci.yml` en `.planning/` | Despliegue a producción sin aprobación |
+| **Lead Dev** | `src/engine.py`, especificación R1–R5, `AGENTS.md` | Propuestas (snippets) en `.planning/` | Commit sin aprobación humana |
+| **Oracle** | `src/engine.py`, R1–R5, `AGENTS.md` | DRAFT `casos_prueba.md` en `.planning/` | Modificar `src/engine.py` |
+| **Guardian** | `casos_prueba.md`, `src/engine.py` (read-only), `AGENTS.md` | `tests/test_engine.py`, `veredicto.json` en `.planning/` | Ejecutar fuera de contenedor Docker |
+| **DevOps** | `infra/Dockerfile`, `.github/workflows/`, `AGENTS.md` | Propuestas de `infra/Dockerfile`, `ci.yml` en `.planning/` | Despliegue a producción sin aprobación |
 
 ### Principios generales
 1. Ningún agente commitea directamente al repositorio sin aprobación humana explícita.
@@ -199,7 +199,7 @@ El Guardian Agent DEBE emitir un archivo `veredicto.json` con la siguiente estru
     "cobertura": "72.5%"
   },
   "metadata": {
-    "modelo": "baidu/cobuddy",
+    "modelo": "baidu/cobuddy:free",
     "timestamp": "2026-05-20T10:00:00Z",
     "oraculo": "casos_prueba.md",
     "duracion_total_ms": 450

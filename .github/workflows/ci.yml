@@ -25,21 +25,21 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install -r infra/requirements.txt
 
       - name: Validar conectividad OpenRouter
-        run: python validar_conexion.py
+        run: python scripts/validar_conexion.py
         continue-on-error: true
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
 
       - name: Generar test_engine.py
-        run: python guardian_client.py
+        run: python src/guardian_client.py
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
 
       - name: Ejecutar tests Pytest
-        run: python -m pytest test_engine.py -v --tb=short --junitxml=reporte_junit.xml
+        run: python -m pytest tests/test_engine.py -v --tb=short --junitxml=reporte_junit.xml
 
       - name: Generar veredicto.json
         run: python -c "
@@ -70,7 +70,7 @@ with open('veredicto.json', 'w') as f:
         'escenarios': escenarios,
         'resumen': {'total': total, 'pasaron': pasaron, 'fallaron': fallaron, 'cobertura': 'N/A'},
         'metadata': {
-            'modelo': 'baidu/cobuddy',
+            'modelo': 'baidu/cobuddy:free',
             'timestamp': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()),
             'oraculo': 'casos_prueba.md',
             'duracion_total_ms': 0,

@@ -12,7 +12,7 @@ import os
 import re
 import sys
 
-from guardia_api import inferir
+from src.guardia_api import inferir
 
 ORACULO_PATH = "casos_prueba.md"
 OUTPUT_PATH = "test_engine.py"
@@ -187,7 +187,7 @@ def generar_veredicto(resultados: dict) -> dict:
             "cobertura": "N/A",
         },
         "metadata": {
-            "modelo": "baidu/cobuddy",
+            "modelo": "baidu/cobuddy:free",
             "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
             "oraculo": "casos_prueba.md",
             "duracion_total_ms": 0,

@@ -21,7 +21,7 @@
 
 ## 3. US-NOM03: Configurar Agente Guardian vía OpenRouter API (Responsable: Daner — Guardian + DevOps)
 
-- [x] 3.1 Daner: Configurar variable de entorno `OPENROUTER_API_KEY` y cliente Python para peticiones a `https://openrouter.ai/api/v1/chat/completions` con modelo `baidu/cobuddy`. **No hardcodear la clave en el código.**
+- [x] 3.1 Daner: Configurar variable de entorno `OPENROUTER_API_KEY` y cliente Python para peticiones a `https://openrouter.ai/api/v1/chat/completions` con modelo `baidu/cobuddy:free`. **No hardcodear la clave en el código.**
 - [x] 3.2 Daner: Validar conectividad a OpenRouter API, latencia de inferencia y manejo de errores HTTP (timeouts, rate limits, 4xx/5xx)
 - [x] 3.3 Daner: Implementar script LangChain que lea casos_prueba.md como contexto
 - [x] 3.4 Daner: Implementar generación de test_engine.py con Pytest a partir del oráculo vía OpenRouter

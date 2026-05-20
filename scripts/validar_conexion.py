@@ -9,7 +9,7 @@ import os
 import sys
 import time
 
-from guardia_api import ping, inferir, OPENROUTER_ENDPOINT, OPENROUTER_MODEL
+from src.guardia_api import ping, inferir, OPENROUTER_ENDPOINT, OPENROUTER_MODEL
 
 
 def test_ping():
