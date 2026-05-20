@@ -37,4 +37,4 @@
 
 - [x] 6.1 Verificar que no queden archivos `.py` originales en la raíz (excepto los de otros roles)
 - [x] 6.2 Actualizar `AGENTS.md` si las rutas de Tool Access cambian
-- [ ] 6.3 Commit final con mensaje: `refactor: move source files to src/tests/infra/scripts`
+- [x] 6.3 Commit final con mensaje: `refactor: move source files to src/tests/infra/scripts`
