@@ -25,10 +25,10 @@ PASOS_TOTALES=6
 PASO_ACTUAL=0
 
 ORACULO="casos_prueba.md"
-ENGINE="engine.py"
-GUARDIA_API="guardia_api.py"
-GUARDIAN_CLIENT="guardian_client.py"
-TEST_FILE="test_engine.py"
+ENGINE="src/engine.py"
+GUARDIA_API="src/guardia_api.py"
+GUARDIAN_CLIENT="src/guardian_client.py"
+TEST_FILE="tests/test_engine.py"
 VEREDICTO="veredicto.json"
 
 # ── Funciones auxiliares ────────────────────────────────────────────────
@@ -120,11 +120,11 @@ fi
 paso "Validación de conectividad OpenRouter"
 
 if [[ -n "${OPENROUTER_API_KEY:-}" ]]; then
-    info "Ejecutando ping a modelo $(python3 -c "from guardia_api import OPENROUTER_MODEL; print(OPENROUTER_MODEL)")..."
+    info "Ejecutando ping a modelo $(python3 -c "from src.guardia_api import OPENROUTER_MODEL; print(OPENROUTER_MODEL)")..."
     if python3 -c "
 import os, time
 os.environ['OPENROUTER_API_KEY'] = os.environ.get('OPENROUTER_API_KEY', '')
-from guardia_api import ping, OPENROUTER_MODEL, OPENROUTER_ENDPOINT
+from src.guardia_api import ping, OPENROUTER_MODEL, OPENROUTER_ENDPOINT
 start = time.time()
 ok = ping()
 elapsed = (time.time() - start) * 1000
@@ -236,11 +236,11 @@ paso "Reporte final del pipeline"
 echo ""
 echo "=================== RESUMEN DEL PIPELINE ==================="
 echo ""
-echo "  engine.py         : $(wc -l < engine.py) líneas — lógica R1-R5"
-echo "  guardia_api.py    : $(wc -l < guardia_api.py) líneas — cliente OpenRouter"
-echo "  guardian_client.py: $(wc -l < guardian_client.py) líneas — orquestador"
-echo "  test_engine.py    : $(wc -l < test_engine.py) líneas — $(grep -c 'def test_' test_engine.py) tests"
-echo "  validar_conexion.py: $(wc -l < validar_conexion.py) líneas — script diagnóstico"
+echo "  src/engine.py         : $(wc -l < src/engine.py) líneas — lógica R1-R5"
+echo "  src/guardia_api.py    : $(wc -l < src/guardia_api.py) líneas — cliente OpenRouter"
+echo "  src/guardian_client.py: $(wc -l < src/guardian_client.py) líneas — orquestador"
+echo "  tests/test_engine.py  : $(wc -l < tests/test_engine.py) líneas — $(grep -c 'def test_' tests/test_engine.py) tests"
+echo "  scripts/validar_conexion.py: $(wc -l < scripts/validar_conexion.py) líneas — script diagnóstico"
 echo "  veredicto.json    : $( [[ -f veredicto.json ]] && echo '✓ generado' || echo '✖ ausente' )"
 echo ""
 
