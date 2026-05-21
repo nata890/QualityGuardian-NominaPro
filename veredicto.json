@@ -2,69 +2,69 @@
   "escenarios": [
     {
       "id": "test_R1_Nominal",
-      "descripcion": "test_engine",
+      "descripcion": "Test test_R1_Nominal",
       "resultado": "PASS",
-      "duracion_ms": 1
+      "duracion_ms": 0
     },
     {
       "id": "test_R1_Cero",
-      "descripcion": "test_engine",
+      "descripcion": "Test test_R1_Cero",
       "resultado": "PASS",
       "duracion_ms": 0
     },
     {
       "id": "test_R2_Nominal",
-      "descripcion": "test_engine",
+      "descripcion": "Test test_R2_Nominal",
       "resultado": "PASS",
       "duracion_ms": 0
     },
     {
       "id": "test_R2_Cero",
-      "descripcion": "test_engine",
+      "descripcion": "Test test_R2_Cero",
       "resultado": "PASS",
       "duracion_ms": 0
     },
     {
       "id": "test_R3_Nominal",
-      "descripcion": "test_engine",
+      "descripcion": "Test test_R3_Nominal",
       "resultado": "PASS",
       "duracion_ms": 0
     },
     {
       "id": "test_R3_Sin_Extras",
-      "descripcion": "test_engine",
-      "resultado": "PASS",
-      "duracion_ms": 1
-    },
-    {
-      "id": "test_R4_Aplica",
-      "descripcion": "test_engine",
+      "descripcion": "Test test_R3_Sin_Extras",
       "resultado": "PASS",
       "duracion_ms": 0
     },
     {
-      "id": "test_R4_No_Aplica",
-      "descripcion": "test_engine",
+      "id": "test_R4_Aplica",
+      "descripcion": "Test test_R4_Aplica",
       "resultado": "PASS",
       "duracion_ms": 0
     },
     {
       "id": "test_R4_En_El_Tope",
-      "descripcion": "test_engine",
+      "descripcion": "Test test_R4_En_El_Tope",
+      "resultado": "PASS",
+      "duracion_ms": 0
+    },
+    {
+      "id": "test_R4_No_Aplica",
+      "descripcion": "Test test_R4_No_Aplica",
       "resultado": "PASS",
       "duracion_ms": 0
     },
     {
       "id": "test_R5_Salario_Invalido",
-      "descripcion": "test_engine",
+      "descripcion": "Test test_R5_Salario_Invalido",
       "resultado": "PASS",
-      "duracion_ms": 1
+      "duracion_ms": 0
     },
     {
       "id": "test_R5_Horas_Negativas",
-      "descripcion": "test_engine",
+      "descripcion": "Test test_R5_Horas_Negativas",
       "resultado": "PASS",
-      "duracion_ms": 1
+      "duracion_ms": 0
     }
   ],
   "resumen": {
@@ -75,7 +75,7 @@
   },
   "metadata": {
     "modelo": "baidu/cobuddy:free",
-    "timestamp": "2026-05-20T05:31:24Z",
+    "timestamp": "2026-05-21T04:29:19Z",
     "oraculo": "casos_prueba.md",
     "duracion_total_ms": 0
   }
