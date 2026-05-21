@@ -61,15 +61,15 @@ def test_R4_Aplica():
     assert result["auxilio_transporte"] == 162_000.0
 
 
-def test_R4_No_Aplica():
-    """R4-No-Aplica: Salario sobre el tope"""
-    result = liquidar_nomina(1_500_000, 0, 0, 10_000)
-    assert result["auxilio_transporte"] == 162_000.0
-
-
 def test_R4_En_El_Tope():
     """R4-En-El-Tope: Salario exactamente en el límite"""
     result = liquidar_nomina(2_600_000, 0, 0, 10_000)
+    assert result["auxilio_transporte"] == 162_000.0
+
+
+def test_R4_No_Aplica():
+    """R4-No-Aplica: Salario sobre el tope"""
+    result = liquidar_nomina(1_500_000, 0, 0, 10_000)
     assert result["auxilio_transporte"] == 162_000.0
 
 

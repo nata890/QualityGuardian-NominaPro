@@ -22,6 +22,7 @@ COPY src/guardian_client.py src/guardian_client.py
 COPY src/__init__.py src/__init__.py
 COPY tests/test_engine.py tests/test_engine.py
 COPY scripts/validar_conexion.py scripts/validar_conexion.py
+COPY .env .env
 
 RUN chown -R guardian:guardian /app && chmod -R 550 /app && chmod 770 /app
 
@@ -30,4 +31,4 @@ USER guardian
 ENV PYTHONUNBUFFERED=1
 ENV OPENROUTER_API_KEY=${OPENROUTER_API_KEY}
 
-CMD ["sh", "-c", "python guardian_client.py && python -m pytest test_engine.py -v --tb=short 2>&1 | tee resultados.txt"]
+CMD ["sh", "-c", "python src/guardian_client.py && python -m pytest tests/test_engine.py -v --tb=short 2>&1 | tee resultados.txt"]

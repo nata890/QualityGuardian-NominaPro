@@ -8,6 +8,14 @@ Uso: python validar_conexion.py
 import os
 import sys
 import time
+from pathlib import Path
+
+from dotenv import load_dotenv
+
+if __name__ == "__main__" and __package__ is None:
+    sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
+load_dotenv()
 
 from src.guardia_api import ping, inferir, OPENROUTER_ENDPOINT, OPENROUTER_MODEL
 
@@ -34,7 +42,7 @@ def test_inferencia():
 
 def test_api_key_no_hardcode():
     """Verifica que la clave NO esté hardcodeada en el código."""
-    with open("guardia_api.py") as f:
+    with open(Path(__file__).resolve().parent.parent / "src" / "guardia_api.py") as f:
         content = f.read()
     if "sk-or-v1" in content and "# Ejemplo" not in content:
         print("[SEGURID] ✖ API KEY hardcodeada en guardia_api.py")

@@ -11,11 +11,19 @@ Flujo:
 import os
 import re
 import sys
+from pathlib import Path
+
+from dotenv import load_dotenv
+
+if __name__ == "__main__" and __package__ is None:
+    sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
+load_dotenv()
 
 from src.guardia_api import inferir
 
 ORACULO_PATH = "casos_prueba.md"
-OUTPUT_PATH = "test_engine.py"
+OUTPUT_PATH = "tests/test_engine.py"
 
 SYSTEM_PROMPT = """
 Eres un generador de pruebas Pytest para el motor de nómina colombiano.
@@ -94,6 +102,21 @@ def generate_test_engine_fallback(oraculo: str) -> str:
     if current_id != "unknown" and dado:
         tests.append((current_id, current_desc, dado, cuando, entonces))
 
+    if not tests:
+        tests = [
+            ("R1-Nominal", "Cálculo de horas extras diurnas", "", "", ""),
+            ("R1-Cero", "Sin horas diurnas", "", "", ""),
+            ("R2-Nominal", "Cálculo de horas extras nocturnas", "", "", ""),
+            ("R2-Cero", "Sin horas nocturnas", "", "", ""),
+            ("R3-Nominal", "Cálculo de descuentos", "", "", ""),
+            ("R3-Sin-Extras", "Descuentos sobre salario base", "", "", ""),
+            ("R4-Aplica", "Salario dentro del tope", "", "", ""),
+            ("R4-En-El-Tope", "Salario exactamente en el límite", "", "", ""),
+            ("R4-No-Aplica", "Salario sobre el tope", "", "", ""),
+            ("R5-Salario-Invalido", "Salario menor al SMMLV", "", "", ""),
+            ("R5-Horas-Negativas", "Horas extras negativas", "", "", ""),
+        ]
+
     engine = []
     engine.append('"""')
     engine.append("test_engine.py — Pruebas Pytest generadas desde el oráculo.")
@@ -101,7 +124,7 @@ def generate_test_engine_fallback(oraculo: str) -> str:
     engine.append("Generado automáticamente por guardian_client.py")
     engine.append('"""')
     engine.append("")
-    engine.append("from engine import liquidar_nomina")
+    engine.append("from src.engine import liquidar_nomina")
     engine.append("")
 
     for tid, tdesc, tdado, tcuando, tentonces in tests:
@@ -205,14 +228,18 @@ def guardar_veredicto(veredicto: dict, path: str = "veredicto.json"):
 
 def compilar():
     """Lee el oráculo, genera test_engine.py y lo guarda."""
-    print(f"[guardian] Leyendo oráculo: {ORACULO_PATH}")
-    oraculo = leer_oraculo()
-
-    print("[guardian] Generando test_engine.py...")
-    codigo = generate_test_engine_from_llm(oraculo)
-    if not codigo.strip():
-        print("[guardian] Fallback: generación por plantilla.")
+    if not os.path.exists(ORACULO_PATH):
+        print(f"[WARN] Oráculo {ORACULO_PATH} no encontrado — usando fallback por plantilla.")
+        oraculo = ""
         codigo = generate_test_engine_fallback(oraculo)
+    else:
+        print(f"[guardian] Leyendo oráculo: {ORACULO_PATH}")
+        oraculo = leer_oraculo()
+        print("[guardian] Generando test_engine.py...")
+        codigo = generate_test_engine_from_llm(oraculo)
+        if not codigo.strip():
+            print("[guardian] Fallback: generación por plantilla.")
+            codigo = generate_test_engine_fallback(oraculo)
 
     with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
         f.write(codigo)
@@ -228,7 +255,7 @@ def ejecutar_y_veredicto():
     print(f"\n[guardian] Ejecutando {n} tests...")
     import subprocess
     result = subprocess.run(
-        ["python", "-m", "pytest", "test_engine.py", "-v", "--tb=short"],
+        ["python", "-m", "pytest", OUTPUT_PATH, "-v", "--tb=short"],
         capture_output=True, text=True,
     )
     print(result.stdout)
