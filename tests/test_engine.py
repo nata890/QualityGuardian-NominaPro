@@ -4,7 +4,7 @@ test_engine.py — Pruebas Pytest generadas desde el oráculo.
 Generado automáticamente por guardian_client.py
 """
 
-from src.engine import liquidar_nomina
+from src.engine_v2 import liquidar_nomina
 
 
 def test_R1_Nominal():

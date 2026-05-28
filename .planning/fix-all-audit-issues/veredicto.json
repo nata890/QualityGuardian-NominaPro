@@ -1,122 +1,115 @@
 {
   "escenarios": [
     {
-      "id": "test_R1_Nominal",
-      "descripcion": "Test test_R1_Nominal",
+      "id": "test_cp_01",
+      "descripcion": "Test test_cp_01",
+      "resultado": "PASS",
+      "duracion_ms": 2,
+      "error": null
+    },
+    {
+      "id": "test_cp_02",
+      "descripcion": "Test test_cp_02",
       "resultado": "PASS",
       "duracion_ms": 1,
       "error": null
     },
     {
-      "id": "test_R1_Cero",
-      "descripcion": "Test test_R1_Cero",
+      "id": "test_cp_03",
+      "descripcion": "Test test_cp_03",
       "resultado": "PASS",
       "duracion_ms": 1,
       "error": null
     },
     {
-      "id": "test_R2_Nominal",
-      "descripcion": "Test test_R2_Nominal",
+      "id": "test_cp_04",
+      "descripcion": "Test test_cp_04",
       "resultado": "PASS",
       "duracion_ms": 1,
       "error": null
     },
     {
-      "id": "test_R2_Cero",
-      "descripcion": "Test test_R2_Cero",
+      "id": "test_cp_05",
+      "descripcion": "Test test_cp_05",
       "resultado": "PASS",
       "duracion_ms": 1,
       "error": null
     },
     {
-      "id": "test_R3_Nominal",
-      "descripcion": "Test test_R3_Nominal",
+      "id": "test_cp_06",
+      "descripcion": "Test test_cp_06",
       "resultado": "PASS",
       "duracion_ms": 1,
       "error": null
     },
     {
-      "id": "test_R3_Sin_Extras",
-      "descripcion": "Test test_R3_Sin_Extras",
+      "id": "test_cp_07",
+      "descripcion": "Test test_cp_07",
+      "resultado": "PASS",
+      "duracion_ms": 2,
+      "error": null
+    },
+    {
+      "id": "test_cp_08",
+      "descripcion": "Test test_cp_08",
       "resultado": "PASS",
       "duracion_ms": 1,
       "error": null
     },
     {
-      "id": "test_R4_Aplica",
-      "descripcion": "Test test_R4_Aplica",
+      "id": "test_cp_09",
+      "descripcion": "Test test_cp_09",
+      "resultado": "PASS",
+      "duracion_ms": 2,
+      "error": null
+    },
+    {
+      "id": "test_cp_10",
+      "descripcion": "Test test_cp_10",
       "resultado": "PASS",
       "duracion_ms": 1,
       "error": null
     },
     {
-      "id": "test_R4_En_El_Tope",
-      "descripcion": "Test test_R4_En_El_Tope",
+      "id": "test_cp_11",
+      "descripcion": "Test test_cp_11",
       "resultado": "PASS",
       "duracion_ms": 1,
       "error": null
     },
     {
-      "id": "test_R4_No_Aplica",
-      "descripcion": "Test test_R4_No_Aplica",
+      "id": "test_cp_12",
+      "descripcion": "Test test_cp_12",
       "resultado": "PASS",
       "duracion_ms": 1,
       "error": null
     },
     {
-      "id": "test_R5_Salario_Invalido",
-      "descripcion": "Test test_R5_Salario_Invalido",
-      "resultado": "PASS",
-      "duracion_ms": 1,
-      "error": null
+      "id": "test_cp_13",
+      "descripcion": "Test test_cp_13",
+      "resultado": "FAIL",
+      "duracion_ms": 3,
+      "error": ".planning/fix-all-audit-issues/test_engine.py:122: in test_cp_13\n    liquidar_nomina(1_500_000, 0, 0, -5_000)\nsrc/engine.py:123: in liquidar_nomina\n    raise ValueError(\nE   ValueError: El valor de la hora (-5,000) debe ser positivo.\n\nDuring handling of the above exception, another exception occurred:\n.planning/fix-all-audit-issues/test_engine.py:121: in test_cp_13\n    with pytest.raises(ValueError, match=r\"El valor de la hora \\(-5000\\) debe ser positivo\\.\"):\nE   AssertionError: Regex pattern did not match.\nE    Regex: 'El valor de la hora \\\\(-5000\\\\) debe ser positivo\\\\.'\nE    Input: 'El valor de la hora (-5,000) debe ser positivo.'"
     },
     {
-      "id": "test_R5_Horas_Negativas",
-      "descripcion": "Test test_R5_Horas_Negativas",
-      "resultado": "PASS",
-      "duracion_ms": 1,
-      "error": null
-    },
-    {
-      "id": "test_R5_VlrHora_Cero",
-      "descripcion": "Test test_R5_VlrHora_Cero",
-      "resultado": "PASS",
-      "duracion_ms": 1,
-      "error": null
-    },
-    {
-      "id": "test_R5_VlrHora_Negativa",
-      "descripcion": "Test test_R5_VlrHora_Negativa",
-      "resultado": "PASS",
-      "duracion_ms": 1,
-      "error": null
-    },
-    {
-      "id": "test_R5_VlrHora_NaN",
-      "descripcion": "Test test_R5_VlrHora_NaN",
-      "resultado": "PASS",
-      "duracion_ms": 1,
-      "error": null
-    },
-    {
-      "id": "test_R5_VlrHora_Infinito",
-      "descripcion": "Test test_R5_VlrHora_Infinito",
+      "id": "test_cp_14",
+      "descripcion": "Test test_cp_14",
       "resultado": "PASS",
       "duracion_ms": 1,
       "error": null
     }
   ],
   "resumen": {
-    "total": 15,
-    "pasaron": 15,
-    "fallaron": 0,
-    "cobertura": "100.0%"
+    "total": 14,
+    "pasaron": 13,
+    "fallaron": 1,
+    "cobertura": "94.0%"
   },
   "metadata": {
     "modelo": "deepseek-v4-flash (OpenCode Zen)",
-    "timestamp": "2026-05-28T03:45:09Z",
+    "timestamp": "2026-05-28T15:53:07Z",
     "oraculo": "casos_prueba.md",
-    "duracion_total_ms": 15,
-    "llm_raw_path": "artifacts/llm_output_1779939909.txt"
+    "duracion_total_ms": 19,
+    "llm_raw_path": "artifacts/llm_output_1779983585.txt"
   }
 }
