@@ -1,228 +1,155 @@
-ID: CP-01
- Descripción: Verificar que se calcule correctamente el recargo diurno del 25%.
-Datos de entrada
-salario_base = 2.000.000
-horas_diurnas_extra = 10
-horas_nocturnas_extra = 0
-Resultado esperado
-Valor hora calculado correctamente.
-Cada hora extra diurna debe pagarse con un 25% adicional.
-No deben existir recargos nocturnos.
+# Oráculo de Pruebas — Nómina Colombiana
 
+> Fuente de verdad contractual para el Guardian Agent.
+> Cada escenario incluye `vlr_hora` explícito y formato Gherkin estricto.
 
-ID: CP-02
- Descripción: Verificar que se calcule correctamente el recargo nocturno del 75%.
-Datos de entrada
-salario_base = 2.000.000
-horas_diurnas_extra = 0
-horas_nocturnas_extra = 8
-Resultado esperado
-Cada hora extra nocturna debe pagarse con un 75% adicional.
-No deben existir recargos diurnos.
+---
 
-ID: CP-03
- Descripción: Verificar el cálculo simultáneo de horas diurnas y nocturnas.
-Datos de entrada
-salario_base = 3.000.000
-horas_diurnas_extra = 5
-horas_nocturnas_extra = 4
-Resultado esperado
-Las horas diurnas deben liquidarse con recargo del 25%.
-Las horas nocturnas deben liquidarse con recargo del 75%.
-El total devengado debe incluir ambos recargos.
+## Escenarios
 
-ID: CP-04
- Descripción: Verificar que las deducciones se calculen sobre el total devengado.
-Datos de entrada
-salario_base = 2.500.000
-horas_diurnas_extra = 5
-horas_nocturnas_extra = 2
-Resultado esperado
-El total devengado debe incluir salario + extras.
-Salud y pensión deben calcularse sobre ese total.
-Las deducciones no deben calcularse únicamente sobre el salario base.
-
-ID: CP-05
- Descripción: Verificar que el auxilio de transporte se otorgue cuando el salario base sea menor o igual a $2.600.000.
-Datos de entrada
-salario_base = 2.600.000
-horas_diurnas_extra = 0
-horas_nocturnas_extra = 0
-Resultado esperado
-El empleado debe recibir auxilio de transporte.
-
-ID: CP-06
- Descripción: Verificar que el auxilio no se otorgue cuando el salario base supere $2.600.000.
-Datos de entrada
-salario_base = 2.600.001
-horas_diurnas_extra = 0
-horas_nocturnas_extra = 0
-Resultado esperado
-El empleado no debe recibir auxilio de transporte.
-
-ID: CP-07
- Descripción: Verificar que se lance una excepción cuando el salario sea inferior al SMMLV.
-Datos de entrada
-salario_base = 500.000
-horas_diurnas_extra = 0
-horas_nocturnas_extra = 0
-Resultado esperado
-Debe lanzarse un ValueError..
-El mensaje debe indicar que el salario es inferior al SMMLV.
-
-ID: CP-08
- Descripción: Verificar validación de horas extra diurnas negativas.
-Datos de entrada
-salario_base = 2.000.000
-horas_diurnas_extra = -3
-horas_nocturnas_extra = 0
-Resultado esperado
-Debe lanzarse un ValueError.
-El mensaje debe indicar que las horas no pueden ser negativas.
-
-ID: CP-09
- Descripción: Verificar validación de horas extra nocturnas negativas.
-Datos de entrada
-salario_base = 2.000.000
-horas_diurnas_extra = 0
-horas_nocturnas_extra = -2
-Resultado esperado
-Debe lanzarse un ValueError.
-El mensaje debe indicar que las horas no pueden ser negativas.
-
-ID: CP-10
- Descripción: Verificar un cálculo completo de nómina con extras, deducciones y auxilio.
-Datos de entrada
-salario_base = 2.400.000
-horas_diurnas_extra = 6
-horas_nocturnas_extra = 3
-Resultado esperado
-Deben calcularse correctamente:
-Recargos diurnos.
-Recargos nocturnos.
-Total devengado.
-Deducciones de salud y pensión.
-Auxilio de transporte.
-El resultado final debe ser consistente con todas las reglas R1–R4.
-
-
-
-
-
-
-
-
-
-
-Escenarios Gherkins 
-
-Feature: Cálculo de nómina con horas extras, deducciones y auxilio de transporte
-
-Scenario: CP-01 Verificar cálculo del recargo diurno del 25%
-Given un salario base de 2000000
-And 10 horas extra diurnas
-And 0 horas extra nocturnas
+### Scenario: CP-01 — Recargo diurno 25%
+Given un salario base de 2_000_000
+And 10 horas extras diurnas
+And 0 horas extras nocturnas
+And un valor de hora de 10_000
 When se calcula la nómina
-Then el valor de la hora debe calcularse correctamente
-And cada hora extra diurna debe incluir un recargo del 25%
-And no deben existir recargos nocturnos
+Then el recargo diurno debe ser 125_000.0 (10 * 10_000 * 1.25)
+And el recargo nocturno debe ser 0.0
+And el total devengado debe ser 2_125_000.0
 
-Scenario: CP-02 Verificar cálculo del recargo nocturno del 75%
-Given un salario base de 2000000
-And 0 horas extra diurnas
-And 8 horas extra nocturnas
+### Scenario: CP-02 — Recargo nocturno 75%
+Given un salario base de 2_000_000
+And 0 horas extras diurnas
+And 8 horas extras nocturnas
+And un valor de hora de 12_000
 When se calcula la nómina
-Then cada hora extra nocturna debe incluir un recargo del 75%
-And no deben existir recargos diurnos
+Then el recargo nocturno debe ser 168_000.0 (8 * 12_000 * 1.75)
+And el recargo diurno debe ser 0.0
+And el total devengado debe ser 2_168_000.0
 
-Scenario: CP-03 Verificar cálculo simultáneo de horas diurnas y nocturnas
-Given un salario base de 3000000
-And 5 horas extra diurnas
-And 4 horas extra nocturnas
+### Scenario: CP-03 — Recargos diurno y nocturno simultáneos
+Given un salario base de 3_000_000
+And 5 horas extras diurnas
+And 4 horas extras nocturnas
+And un valor de hora de 15_000
 When se calcula la nómina
-Then las horas extra diurnas deben liquidarse con un recargo del 25%
-And las horas extra nocturnas deben liquidarse con un recargo del 75%
-And el total devengado debe incluir ambos recargos
+Then el recargo diurno debe ser 93_750.0 (5 * 15_000 * 1.25)
+And el recargo nocturno debe ser 105_000.0 (4 * 15_000 * 1.75)
+And el total devengado debe ser 3_198_750.0
 
-Scenario: CP-04 Verificar cálculo de deducciones sobre el total devengado
-Given un salario base de 2500000
-And 5 horas extra diurnas
-And 2 horas extra nocturnas
+### Scenario: CP-04 — Deducciones sobre total devengado
+Given un salario base de 2_500_000
+And 5 horas extras diurnas
+And 2 horas extras nocturnas
+And un valor de hora de 10_000
 When se calcula la nómina
-Then el total devengado debe incluir salario base y horas extras
-And la salud debe calcularse sobre el total devengado
-And la pensión debe calcularse sobre el total devengado
+Then el total devengado debe ser 2_597_500.0
+And el descuento de salud debe ser 103_900.0 (2_597_500 * 0.04)
+And el descuento de pensión debe ser 103_900.0 (2_597_500 * 0.04)
 And las deducciones no deben calcularse únicamente sobre el salario base
 
-Scenario: CP-05 Verificar otorgamiento de auxilio de transporte
-Given un salario base de 2600000
-And 0 horas extra diurnas
-And 0 horas extra nocturnas
+### Scenario: CP-05 — Auxilio de transporte aplica (salario en el tope)
+Given un salario base de 2_600_000
+And 0 horas extras diurnas
+And 0 horas extras nocturnas
+And un valor de hora de 10_000
 When se calcula la nómina
-Then el empleado debe recibir auxilio de transporte
+Then el auxilio de transporte debe ser 162_000.0
 
-Scenario: CP-06 Verificar que no se otorgue auxilio de transporte
-Given un salario base de 2600001
-And 0 horas extra diurnas
-And 0 horas extra nocturnas
+### Scenario: CP-06 — Auxilio de transporte no aplica (salario sobre el tope)
+Given un salario base de 2_600_001
+And 0 horas extras diurnas
+And 0 horas extras nocturnas
+And un valor de hora de 10_000
 When se calcula la nómina
-Then el empleado no debe recibir auxilio de transporte
+Then el auxilio de transporte debe ser 0.0
 
-Scenario: CP-07 Verificar excepción por salario inferior al SMMLV
-Given un salario base de 500000
-And 0 horas extra diurnas
-And 0 horas extra nocturnas
+### Scenario: CP-07 — Salario inferior al SMMLV lanza ValueError
+Given un salario base de 500_000
+And 0 horas extras diurnas
+And 0 horas extras nocturnas
+And un valor de hora de 10_000
 When se intenta calcular la nómina
 Then debe lanzarse un ValueError
 And el mensaje debe indicar que el salario es inferior al SMMLV
 
-Scenario: CP-08 Verificar validación de horas extra diurnas negativas
-Given un salario base de 2000000
-And -3 horas extra diurnas
-And 0 horas extra nocturnas
+### Scenario: CP-08 — Horas extras diurnas negativas lanza ValueError
+Given un salario base de 2_000_000
+And -3 horas extras diurnas
+And 0 horas extras nocturnas
+And un valor de hora de 10_000
 When se intenta calcular la nómina
 Then debe lanzarse un ValueError
 And el mensaje debe indicar que las horas no pueden ser negativas
 
-Scenario: CP-09 Verificar validación de horas extra nocturnas negativas
-Given un salario base de 2000000
-And 0 horas extra diurnas
-And -2 horas extra nocturnas
+### Scenario: CP-09 — Horas extras nocturnas negativas lanza ValueError
+Given un salario base de 2_000_000
+And 0 horas extras diurnas
+And -2 horas extras nocturnas
+And un valor de hora de 10_000
 When se intenta calcular la nómina
 Then debe lanzarse un ValueError
 And el mensaje debe indicar que las horas no pueden ser negativas
 
-Scenario: CP-10 Verificar cálculo completo de nómina
-Given un salario base de 2400000
-And 6 horas extra diurnas
-And 3 horas extra nocturnas
+### Scenario: CP-10 — Cálculo completo de nómina
+Given un salario base de 2_400_000
+And 6 horas extras diurnas
+And 3 horas extras nocturnas
+And un valor de hora de 10_000
 When se calcula la nómina
-Then deben calcularse correctamente los recargos diurnos
-And deben calcularse correctamente los recargos nocturnos
-And debe calcularse correctamente el total devengado
-And deben calcularse correctamente las deducciones de salud y pensión
-And el empleado debe recibir auxilio de transporte
-And el resultado final debe ser consistente con las reglas R1 a R4 
+Then el recargo diurno debe ser 75_000.0 (6 * 10_000 * 1.25)
+And el recargo nocturno debe ser 52_500.0 (3 * 10_000 * 1.75)
+And el total devengado debe ser 2_527_500.0
+And el descuento de salud debe ser 101_100.0
+And el descuento de pensión debe ser 101_100.0
+And el auxilio de transporte debe ser 162_000.0
+And el total a pagar debe ser 2_487_300.0
 
+### Scenario: CP-11 — Horas extras en cero (sin recargos)
+Given un salario base de 1_500_000
+And 0 horas extras diurnas
+And 0 horas extras nocturnas
+And un valor de hora de 10_000
+When se calcula la nómina
+Then el recargo diurno debe ser 0.0
+And el recargo nocturno debe ser 0.0
+And el total devengado debe ser igual al salario base (1_500_000.0)
 
+### Scenario: CP-12 — Valor de hora en cero lanza ValueError
+Given un salario base de 1_500_000
+And 0 horas extras diurnas
+And 0 horas extras nocturnas
+And un valor de hora de 0
+When se intenta calcular la nómina
+Then debe lanzarse un ValueError
+And el mensaje debe indicar que el valor de la hora debe ser positivo
 
+### Scenario: CP-13 — Valor de hora negativo lanza ValueError
+Given un salario base de 1_500_000
+And 0 horas extras diurnas
+And 0 horas extras nocturnas
+And un valor de hora de -5_000
+When se intenta calcular la nómina
+Then debe lanzarse un ValueError
+And el mensaje debe indicar que el valor de la hora debe ser positivo
 
+### Scenario: CP-14 — Salario exactamente en SMMLV (caso límite)
+Given un salario base de 1_300_000
+And 0 horas extras diurnas
+And 0 horas extras nocturnas
+And un valor de hora de 10_000
+When se calcula la nómina
+Then el auxilio de transporte debe ser 162_000.0
+And no debe lanzarse ninguna excepción
 
+---
 
-REGLAS DE NEGOCIO
+## Reglas de Negocio Cubiertas
 
-R1 & R2
-
-Calcular recargos diurnos (25%) y nocturnos (75%) sobre el valor de la hora.
-
-R3
-
-Calcular deducciones de Salud y Pensión sobre el total devengado (salario + extras).
-
-R4
-
-Asignar Auxilio de Transporte solo si el salario_base es menor o igual a $2.600.000.
-
-R5 (Validaciones)
-
-Lanzar ValueError con mensajes descriptivos si el salario es inferior al SMMLV o si las horas son negativas.
+| Regla | Descripción | Escenarios |
+|---|---|---|
+| R1 | Recargo diurno 25% | CP-01, CP-03, CP-04, CP-10 |
+| R2 | Recargo nocturno 75% | CP-02, CP-03, CP-04, CP-10 |
+| R3 | Deducciones 4% salud + 4% pensión | CP-04, CP-10 |
+| R4 | Auxilio transporte si salario ≤ $2.600.000 | CP-05, CP-06, CP-10, CP-14 |
+| R5 | Validaciones de entrada | CP-07, CP-08, CP-09, CP-12, CP-13 |

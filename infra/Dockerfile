@@ -22,9 +22,8 @@ COPY src/guardian_client.py src/guardian_client.py
 COPY src/__init__.py src/__init__.py
 COPY tests/test_engine.py tests/test_engine.py
 COPY scripts/validar_conexion.py scripts/validar_conexion.py
-COPY .env .env
 
-RUN chown -R guardian:guardian /app && chmod -R 550 /app && chmod 770 /app
+RUN chown -R guardian:guardian /app && chmod -R 550 /app
 
 USER guardian
 

@@ -10,6 +10,9 @@ Python : 3.11+
 """
 
 
+import math
+
+
 # ──────────────────────────────────────────────
 # Constantes de negocio
 # ──────────────────────────────────────────────
@@ -81,6 +84,9 @@ def liquidar_nomina(
         - Si salario_base < $1.300.000 (por debajo del SMMLV).
         - Si horas_extras_diurnas < 0.
         - Si horas_extras_nocturnas < 0.
+        - Si vlr_hora <= 0 (debe ser positivo).
+        - Si vlr_hora es NaN (no numérico).
+        - Si vlr_hora es infinito.
 
     Ejemplo
     -------
@@ -111,6 +117,21 @@ def liquidar_nomina(
         raise ValueError(
             f"Las horas extras nocturnas ({horas_extras_nocturnas}) "
             "no pueden ser negativas."
+        )
+
+    if vlr_hora <= 0:
+        raise ValueError(
+            f"El valor de la hora ({vlr_hora:,.0f}) debe ser positivo."
+        )
+
+    if math.isnan(vlr_hora):
+        raise ValueError(
+            "El valor de la hora no puede ser NaN (no numérico)."
+        )
+
+    if math.isinf(vlr_hora):
+        raise ValueError(
+            "El valor de la hora no puede ser infinito."
         )
 
     # ── R1: Recargo diurno — 25 % sobre el valor de la hora ordinaria ──
