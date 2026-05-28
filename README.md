@@ -31,7 +31,7 @@ Lead Dev (Natalia) ── engine.py ──→ Oracle (Miguel) ── casos_prueb
 |---|---|---|---|
 | **Lead Dev** | Natalia Ceballos (UdeC) | US-NOM01 | `engine.py` con reglas R1–R5, tipado, docstring |
 | **Oracle** | Miguel Coronado (UMB) | US-NOM02 | `casos_prueba.md` con ≥10 escenarios Gherkin |
-| **Guardian** | Daner Salazar (UdeC) | US-NOM03 | `test_engine.py`, `veredicto.json`, LangChain + OpenRouter |
+| **Guardian** | Daner Salazar (UdeC) | US-NOM03 | `test_engine.py`, `veredicto.json`, OpenCode Zen |
 | **DevOps** | Daner Salazar (UdeC) | US-NOM03 | Dockerfile multi-stage, GitHub Actions CI |
 | **Orchestrator** | Miguel Coronado (UMB) | Transversal | Coordinación, revisión célula compañera |
 
@@ -61,7 +61,7 @@ QualityGuardian-NominaPro/
 ├── src/
 │   ├── __init__.py
 │   ├── engine.py              # Motor de cálculo de nómina (R1-R5)
-│   ├── guardia_api.py         # Cliente OpenRouter con retry/backoff
+│   ├── guardia_api.py         # Cliente OpenCode Zen con retry/backoff
 │   └── guardian_client.py     # Orquestador: lee oráculo → genera tests → veredicto
 ├── tests/
 │   └── test_engine.py         # Pruebas Pytest (generadas o manuales)
@@ -69,7 +69,7 @@ QualityGuardian-NominaPro/
 │   ├── Dockerfile             # Multi-stage, non-root, sin secrets
 │   └── requirements.txt       # Dependencias Python
 ├── scripts/
-│   ├── validar_conexion.py    # Verifica conectividad OpenRouter
+│   ├── validar_conexion.py    # Verifica conectividad OpenCode Zen
 │   ├── validar_pipeline.sh    # Script de validación local
 │   └── copy_to_production.sh  # Mueve DRAFTs de .planning/ a producción
 ├── .planning/                 # DRAFTs antes de aprobación humana
@@ -91,7 +91,7 @@ QualityGuardian-NominaPro/
 
 - Python 3.11+
 - Docker
-- Variable de entorno `OPENROUTER_API_KEY` configurada
+- Variable de entorno `OPENCODE_ZEN_API_KEY` configurada
 
 ### 1. Instalar dependencias
 
@@ -104,13 +104,13 @@ pip install -r infra/requirements.txt
 Crear archivo `.env` en la raíz del proyecto:
 
 ```
-OPENROUTER_API_KEY=sk-or-v1-tu-clave-aqui
+OPENCODE_ZEN_API_KEY=sk-tu-clave-aqui
 ```
 
 O exportar directamente:
 
 ```bash
-export OPENROUTER_API_KEY="sk-or-v1-tu-clave-aqui"
+export OPENCODE_ZEN_API_KEY="sk-tu-clave-aqui"
 ```
 
 ### 3. Ejecutar el Guardian Agent (genera tests + veredicto)
@@ -139,7 +139,7 @@ docker build -f infra/Dockerfile -t guardian .
 
 # Ejecutar tests en contenedor aislado
 docker run --name guardian-test --read-only --tmpfs /tmp \
-  -e OPENROUTER_API_KEY \
+  -e OPENCODE_ZEN_API_KEY \
   guardian \
   python -m pytest tests/test_engine.py -v --tb=short --junitxml=/tmp/reporte_junit.xml --cov=src.engine
 
@@ -182,14 +182,14 @@ El pipeline de CI se ejecuta en cada push a `main` o `develop`, y en pull reques
 
 1. **Checkout** del repositorio
 2. **Build Docker** desde `infra/Dockerfile`
-3. **Validar conectividad** OpenRouter (dentro del contenedor)
+3. **Validar conectividad** OpenCode Zen (dentro del contenedor)
 4. **Generar tests** con Guardian Agent (dentro del contenedor)
 5. **Ejecutar tests** con `docker run --read-only` (aislamiento total)
 6. **Extraer resultados** con `docker cp`
 7. **Generar veredicto.json** desde JUnit XML con duraciones reales
 8. **Upload artifacts**: `veredicto.json` y `reporte_junit.xml`
 
-La API key se pasa como GitHub Secret (`OPENROUTER_API_KEY`) y se inyecta al contenedor con `-e`.
+La API key se pasa como GitHub Secret (`OPENCODE_ZEN_API_KEY`) y se inyecta al contenedor con `-e`.
 
 ---
 
@@ -214,7 +214,7 @@ El archivo `veredicto.json` sigue el schema definido en AGENTS.md sección 4:
     "cobertura": "95.2%"
   },
   "metadata": {
-    "modelo": "deepseek/deepseek-v4-flash:free",
+    "modelo": "deepseek-v4-flash (OpenCode Zen)",
     "timestamp": "2026-05-27T00:00:00Z",
     "oraculo": "casos_prueba.md",
     "duracion_total_ms": 45
@@ -226,7 +226,7 @@ El archivo `veredicto.json` sigue el schema definido en AGENTS.md sección 4:
 
 ## Seguridad
 
-- **OPENROUTER_API_KEY**: Nunca en texto plano en el repositorio. Se carga desde `.env` (local) o GitHub Secrets (CI).
+- **OPENCODE_ZEN_API_KEY**: Nunca en texto plano en el repositorio. Se carga desde `.env` (local) o GitHub Secrets (CI).
 - **Dockerfile**: No copia `.env` al contenedor. La API key se pasa en runtime con `docker run -e`.
 - **Contenedor**: Se ejecuta como usuario non-root (`guardian`) con permisos de solo lectura (`chmod 550`).
 - **.gitignore**: `.env` está excluido del version control.

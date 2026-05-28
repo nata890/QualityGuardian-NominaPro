@@ -30,15 +30,13 @@ cd QualityGuardian-NominaPro
 
 ---
 
-## 2. Configurar la API Key de OpenRouter
+## 2. Configurar la API Key de OpenCode Zen
 
-El Guardian Agent necesita acceso a OpenRouter API para generar pruebas con IA.
+El Guardian Agent necesita acceso a OpenCode Zen API para generar pruebas con IA.
 
 ### Paso 2.1: Obtener la API Key
 
-1. Ve a [https://openrouter.ai/](https://openrouter.ai/)
-2. Crea una cuenta o inicia sesión
-3. Genera una API Key desde tu perfil
+Tu API key de OpenCode Zen (`OPENCODE_ZEN_API_KEY`) se obtiene desde el dashboard de OpenCode.
 
 ### Paso 2.2: Configurar localmente
 
@@ -46,14 +44,14 @@ Crea un archivo `.env` en la raíz del proyecto:
 
 ```bash
 cat > .env << 'EOF'
-OPENROUTER_API_KEY=sk-or-v1-tu-clave-aqui
+OPENCODE_ZEN_API_KEY=sk-tu-clave-aqui
 EOF
 ```
 
 O exporta la variable directamente:
 
 ```bash
-export OPENROUTER_API_KEY="sk-or-v1-tu-clave-aqui"
+export OPENCODE_ZEN_API_KEY="sk-tu-clave-aqui"
 ```
 
 > **Importante:** El archivo `.env` está en `.gitignore`. Nunca se sube al repositorio.
@@ -66,10 +64,10 @@ python scripts/validar_conexion.py
 
 Deberías ver:
 ```
-== Validación OpenRouter (modelo: deepseek/deepseek-v4-flash) ==
+== Validación OpenCode Zen (modelo: deepseek-v4-flash) ==
 
 [SEGURID] ✓ No hay API KEY hardcodeada en código
-[PING]    ✓ CONECTADO — https://openrouter.ai/api/v1/chat/completions
+[PING]    ✓ CONECTADO — https://opencode.ai/zen/go/v1/chat/completions
 [INFERIR] ✓ Respuesta recibida en 1234 ms
 
 == Validación completa. ==
@@ -84,7 +82,7 @@ pip install -r infra/requirements.txt
 ```
 
 Esto instala:
-- `requests` — comunicación con OpenRouter API
+- `requests` — comunicación con OpenCode Zen API
 - `pytest` — framework de pruebas
 - `pytest-cov` — medición de cobertura de código
 - `python-dotenv` — carga automática de `.env`
@@ -184,7 +182,7 @@ Esto ejecuta el siguiente flujo:
 
 ```
 1. Lee casos_prueba.md (oráculo)
-2. Intenta generar test_engine.py con OpenRouter API (modelo deepseek/deepseek-v4-flash:free)
+2. Intenta generar test_engine.py con OpenCode Zen API (modelo deepseek-v4-flash)
    ↓ Si falla la API → usa generación por plantilla (fallback)
 3. Guarda test_engine.py en .planning/fix-all-audit-issues/
 4. Ejecuta pytest con cobertura y reporte JUnit
@@ -242,7 +240,7 @@ La imagen es multi-stage:
 
 ```bash
 docker run --name guardian-test --read-only \
-  -e OPENROUTER_API_KEY \
+  -e OPENCODE_ZEN_API_KEY \
   guardian \
   python src/guardian_client.py
 ```
@@ -251,7 +249,7 @@ docker run --name guardian-test --read-only \
 
 ```bash
 docker run --name guardian-test --read-only \
-  -e OPENROUTER_API_KEY \
+  -e OPENCODE_ZEN_API_KEY \
   guardian \
   python -m pytest tests/test_engine.py -v --tb=short \
     --junitxml=/tmp/reporte_junit.xml \
@@ -270,7 +268,7 @@ docker rm guardian-test
 | Flag | Propósito |
 |---|---|
 | `--read-only` | El contenedor no puede escribir en el filesystem |
-| `-e OPENROUTER_API_KEY` | Inyecta la API key sin copiar `.env` a la imagen |
+| `-e OPENCODE_ZEN_API_KEY` | Inyecta la API key sin copiar `.env` a la imagen |
 | `--rm` | Elimina el contenedor automáticamente al terminar |
 | `USER guardian` | Ejecuta como usuario non-root (definido en Dockerfile) |
 
@@ -285,7 +283,7 @@ El pipeline se ejecuta automáticamente en cada push a `main` o `develop`, y en 
 ```
 1. Checkout del repositorio
 2. Build Docker image desde infra/Dockerfile
-3. Validar conectividad OpenRouter (dentro del contenedor)
+3. Validar conectividad OpenCode Zen (dentro del contenedor)
 4. Generar test_engine.py con Guardian Agent (dentro del contenedor)
 5. Ejecutar pruebas con docker run --read-only
 6. Extraer veredicto.json y reporte_junit.xml con docker cp
@@ -297,8 +295,8 @@ El pipeline se ejecuta automáticamente en cada push a `main` o `develop`, y en 
 
 1. Ve a tu repositorio → **Settings** → **Secrets and variables** → **Actions**
 2. Crea un nuevo secret:
-   - **Name:** `OPENROUTER_API_KEY`
-   - **Value:** tu clave de OpenRouter
+   - **Name:** `OPENCODE_ZEN_API_KEY`
+   - **Value:** tu clave de OpenCode Zen
 
 ### Verificar ejecución
 
@@ -310,16 +308,16 @@ Ve a **Actions** en GitHub y busca el workflow "Guardian Agent CI". Los artifact
 
 ## 10. Solución de problemas
 
-### Error: `OPENROUTER_API_KEY no está definida`
+### Error: `OPENCODE_ZEN_API_KEY no está definida`
 
 ```bash
 # Verifica que la variable exista
-echo $OPENROUTER_API_KEY
+echo $OPENCODE_ZEN_API_KEY
 
 # Si está vacía, carga el .env
 source .env
 # O exporta directamente
-export OPENROUTER_API_KEY="sk-or-v1-tu-clave-aqui"
+export OPENCODE_ZEN_API_KEY="sk-tu-clave-aqui"
 ```
 
 ### Error: `ModuleNotFoundError: No module named 'src'`
@@ -352,7 +350,7 @@ Este error ya no debería ocurrir (fue corregido). Si aparece, verifica que tu `
 ### La LLM no responde o da timeout
 
 - Verifica tu conexión a internet
-- Verifica que la API Key sea válida en openrouter.ai
+- Verifica que la API Key sea válida en el dashboard de OpenCode
 - Usa `FORCE_FALLBACK=1` para ejecutar sin la API:
 
 ```bash
@@ -369,7 +367,7 @@ git clone https://github.com/nata890/QualityGuardian-NominaPro.git
 cd QualityGuardian-NominaPro
 
 # 2. Configurar API Key
-echo 'OPENROUTER_API_KEY=sk-or-v1-tu-clave' > .env
+echo 'OPENCODE_ZEN_API_KEY=sk-tu-clave' > .env
 
 # 3. Instalar dependencias
 pip install -r infra/requirements.txt
@@ -388,5 +386,5 @@ bash scripts/copy_to_production.sh
 
 # 8. Docker (alternativa aislada)
 docker build -f infra/Dockerfile -t guardian .
-docker run --rm --read-only -e OPENROUTER_API_KEY guardian python -m pytest tests/test_engine.py -v
+docker run --rm --read-only -e OPENCODE_ZEN_API_KEY guardian python -m pytest tests/test_engine.py -v
 ```

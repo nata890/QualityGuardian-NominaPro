@@ -41,7 +41,7 @@ repositorio/
 ├── .gitignore
 ├── src/
 │   ├── engine.py             ← lógica R1-R5
-│   ├── guardia_api.py        ← cliente OpenRouter
+│   ├── guardia_api.py        ← cliente OpenCode Zen
 │   └── guardian_client.py    ← orquestador
 ├── tests/
 │   └── test_engine.py        ← 11 tests Pytest

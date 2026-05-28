@@ -87,3 +87,31 @@ def test_R5_Horas_Negativas():
         liquidar_nomina(1_500_000, -2, 0, 10_000)
     with pytest.raises(ValueError):
         liquidar_nomina(1_500_000, 0, -1, 10_000)
+
+
+def test_R5_VlrHora_Cero():
+    """R5-VlrHora-Cero: Valor de hora en cero"""
+    import pytest
+    with pytest.raises(ValueError):
+        liquidar_nomina(1_500_000, 0, 0, 0)
+
+
+def test_R5_VlrHora_Negativa():
+    """R5-VlrHora-Negativa: Valor de hora negativo"""
+    import pytest
+    with pytest.raises(ValueError):
+        liquidar_nomina(1_500_000, 0, 0, -5_000)
+
+
+def test_R5_VlrHora_NaN():
+    """R5-VlrHora-NaN: Valor de hora NaN"""
+    import math, pytest
+    with pytest.raises(ValueError):
+        liquidar_nomina(1_500_000, 0, 0, math.nan)
+
+
+def test_R5_VlrHora_Infinito():
+    """R5-VlrHora-Infinito: Valor de hora infinito"""
+    import math, pytest
+    with pytest.raises(ValueError):
+        liquidar_nomina(1_500_000, 0, 0, math.inf)

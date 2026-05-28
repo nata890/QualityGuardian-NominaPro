@@ -1,10 +1,10 @@
 """
 guardian_client.py — Orquestador que ingiere el oráculo y genera
-test_engine.py con Pytest vía OpenRouter API.
+test_engine.py con Pytest vía OpenCode Zen API.
 
 Flujo:
   1. Lee casos_prueba.md
-  2. Envía cada escenario Gherkin al modelo deepseek/deepseek-v4-flash
+  2. Envía cada escenario Gherkin al modelo deepseek-v4-flash (OpenCode Zen)
   3. Genera funciones test_* en test_engine.py
 """
 
@@ -35,7 +35,28 @@ JUNIT_PATH = ".planning/fix-all-audit-issues/reporte_junit.xml"
 SYSTEM_PROMPT = """
 Eres un generador de pruebas Pytest para el motor de nómina colombiano.
 Conviertes cada escenario Gherkin (Dado/Cuando/Entonces) de casos_prueba.md
-en una función test_* válida que importa liquidar_nomina desde engine.py.
+en una función test_* válida que importa liquidar_nomina desde src.engine.
+
+Firma exacta de la función:
+    liquidar_nomina(
+        salario_base: float,
+        horas_extras_diurnas: int,
+        horas_extras_nocturnas: int,
+        vlr_hora: float,
+    ) -> dict
+
+Retorna un dict con estas claves EXACTAS (usa estos nombres):
+    recargo_diurno, recargo_nocturno, total_devengado, descuento_salud,
+    descuento_pension, auxilio_transporte, total_a_pagar
+    (NOTA: es total_a_pagar, NO total_pagar)
+
+Mensajes de error exactos de ValueError:
+- Salario < SMMLV: "El salario base ($500,000) no puede ser inferior al SMMLV ($1,300,000)."
+- Horas diurnas negativas: "Las horas extras diurnas (-3) no pueden ser negativas."
+- Horas nocturnas negativas: "Las horas extras nocturnas (-2) no pueden ser negativas."
+- vlr_hora <= 0: "El valor de la hora (0) debe ser positivo."
+- vlr_hora NaN: "El valor de la hora no puede ser NaN (no numérico)."
+- vlr_hora infinito: "El valor de la hora no puede ser infinito."
 
 Reglas:
 - Cada escenario produce UNA función test_ separada.
@@ -43,6 +64,10 @@ Reglas:
 - Los valores monetarios deben coincidir exactamente con los del escenario.
 - Incluye docstring en cada test citando el ID del escenario.
 - No uses clases. Solo funciones con prefijo test_.
+- Usa vlr_hora (no valor_hora) en todas las llamadas.
+- En tests que esperan excepción: with pytest.raises(ValueError, match="...").
+  Usa el match exacto del mensaje de error real (sin formato $).
+- NO uses match en tests que verifican NaN o infinito.
 """
 
 
@@ -56,9 +81,12 @@ def generate_test_engine_from_llm(oraculo: str) -> str:
     """Usa el modelo para generar test_engine.py."""
     prompt = (
         f"A continuación está el oráculo de pruebas:\n\n{oraculo}\n\n"
-        "Genera el contenido COMPLETO de test_engine.py con todas las funciones test_*.\n"
+        "Genera el contenido COMPLETO de test_engine.py con TODAS las funciones test_*.\n"
         "Incluye el import de engine.py al inicio.\n"
-        "Usa números exactos según los escenarios."
+        "Usa números exactos según los escenarios.\n"
+        "IMPORTANTE: Sé CONCISO. No repitas los datos del escenario en el docstring. "
+        "Usa docstrings de UNA línea. No agregues comentarios separadores largos. "
+        "El archivo debe completar TODOS los escenarios."
     )
     try:
         result = inferir(prompt, system_prompt=SYSTEM_PROMPT)
@@ -104,6 +132,7 @@ def _normalize_imports(code: str) -> str:
     Ejemplos:
     - from engine import ...  -> from src.engine import ...
     - import engine          -> from src import engine as engine
+    - valor_hora             -> vlr_hora (nombre correcto del parámetro)
     """
     if not code:
         return code
@@ -111,6 +140,8 @@ def _normalize_imports(code: str) -> str:
     code = re.sub(r"(?m)^\s*from\s+engine\s+import\s+", "from src.engine import ", code)
     # import engine -> import src.engine as engine
     code = re.sub(r"(?m)^\s*import\s+engine\s*$", "import src.engine as engine", code)
+    # valor_hora -> vlr_hora
+    code = code.replace("valor_hora", "vlr_hora")
     return code
 
 
@@ -167,6 +198,10 @@ def generate_test_engine_fallback(oraculo: str) -> str:
             ("R4-No-Aplica", "Salario sobre el tope", "", "", ""),
             ("R5-Salario-Invalido", "Salario menor al SMMLV", "", "", ""),
             ("R5-Horas-Negativas", "Horas extras negativas", "", "", ""),
+            ("R5-VlrHora-Cero", "Valor de hora en cero", "", "", ""),
+            ("R5-VlrHora-Negativa", "Valor de hora negativo", "", "", ""),
+            ("R5-VlrHora-NaN", "Valor de hora NaN", "", "", ""),
+            ("R5-VlrHora-Infinito", "Valor de hora infinito", "", "", ""),
         ]
 
     engine = []
@@ -234,6 +269,22 @@ def generate_test_engine_fallback(oraculo: str) -> str:
             engine.append('        liquidar_nomina(1_500_000, -2, 0, 10_000)')
             engine.append('    with pytest.raises(ValueError):')
             engine.append('        liquidar_nomina(1_500_000, 0, -1, 10_000)')
+        elif "R5" in tid and "VlrHora" in tid and "Cero" in tid:
+            engine.append('    import pytest')
+            engine.append('    with pytest.raises(ValueError):')
+            engine.append('        liquidar_nomina(1_500_000, 0, 0, 0)')
+        elif "R5" in tid and "VlrHora" in tid and "Negativa" in tid:
+            engine.append('    import pytest')
+            engine.append('    with pytest.raises(ValueError):')
+            engine.append('        liquidar_nomina(1_500_000, 0, 0, -5_000)')
+        elif "R5" in tid and "VlrHora" in tid and "NaN" in tid:
+            engine.append('    import math, pytest')
+            engine.append('    with pytest.raises(ValueError):')
+            engine.append('        liquidar_nomina(1_500_000, 0, 0, math.nan)')
+        elif "R5" in tid and "VlrHora" in tid and "Infinito" in tid:
+            engine.append('    import math, pytest')
+            engine.append('    with pytest.raises(ValueError):')
+            engine.append('        liquidar_nomina(1_500_000, 0, 0, math.inf)')
         else:
             engine.append('    pass  # placeholder — escenario no mapeado')
 
@@ -262,7 +313,7 @@ def generar_veredicto(resultados: dict) -> dict:
             "cobertura": "N/A",
         },
         "metadata": {
-            "modelo": "deepseek/deepseek-v4-flash:free",
+            "modelo": "deepseek-v4-flash (OpenCode Zen)",
             "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
             "oraculo": "casos_prueba.md",
             "duracion_total_ms": 0,
@@ -291,14 +342,12 @@ def compilar():
         oraculo = leer_oraculo()
         print(oraculo)
         print("[guardian] Generando test_engine.py...")
-        # Permitir forzar fallback mediante variable de entorno
         force_fallback = os.getenv("FORCE_FALLBACK", "0") in ("1", "true", "True")
         if force_fallback:
             print("[guardian] FORCE_FALLBACK activado — usando generación por plantilla.")
             codigo = generate_test_engine_fallback(oraculo)
         else:
             codigo = generate_test_engine_from_llm(oraculo) or ""
-            # Guardar salida cruda de la LLM para auditoría
             import time
             global LLM_RAW_PATH
             ts = int(time.time())
@@ -308,8 +357,6 @@ def compilar():
             with open(raw_path, "w", encoding="utf-8") as rf:
                 rf.write(codigo)
             LLM_RAW_PATH = str(raw_path)
-
-            # Limpiar fences comunes devueltos por LLMs y validar sintaxis
             codigo = _strip_code_fences(codigo)
             codigo = _normalize_imports(codigo)
             if not codigo.strip() or not _is_valid_python(codigo):
@@ -409,7 +456,7 @@ def ejecutar_y_veredicto():
             "cobertura": cobertura,
         },
         "metadata": {
-            "modelo": "deepseek/deepseek-v4-flash:free",
+            "modelo": "deepseek-v4-flash (OpenCode Zen)",
             "timestamp": __import__("time").strftime("%Y-%m-%dT%H:%M:%SZ", __import__("time").gmtime()),
             "oraculo": "casos_prueba.md",
             "duracion_total_ms": sum(e["duracion_ms"] for e in escenarios),

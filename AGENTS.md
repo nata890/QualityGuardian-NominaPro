@@ -16,7 +16,7 @@
 |---|---|---|---|---|
 | Natalia Ceballos | UdeC | **Lead Dev Agent** | US-NOM01 | `engine.py` con reglas R1–R5, tipado Python, docstring |
 | Miguel Coronado | UMB | **Oracle Agent** | US-NOM02 | `casos_prueba.md` con ≥10 escenarios Gherkin (Dado/Cuando/Entonces) |
-| Daner Alejandro Salazar Colorado | UdeC | **Guardian Agent** | US-NOM03 | LangChain + OpenRouter API + Pytest + Veredicto JSON |
+| Daner Alejandro Salazar Colorado | UdeC | **Guardian Agent** | US-NOM03 | OpenCode Zen API + Pytest + Veredicto JSON |
 | Daner Alejandro Salazar Colorado | UdeC | **DevOps Agent** | US-NOM03 | Dockerfile multi-stage + GitHub Actions CI |
 | Miguel Coronado | UMB | **Orchestrator / SM Agent** | Transversal | Coordinación del pipeline, revisión célula compañera |
 
@@ -83,11 +83,11 @@ Lead Dev (Natalia) ── engine.py ──→ Oracle (Miguel) ── casos_prueb
 ### 2.3 Guardian Agent — Daner Alejandro Salazar Colorado (UdeC)
 
 - **Rol:** Guardian Agent
-- **Propósito:** Configurar un agente con LangChain + OpenRouter API (inferencia remota) que lea el oráculo, genere pruebas Pytest, las ejecute en Docker aislado y emita un veredicto JSON auditable.
+- **Propósito:** Configurar un agente con OpenCode Zen API (inferencia remota) que lea el oráculo, genere pruebas Pytest, las ejecute en Docker aislado y emita un veredicto JSON auditable.
 - **Responsabilidades:**
-  - Configurar variable de entorno `OPENROUTER_API_KEY` y cliente LangChain para el endpoint `https://openrouter.ai/api/v1/chat/completions` (modelo `deepseek/deepseek-v4-flash:free`).
+  - Configurar variable de entorno `OPENCODE_ZEN_API_KEY` y cliente Python para el endpoint `https://opencode.ai/zen/go/v1/chat/completions` (modelo `deepseek-v4-flash (OpenCode Zen)`).
   - Validar conectividad a la API, manejar timeouts, rate limits y errores HTTP (4xx/5xx) con retry y backoff.
-  - Implementar script LangChain que lea `casos_prueba.md` como contexto.
+  - Implementar script que lea `casos_prueba.md` como contexto.
   - Generar `test_engine.py` con funciones Pytest a partir de cada escenario Gherkin.
   - Ejecutar los tests dentro de un contenedor Docker aislado del host.
   - Emitir `veredicto.json` con pass/fail por escenario, cobertura de código y resumen.
@@ -100,7 +100,7 @@ Lead Dev (Natalia) ── engine.py ──→ Oracle (Miguel) ── casos_prueb
   Lees el oráculo (casos_prueba.md) generado por el Oracle Agent y generas
   pruebas Pytest que validan engine.py. Ejecutas dentro de un contenedor
   Docker aislado.
-  La inferencia del modelo se realiza mediante OpenRouter API (remoto).
+  La inferencia del modelo se realiza mediante OpenCode Zen API (remoto).
   Debes manejar errores de conectividad: timeouts de red, rate limits,
   y respuestas HTTP 4xx/5xx con reintentos y backoff exponencial.
   Emites un veredicto JSON estructurado siguiendo el protocolo definido
@@ -167,7 +167,7 @@ Lead Dev (Natalia) ── engine.py ──→ Oracle (Miguel) ── casos_prueb
 2. Todo artifact generado por un agente se escribe primero en `.planning/` como DRAFT.
 3. Solo el humano responsable (Natalia, Miguel, Daner) mueve un DRAFT a producción.
 4. El Orchestrator puede proponer revisiones a `AGENTS.md`, pero no sin validación del equipo.
-5. **Seguridad**: La clave `OPENROUTER_API_KEY` nunca debe incluirse en texto plano en código, prompts, o archivos del repositorio. Debe cargarse exclusivamente desde variable de entorno (local) o GitHub Secrets (CI).
+5. **Seguridad**: La clave `OPENCODE_ZEN_API_KEY` nunca debe incluirse en texto plano en código, prompts, o archivos del repositorio. Debe cargarse exclusivamente desde variable de entorno (local) o GitHub Secrets (CI).
 
 ---
 
@@ -199,7 +199,7 @@ El Guardian Agent DEBE emitir un archivo `veredicto.json` con la siguiente estru
     "cobertura": "72.5%"
   },
   "metadata": {
-    "modelo": "baidu/cobuddy:free",
+    "modelo": "deepseek-v4-flash (OpenCode Zen)",
     "timestamp": "2026-05-20T10:00:00Z",
     "oraculo": "casos_prueba.md",
     "duracion_total_ms": 450

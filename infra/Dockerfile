@@ -28,6 +28,6 @@ RUN chown -R guardian:guardian /app && chmod -R 550 /app
 USER guardian
 
 ENV PYTHONUNBUFFERED=1
-ENV OPENROUTER_API_KEY=${OPENROUTER_API_KEY}
+ENV OPENCODE_ZEN_API_KEY=${OPENCODE_ZEN_API_KEY}
 
 CMD ["sh", "-c", "python src/guardian_client.py && python -m pytest tests/test_engine.py -v --tb=short 2>&1 | tee resultados.txt"]

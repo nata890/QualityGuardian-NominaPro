@@ -1,9 +1,9 @@
 """
-guardia_api.py — Cliente OpenRouter para el Guardian Agent.
+guardia_api.py — Cliente OpenCode Zen para el Guardian Agent.
 
-Configura y expone un cliente de inferencia remota vía OpenRouter API.
-La clave de API se carga exclusivamente desde variable de entorno
-OPENROUTER_API_KEY (no hardcodeada).
+Configura y expone un cliente de inferencia remota vía OpenCode Zen API
+(endpoint compatible con OpenAI). La clave de API se carga exclusivamente
+desde variable de entorno OPENCODE_ZEN_API_KEY (no hardcodeada).
 """
 
 import os
@@ -11,20 +11,23 @@ import json
 import time
 from typing import Optional
 
+from dotenv import load_dotenv
 import requests
 
-OPENROUTER_ENDPOINT = "https://openrouter.ai/api/v1/chat/completions"
-OPENROUTER_MODEL = "deepseek/deepseek-v4-flash:free"
-TIMEOUT_SECONDS = 60
+load_dotenv()
+
+OPENCODE_ZEN_ENDPOINT = "https://opencode.ai/zen/go/v1/chat/completions"
+OPENCODE_ZEN_MODEL = "deepseek-v4-flash"
+TIMEOUT_SECONDS = 120
 MAX_RETRIES = 2
 
 
 def get_api_key() -> str:
-    """Retorna la clave OPENROUTER_API_KEY desde el entorno."""
-    key = os.getenv("OPENROUTER_API_KEY")
+    """Retorna la clave OPENCODE_ZEN_API_KEY desde el entorno."""
+    key = os.getenv("OPENCODE_ZEN_API_KEY")
     if not key:
         raise EnvironmentError(
-            "OPENROUTER_API_KEY no está definida. "
+            "OPENCODE_ZEN_API_KEY no está definida. "
             "Cárgala en tu .env o expórtala como variable de entorno."
         )
     return key
@@ -32,7 +35,7 @@ def get_api_key() -> str:
 
 def inferir(prompt: str, system_prompt: Optional[str] = None) -> str:
     """
-    Envía un prompt al modelo deepseek/deepseek-v4-flash vía OpenRouter y retorna
+    Envía un prompt al modelo deepseek-v4-flash vía OpenCode Zen y retorna
     la respuesta de texto.
 
     Maneja timeouts, rate limits y errores HTTP 4xx/5xx con
@@ -48,21 +51,19 @@ def inferir(prompt: str, system_prompt: Optional[str] = None) -> str:
     headers = {
         "Authorization": f"Bearer {api_key}",
         "Content-Type": "application/json",
-        "HTTP-Referer": "https://github.com/QualityGuardian-NominaPro",
     }
 
     payload = {
-        "model": OPENROUTER_MODEL,
+        "model": OPENCODE_ZEN_MODEL,
         "messages": messages,
-        "max_tokens": 2048,
-        "temperature": 0.2,
+        "max_tokens": 6144,
     }
 
     last_error: Optional[Exception] = None
     for attempt in range(1 + MAX_RETRIES):
         try:
             response = requests.post(
-                OPENROUTER_ENDPOINT,
+                OPENCODE_ZEN_ENDPOINT,
                 headers=headers,
                 json=payload,
                 timeout=TIMEOUT_SECONDS,
@@ -94,12 +95,12 @@ def inferir(prompt: str, system_prompt: Optional[str] = None) -> str:
                 last_error = e
                 continue
             raise RuntimeError(
-                f"Error HTTP {status} de OpenRouter: {response.text}"
+                f"Error HTTP {status} de OpenCode Zen: {response.text}"
             ) from e
 
         except requests.exceptions.RequestException as e:
             last_error = RuntimeError(
-                f"Error de conexión con OpenRouter (intento {attempt + 1}): {e}"
+                f"Error de conexión con OpenCode Zen (intento {attempt + 1}): {e}"
             )
             time.sleep(2 ** attempt)
             continue
@@ -110,7 +111,7 @@ def inferir(prompt: str, system_prompt: Optional[str] = None) -> str:
 
 
 def ping() -> bool:
-    """Verifica conectividad básica con la API de OpenRouter."""
+    """Verifica conectividad básica con la API de OpenCode Zen."""
     try:
         _ = inferir("Responde únicamente 'OK'.")
         return True

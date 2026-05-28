@@ -3,7 +3,7 @@
 Sprint 1 COIL UdeCaldas × UMB (Grupo 2, Caso Nómina Pro). 3 HU comprometidas:
 - **US-NOM01** (3pt): Natalia implementa `liquidar_nomina` en `engine.py` — 7 CA
 - **US-NOM02** (0pt): Miguel redacta `casos_prueba.md` con ≥10 escenarios — 6 CA
-- **US-NOM03** (0pt): Daner configura Agente Guardian LangChain + OpenRouter API (modelo remoto `baidu/cobuddy:free`) + Docker + CI/CD — 7 CA
+- **US-NOM03** (0pt): Daner configura Agente Guardian OpenCode Zen API (modelo remoto `deepseek-v4-flash`) + Docker + CI/CD — 7 CA
 
 Se requiere un `AGENTS.md` en la raíz del repositorio que formalice el ecosistema de agentes con roles inmutables, System Prompts y Tool Access Policies.
 
@@ -17,7 +17,7 @@ Se requiere un `AGENTS.md` en la raíz del repositorio que formalice el ecosiste
 
 **Non-Goals:**
 - No implementar el contenido de engine.py ni casos_prueba.md (son tareas del equipo).
-- No configurar la integración con OpenRouter API ni Docker real (eso hará Daner siguiendo el diseño).
+- No configurar la integración con OpenCode Zen API ni Docker real (eso hará Daner siguiendo el diseño).
 - No cubrir Sprints 2–6.
 
 ## Decisions
@@ -35,7 +35,7 @@ Se requiere un `AGENTS.md` en la raíz del repositorio que formalice el ecosiste
  ├── AGENTS.md              ← artefacto de gobierno (este diseño lo define)
  ├── engine.py              ← implementado por Lead Dev (Natalia)
  ├── casos_prueba.md        ← redactado por Oracle (Miguel)
- ├── test_engine.py         ← generado por Guardian (Daner) vía LangChain+OpenRouter
+ ├── test_engine.py         ← generado por Guardian (Daner) vía OpenCode Zen
  ├── Dockerfile             ← creado por DevOps (Daner)
  ├── .github/workflows/ci.yml ← configurado por DevOps (Daner)
  └── veredicto.json         ← emitido por Guardian (Daner) tras ejecución Docker
@@ -48,7 +48,7 @@ Se requiere un `AGENTS.md` en la raíz del repositorio que formalice el ecosiste
 │  LEAD DEV     │     │  ORACLE      │     │  GUARDIAN + DEVOPS │
 │  (Natalia)    │────▶│  (Miguel)    │────▶│  (Daner)           │
 │  engine.py    │     │ casos_prueba │     │  test_engine.py    │
-│  R1-R5        │     │ .md (Gherkin)│     │  OpenRouter API    │
+│  R1-R5        │     │ .md (Gherkin)│     │  OpenCode Zen API  │
 │  tipado+doc   │     │ 10+ casos    │     │  Docker runtime    │
 └──────────────┘     └──────────────┘     │  CI/CD (GH Actions)│
                                            │  veredicto.json    │
@@ -72,7 +72,7 @@ El archivo `AGENTS.md` en la raíz del repositorio DEBE contener las siguientes 
 |---|---|---|---|
 | Natalia Ceballos (UdeC) | Lead Dev Agent | US-NOM01 | engine.py con R1–R5 |
 | Miguel Coronado (UMB) | Oracle Agent | US-NOM02 | casos_prueba.md (≥10 Gherkin) |
-| Daner Salazar (UdeC) | Guardian Agent | US-NOM03 | LangChain + OpenRouter + Pytest + Veredicto |
+| Daner Salazar (UdeC) | Guardian Agent | US-NOM03 | OpenCode Zen + Pytest + Veredicto |
 | Daner Salazar (UdeC) | DevOps Agent | US-NOM03 | Dockerfile + GH Actions CI |
 | Miguel Coronado (UMB) | Orchestrator Agent | Transversal | Coordinación del pipeline |
 
@@ -116,7 +116,7 @@ El Guardian Agent DEBE emitir un archivo `veredicto.json` con esta estructura:
     "cobertura": "72.5%"
   },
   "metadata": {
-    "modelo": "baidu/cobuddy:free",
+    "modelo": "deepseek-v4-flash (OpenCode Zen)",
     "timestamp": "2026-05-20T10:00:00Z",
     "oraculo": "casos_prueba.md"
   }
@@ -129,13 +129,13 @@ El Guardian Agent DEBE emitir un archivo `veredicto.json` con esta estructura:
 |---|---|
 | [R1] `AGENTS.md` se desactualiza respecto a cambios reales | Incluir en tasks.md una tarea de revisión periódica del AGENTS.md contra el estado actual del pipeline. |
 | [R2] Daner tiene carga alta (Guardian + DevOps) | Los agentes son asistentes, no reemplazos. Daner prioriza Guardian (core del pipeline); DevOps es configurable en 2–3 tareas. |
-| [R3] Dependencia de conectividad a OpenRouter API (caídas, rate limits, latencia) | Tasks 3.1–3.2 incluyen manejo de errores HTTP, retry con backoff, timeouts y fallback a respuestas simuladas en CI offline. |
+| [R3] Dependencia de conectividad a OpenCode Zen API (caídas, rate limits, latencia) | Tasks 3.1–3.2 incluyen manejo de errores HTTP, retry con backoff, timeouts y fallback a respuestas simuladas en CI offline. |
 | [R4] Veredicto JSON puede no ser válido si cambia la estructura | El protocolo JSON está definido en AGENTS.md y debe validarse contra schema en CI. |
-| [R5] Exposición de OPENROUTER_API_KEY en código o prompts | **Nunca incluir la API key en texto plano.** Debe cargarse exclusivamente desde variable de entorno `OPENROUTER_API_KEY`. El AGENTS.md y design.md lo documentan como requisito de seguridad. |
+| [R5] Exposición de OPENCODE_ZEN_API_KEY en código o prompts | **Nunca incluir la API key en texto plano.** Debe cargarse exclusivamente desde variable de entorno `OPENCODE_ZEN_API_KEY`. El AGENTS.md y design.md lo documentan como requisito de seguridad. |
 
 ## Open Questions
 
-- ¿OpenRouter API key se inyecta como secret de GitHub Actions o variable de entorno local? → **Ambas**: `OPENROUTER_API_KEY` como variable de entorno local para desarrollo, y como GitHub Secret para CI. Nunca hardcodeada.
+- ¿OpenCode Zen API key se inyecta como secret de GitHub Actions o variable de entorno local? → **Ambas**: `OPENCODE_ZEN_API_KEY` como variable de entorno local para desarrollo, y como GitHub Secret para CI. Nunca hardcodeada.
 - ¿La validación del veredicto JSON se hace con schema (JSON Schema, Zod) o validación manual? → Propuesta: JSON Schema en CI.
 - ¿Timeout de API aceptable para inferencia? → Propuesta: 30s con 2 reintentos (backoff exponencial).
-- Modelo utilizado: `baidu/cobuddy:free` vía endpoint `https://openrouter.ai/api/v1/chat/completions`.
+- Modelo utilizado: `deepseek-v4-flash` vía endpoint `https://opencode.ai/zen/go/v1/chat/completions`.

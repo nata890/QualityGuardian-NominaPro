@@ -19,15 +19,15 @@
 - [ ] 2.5 Miguel: Coordinar revisión de casos_prueba.md por célula compañera
 - [ ] 2.6 Miguel: Aprobar y comitear casos_prueba.md
 
-## 3. US-NOM03: Configurar Agente Guardian vía OpenRouter API (Responsable: Daner — Guardian + DevOps)
+## 3. US-NOM03: Configurar Agente Guardian vía OpenCode Zen API (Responsable: Daner — Guardian + DevOps)
 
-- [x] 3.1 Daner: Configurar variable de entorno `OPENROUTER_API_KEY` y cliente Python para peticiones a `https://openrouter.ai/api/v1/chat/completions` con modelo `baidu/cobuddy:free`. **No hardcodear la clave en el código.**
-- [x] 3.2 Daner: Validar conectividad a OpenRouter API, latencia de inferencia y manejo de errores HTTP (timeouts, rate limits, 4xx/5xx)
-- [x] 3.3 Daner: Implementar script LangChain que lea casos_prueba.md como contexto
-- [x] 3.4 Daner: Implementar generación de test_engine.py con Pytest a partir del oráculo vía OpenRouter
+- [x] 3.1 Daner: Configurar variable de entorno `OPENCODE_ZEN_API_KEY` y cliente Python para peticiones a `https://opencode.ai/zen/go/v1/chat/completions` con modelo `deepseek-v4-flash`. **No hardcodear la clave en el código.**
+- [x] 3.2 Daner: Validar conectividad a OpenCode Zen API, latencia de inferencia y manejo de errores HTTP (timeouts, rate limits, 4xx/5xx)
+- [x] 3.3 Daner: Implementar script que lea casos_prueba.md como contexto
+- [x] 3.4 Daner: Implementar generación de test_engine.py con Pytest a partir del oráculo vía OpenCode Zen
 - [x] 3.5 Daner: Verificar que cada escenario Gherkin se traduzca a una función test_* en Pytest
-- [x] 3.6 Daner (DevOps): Crear Dockerfile multi-stage para ejecución aislada de pruebas (inyectar OPENROUTER_API_KEY como secret)
-- [x] 3.7 Daner (DevOps): Configurar GitHub Actions CI que ejecute Guardian Agent en contenedor Docker en cada push a main (con OPENROUTER_API_KEY desde secrets)
+- [x] 3.6 Daner (DevOps): Crear Dockerfile multi-stage para ejecución aislada de pruebas (inyectar OPENCODE_ZEN_API_KEY como secret)
+- [x] 3.7 Daner (DevOps): Configurar GitHub Actions CI que ejecute Guardian Agent en contenedor Docker en cada push a main (con OPENCODE_ZEN_API_KEY desde secrets)
 - [x] 3.8 Daner: Implementar emisión de veredicto.json (pass/fail por escenario + cobertura + resumen)
 - [x] 3.9 Daner: Verificar que el contenedor Docker no tenga acceso de escritura al host
 - [x] 3.10 Daner (DevOps): Configurar artifacts de CI para almacenar veredicto.json y reporte de cobertura

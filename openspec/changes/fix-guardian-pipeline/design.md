@@ -3,7 +3,7 @@
 El pipeline del Guardian Agent tiene tres problemas de ejecución local que impiden su uso desde CLI:
 
 1. **Import path**: Tras el refactor-structure, los scripts usan `from src.xxx import` pero al ejecutar `python src/guardian_client.py` Python pone `src/` en `sys.path`, no la raíz del proyecto, causando `ModuleNotFoundError: No module named 'src'`.
-2. **API key**: La variable `OPENROUTER_API_KEY` solo existe en `.env` pero ningún script la carga automáticamente. Requiere `source .env` manual.
+2. **API key**: La variable `OPENCODE_ZEN_API_KEY` solo existe en `.env` pero ningún script la carga automáticamente. Requiere `source .env` manual.
 3. **Oráculo ausente**: `casos_prueba.md` (responsabilidad del Oracle Agent, Miguel Coronado) no existe, y `leer_oraculo()` crashea sin intentar el fallback por plantilla.
 
 ## Goals / Non-Goals

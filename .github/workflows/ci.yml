@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 env:
-  OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+  OPENCODE_ZEN_API_KEY: ${{ secrets.OPENCODE_ZEN_API_KEY }}
 
 jobs:
   guardia:
@@ -20,17 +20,17 @@ jobs:
       - name: Build Guardian Docker image
         run: docker build -f infra/Dockerfile -t guardian .
 
-      - name: Validar conectividad OpenRouter
-        run: docker run --rm -e OPENROUTER_API_KEY guardian python scripts/validar_conexion.py
+      - name: Validar conectividad OpenCode Zen
+        run: docker run --rm -e OPENCODE_ZEN_API_KEY guardian python scripts/validar_conexion.py
         continue-on-error: true
 
       - name: Generar test_engine.py
-        run: docker run --rm -e OPENROUTER_API_KEY guardian python src/guardian_client.py
+        run: docker run --rm -e OPENCODE_ZEN_API_KEY guardian python src/guardian_client.py
 
       - name: Ejecutar tests dentro de contenedor Docker
         run: |
           docker run --name guardian-test --read-only --tmpfs /tmp \
-            -e OPENROUTER_API_KEY \
+            -e OPENCODE_ZEN_API_KEY \
             guardian \
             python -m pytest tests/test_engine.py -v --tb=short --junitxml=/tmp/reporte_junit.xml --cov=src.engine --cov-report=term
 
@@ -40,43 +40,43 @@ jobs:
           docker rm guardian-test
 
       - name: Generar veredicto.json desde JUnit XML
-        run: python -c "
-import json, time, xml.etree.ElementTree as ET
-try:
-    tree = ET.parse('reporte_junit.xml')
-    root = tree.getroot()
-    testsuite = root[0] if len(root) > 0 else root
-    total = int(testsuite.get('tests', 0))
-    fallaron = int(testsuite.get('failures', 0)) + int(testsuite.get('errors', 0))
-    pasaron = total - fallaron
-    escenarios = []
-    for tc in testsuite.findall('.//testcase'):
-        tid = tc.get('name', 'unknown')
-        failure = tc.find('failure')
-        duracion_ms = int(float(tc.get('time', 0)) * 1000)
-        escenarios.append({
-            'id': tid,
-            'descripcion': tc.get('classname', ''),
-            'resultado': 'FAIL' if failure is not None else 'PASS',
-            'duracion_ms': max(duracion_ms, 1),
-            'error': failure.text if failure is not None else None,
-        })
-except Exception:
-    total, pasaron, fallaron = 0, 0, 0
-    escenarios = []
-with open('veredicto.json', 'w') as f:
-    json.dump({
-        'escenarios': escenarios,
-        'resumen': {'total': total, 'pasaron': pasaron, 'fallaron': fallaron, 'cobertura': '0.0%'},
-        'metadata': {
-            'modelo': 'deepseek/deepseek-v4-flash:free',
-            'timestamp': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()),
-            'oraculo': 'casos_prueba.md',
-            'duracion_total_ms': sum(e['duracion_ms'] for e in escenarios),
-        }
-    }, f, indent=2, ensure_ascii=False)
-print(f'veredicto.json generado: {total} tests, {pasaron} pasaron, {fallaron} fallaron')
-"
+        shell: python
+        run: |
+          import json, time, xml.etree.ElementTree as ET
+          try:
+              tree = ET.parse('reporte_junit.xml')
+              root = tree.getroot()
+              testsuite = root[0] if len(root) > 0 else root
+              total = int(testsuite.get('tests', 0))
+              fallaron = int(testsuite.get('failures', 0)) + int(testsuite.get('errors', 0))
+              pasaron = total - fallaron
+              escenarios = []
+              for tc in testsuite.findall('.//testcase'):
+                  tid = tc.get('name', 'unknown')
+                  failure = tc.find('failure')
+                  duracion_ms = int(float(tc.get('time', 0)) * 1000)
+                  escenarios.append({
+                      'id': tid,
+                      'descripcion': tc.get('classname', ''),
+                      'resultado': 'FAIL' if failure is not None else 'PASS',
+                      'duracion_ms': max(duracion_ms, 1),
+                      'error': failure.text if failure is not None else None,
+                  })
+          except Exception:
+              total, pasaron, fallaron = 0, 0, 0
+              escenarios = []
+          with open('veredicto.json', 'w') as f:
+              json.dump({
+                  'escenarios': escenarios,
+                  'resumen': {'total': total, 'pasaron': pasaron, 'fallaron': fallaron, 'cobertura': '0.0%'},
+                  'metadata': {
+                      'modelo': 'deepseek-v4-flash (OpenCode Zen)',
+                      'timestamp': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()),
+                      'oraculo': 'casos_prueba.md',
+                      'duracion_total_ms': sum(e['duracion_ms'] for e in escenarios),
+                  }
+              }, f, indent=2, ensure_ascii=False)
+          print(f'veredicto.json generado: {total} tests, {pasaron} pasaron, {fallaron} fallaron')
 
       - name: Upload veredicto.json
         uses: actions/upload-artifact@v4

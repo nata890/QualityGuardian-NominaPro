@@ -5,7 +5,7 @@
 # Ejecuta en secuencia:
 #   1. Verificación de entorno y dependencias
 #   2. Tests Pytest (engine.py vía test_engine.py)
-#   3. Validación de conectividad OpenRouter (guardia_api.py)
+#   3. Validación de conectividad OpenCode Zen (guardia_api.py)
 #   4. Generación de test_engine.py desde oráculo (guardian_client.py)
 #   5. Emisión de veredicto.json
 #   6. Reporte final
@@ -92,13 +92,13 @@ fi
 
 # Cargar API key desde .env si existe
 if [[ -f .env ]]; then
-    export OPENROUTER_API_KEY="${OPENROUTER_API_KEY:-$(grep OPENROUTER_API_KEY .env | cut -d= -f2)}"
-    ok "OPENROUTER_API_KEY cargada desde .env"
+    export OPENCODE_ZEN_API_KEY="${OPENCODE_ZEN_API_KEY:-$(grep OPENCODE_ZEN_API_KEY .env | cut -d= -f2)}"
+    ok "OPENCODE_ZEN_API_KEY cargada desde .env"
 else
-    if [[ -z "${OPENROUTER_API_KEY:-}" ]]; then
-        warn "OPENROUTER_API_KEY no definida — pruebas de conectividad se omitirán"
+    if [[ -z "${OPENCODE_ZEN_API_KEY:-}" ]]; then
+        warn "OPENCODE_ZEN_API_KEY no definida — pruebas de conectividad se omitirán"
     else
-        ok "OPENROUTER_API_KEY presente en entorno"
+        ok "OPENCODE_ZEN_API_KEY presente en entorno"
     fi
 fi
 
@@ -115,34 +115,34 @@ else
 fi
 
 # ============================================================================
-# PASO 3: Validación de conectividad OpenRouter
+# PASO 3: Validación de conectividad OpenCode Zen
 # ============================================================================
-paso "Validación de conectividad OpenRouter"
+paso "Validación de conectividad OpenCode Zen"
 
-if [[ -n "${OPENROUTER_API_KEY:-}" ]]; then
-    info "Ejecutando ping a modelo $(python3 -c "from src.guardia_api import OPENROUTER_MODEL; print(OPENROUTER_MODEL)")..."
+if [[ -n "${OPENCODE_ZEN_API_KEY:-}" ]]; then
+    info "Ejecutando ping a modelo $(python3 -c "from src.guardia_api import OPENCODE_ZEN_MODEL; print(OPENCODE_ZEN_MODEL)")..."
     if python3 -c "
 import os, time
-os.environ['OPENROUTER_API_KEY'] = os.environ.get('OPENROUTER_API_KEY', '')
-from src.guardia_api import ping, OPENROUTER_MODEL, OPENROUTER_ENDPOINT
+os.environ['OPENCODE_ZEN_API_KEY'] = os.environ.get('OPENCODE_ZEN_API_KEY', '')
+from src.guardia_api import ping, OPENCODE_ZEN_MODEL, OPENCODE_ZEN_ENDPOINT
 start = time.time()
 ok = ping()
 elapsed = (time.time() - start) * 1000
 if ok:
-    print(f'OK: {OPENROUTER_ENDPOINT} | modelo={OPENROUTER_MODEL} | latencia={elapsed:.0f}ms')
+    print(f'OK: {OPENCODE_ZEN_ENDPOINT} | modelo={OPENCODE_ZEN_MODEL} | latencia={elapsed:.0f}ms')
     if elapsed > 2000:
         print(f'ALERTA: Latencia elevada ({elapsed:.0f}ms > 2000ms)')
 else:
-    print(f'FALLO: Sin respuesta de {OPENROUTER_ENDPOINT}')
+    print(f'FALLO: Sin respuesta de {OPENCODE_ZEN_ENDPOINT}')
     exit(1)
 " 2>&1; then
-        ok "Conectividad OpenRouter validada"
+        ok "Conectividad OpenCode Zen validada"
     else
-        fail "Conectividad OpenRouter FALLÓ"
+        fail "Conectividad OpenCode Zen FALLÓ"
         EXIT_CODE=1
     fi
 else
-    warn "OPENROUTER_API_KEY no disponible — omitiendo validación de conectividad"
+    warn "OPENCODE_ZEN_API_KEY no disponible — omitiendo validación de conectividad"
 fi
 
 # ============================================================================
@@ -203,7 +203,7 @@ with open('$VEREDICTO', 'w') as f:
             'cobertura': 'N/A',
         },
         'metadata': {
-            'modelo': 'deepseek/deepseek-v4-flash:free',
+            'modelo': 'deepseek-v4-flash (OpenCode Zen)',
             'timestamp': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()),
             'oraculo': 'casos_prueba.md',
             'duracion_total_ms': 0,
@@ -237,7 +237,7 @@ echo ""
 echo "=================== RESUMEN DEL PIPELINE ==================="
 echo ""
 echo "  src/engine.py         : $(wc -l < src/engine.py) líneas — lógica R1-R5"
-echo "  src/guardia_api.py    : $(wc -l < src/guardia_api.py) líneas — cliente OpenRouter"
+echo "  src/guardia_api.py    : $(wc -l < src/guardia_api.py) líneas — cliente OpenCode Zen"
 echo "  src/guardian_client.py: $(wc -l < src/guardian_client.py) líneas — orquestador"
 echo "  tests/test_engine.py  : $(wc -l < tests/test_engine.py) líneas — $(grep -c 'def test_' tests/test_engine.py) tests"
 echo "  scripts/validar_conexion.py: $(wc -l < scripts/validar_conexion.py) líneas — script diagnóstico"
