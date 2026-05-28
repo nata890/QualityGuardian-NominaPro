@@ -1,0 +1,149 @@
+```python
+import pytest
+from src.engine import liquidar_nomina
+
+
+def test_cp01_recargo_diurno():
+    """
+    CP-01: Recargo diurno 25%
+    - Salario base: 2_000_000
+    - 10 horas extras diurnas, 0 nocturnas
+    - vlr_hora: 10_000
+    """
+    resultado = liquidar_nomina(
+        salario_base=2_000_000,
+        horas_extras_diurnas=10,
+        horas_extras_nocturnas=0,
+        vlr_hora=10_000
+    )
+    assert resultado["recargo_diurno"] == 125_000.0
+    assert resultado["recargo_nocturno"] == 0.0
+    assert resultado["total_devengado"] == 2_125_000.0
+
+
+def test_cp02_recargo_nocturno():
+    """
+    CP-02: Recargo nocturno 75%
+    - Salario base: 2_000_000
+    - 0 horas diurnas, 8 nocturnas
+    - vlr_hora: 12_000
+    """
+    resultado = liquidar_nomina(
+        salario_base=2_000_000,
+        horas_extras_diurnas=0,
+        horas_extras_nocturnas=8,
+        vlr_hora=12_000
+    )
+    assert resultado["recargo_nocturno"] == 168_000.0
+    assert resultado["recargo_diurno"] == 0.0
+    assert resultado["total_devengado"] == 2_168_000.0
+
+
+def test_cp03_recargos_simultaneos():
+    """
+    CP-03: Recargos diurno y nocturno simultáneos
+    - Salario base: 3_000_000
+    - 5 horas diurnas, 4 nocturnas
+    - vlr_hora: 15_000
+    """
+    resultado = liquidar_nomina(
+        salario_base=3_000_000,
+        horas_extras_diurnas=5,
+        horas_extras_nocturnas=4,
+        vlr_hora=15_000
+    )
+    assert resultado["recargo_diurno"] == 93_750.0
+    assert resultado["recargo_nocturno"] == 105_000.0
+    assert resultado["total_devengado"] == 3_198_750.0
+
+
+def test_cp04_deducciones_sobre_total_devengado():
+    """
+    CP-04: Deducciones sobre total devengado
+    - Salario base: 2_500_000
+    - 5 horas diurnas, 2 nocturnas
+    - vlr_hora: 10_000
+    """
+    resultado = liquidar_nomina(
+        salario_base=2_500_000,
+        horas_extras_diurnas=5,
+        horas_extras_nocturnas=2,
+        vlr_hora=10_000
+    )
+    assert resultado["total_devengado"] == 2_597_500.0
+    assert resultado["descuento_salud"] == 103_900.0
+    assert resultado["descuento_pension"] == 103_900.0
+    # Verificar que las deducciones se calcularon sobre el total devengado,
+    # no solo sobre el salario base
+    assert resultado["descuento_salud"] != 2_500_000 * 0.04
+
+
+def test_cp05_auxilio_transporte_aplica():
+    """
+    CP-05: Auxilio de transporte aplica (salario en el tope)
+    - Salario base: 2_600_000
+    - Sin horas extras
+    - vlr_hora: 10_000
+    """
+    resultado = liquidar_nomina(
+        salario_base=2_600_000,
+        horas_extras_diurnas=0,
+        horas_extras_nocturnas=0,
+        vlr_hora=10_000
+    )
+    assert resultado["auxilio_transporte"] == 162_000.0
+
+
+def test_cp06_auxilio_transporte_no_aplica():
+    """
+    CP-06: Auxilio de transporte no aplica (salario sobre el tope)
+    - Salario base: 2_600_001
+    - Sin horas extras
+    - vlr_hora: 10_000
+    """
+    resultado = liquidar_nomina(
+        salario_base=2_600_001,
+        horas_extras_diurnas=0,
+        horas_extras_nocturnas=0,
+        vlr_hora=10_000
+    )
+    assert resultado["auxilio_transporte"] == 0.0
+
+
+def test_cp07_salario_inferior_smmlv_lanza_error():
+    """
+    CP-07: Salario inferior al SMMLV lanza ValueError
+    - Salario base: 500_000
+    - Sin horas extras
+    - vlr_hora: 10_000
+    """
+    with pytest.raises(ValueError, match=".*SMMLV.*"):
+        liquidar_nomina(
+            salario_base=500_000,
+            horas_extras_diurnas=0,
+            horas_extras_nocturnas=0,
+            vlr_hora=10_000
+        )
+
+
+def test_cp08_horas_diurnas_negativas_lanza_error():
+    """
+    CP-08: Horas extras diurnas negativas lanza ValueError
+    - Salario base: 2_000_000
+    - -3 horas diurnas, 0 nocturnas
+    - vlr_hora: 10_000
+    """
+    with pytest.raises(ValueError, match=".*horas.*negativas.*"):
+        liquidar_nomina(
+            salario_base=2_000_000,
+            horas_extras_diurnas=-3,
+            horas_extras_nocturnas=0,
+            vlr_hora=10_000
+        )
+
+
+def test_cp09_horas_nocturnas_negativas_lanza_error():
+    """
+    CP-09: Horas extras nocturnas negativas lanza ValueError
+    - Salario base: 2_000_000
+    - 0 horas diurnas,

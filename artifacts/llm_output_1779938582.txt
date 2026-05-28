@@ -1,0 +1,12 @@
+LLM_EXCEPTION:
+OPENCODE_ZEN_API_KEY no está definida. Cárgala en tu .env o expórtala como variable de entorno.
+Traceback (most recent call last):
+  File "/home/salazar/Documentos/QualityGuardian-NominaPro/QualityGuardian-NominaPro/src/guardian_client.py", line 64, in generate_test_engine_from_llm
+    result = inferir(prompt, system_prompt=SYSTEM_PROMPT)
+  File "/home/salazar/Documentos/QualityGuardian-NominaPro/QualityGuardian-NominaPro/src/guardia_api.py", line 41, in inferir
+    api_key = get_api_key()
+  File "/home/salazar/Documentos/QualityGuardian-NominaPro/QualityGuardian-NominaPro/src/guardia_api.py", line 26, in get_api_key
+    raise EnvironmentError(
+    ...<2 lines>...
+    )
+OSError: OPENCODE_ZEN_API_KEY no está definida. Cárgala en tu .env o expórtala como variable de entorno.

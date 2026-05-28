@@ -1,0 +1,278 @@
+```python
+import pytest
+from engine import liquidar_nomina
+
+# ----------------------------------------------------------------------
+# Escenarios de cálculo válido
+# ----------------------------------------------------------------------
+
+def test_cp01_recargo_diurno_25():
+    """
+    CP-01: Recargo diurno 25%
+    - Salario base: 2.000.000
+    - HE diurnas: 10
+    - HE nocturnas: 0
+    - Valor hora: 10.000
+    -> Recargo diurno = 10 * 10.000 * 1.25 = 125.000,0
+    -> Total devengado = 2.125.000,0
+    """
+    resultado = liquidar_nomina(
+        salario_base=2_000_000,
+        horas_extras_diurnas=10,
+        horas_extras_nocturnas=0,
+        valor_hora=10_000
+    )
+    assert resultado["recargo_diurno"] == 125_000.0
+    assert resultado["recargo_nocturno"] == 0.0
+    assert resultado["total_devengado"] == 2_125_000.0
+
+
+def test_cp02_recargo_nocturno_75():
+    """
+    CP-02: Recargo nocturno 75%
+    - Salario base: 2.000.000
+    - HE diurnas: 0
+    - HE nocturnas: 8
+    - Valor hora: 12.000
+    -> Recargo nocturno = 8 * 12.000 * 1.75 = 168.000,0
+    -> Total devengado = 2.168.000,0
+    """
+    resultado = liquidar_nomina(
+        salario_base=2_000_000,
+        horas_extras_diurnas=0,
+        horas_extras_nocturnas=8,
+        valor_hora=12_000
+    )
+    assert resultado["recargo_diurno"] == 0.0
+    assert resultado["recargo_nocturno"] == 168_000.0
+    assert resultado["total_devengado"] == 2_168_000.0
+
+
+def test_cp03_recargos_simultaneos():
+    """
+    CP-03: Recargos diurno y nocturno simultáneos
+    - Salario base: 3.000.000
+    - HE diurnas: 5
+    - HE nocturnas: 4
+    - Valor hora: 15.000
+    -> Recargo diurno = 5 * 15.000 * 1.25 = 93.750,0
+    -> Recargo nocturno = 4 * 15.000 * 1.75 = 105.000,0
+    -> Total devengado = 3.198.750,0
+    """
+    resultado = liquidar_nomina(
+        salario_base=3_000_000,
+        horas_extras_diurnas=5,
+        horas_extras_nocturnas=4,
+        valor_hora=15_000
+    )
+    assert resultado["recargo_diurno"] == 93_750.0
+    assert resultado["recargo_nocturno"] == 105_000.0
+    assert resultado["total_devengado"] == 3_198_750.0
+
+
+def test_cp04_deducciones_sobre_devengado():
+    """
+    CP-04: Deducciones sobre total devengado
+    - Salario base: 2.500.000
+    - HE diurnas: 5
+    - HE nocturnas: 2
+    - Valor hora: 10.000
+    -> Total devengado = 2.597.500,0
+    -> Descuento salud 4% = 103.900,0
+    -> Descuento pensión 4% = 103.900,0
+    """
+    resultado = liquidar_nomina(
+        salario_base=2_500_000,
+        horas_extras_diurnas=5,
+        horas_extras_nocturnas=2,
+        valor_hora=10_000
+    )
+    total_dev = resultado["total_devengado"]
+    assert total_dev == 2_597_500.0
+    assert resultado["descuento_salud"] == 103_900.0
+    assert resultado["descuento_pension"] == 103_900.0
+    # Verificar que se calculan sobre total devengado, no solo base
+    assert resultado["descuento_salud"] == round(total_dev * 0.04, 2)
+    assert resultado["descuento_pension"] == round(total_dev * 0.04, 2)
+
+
+def test_cp05_auxilio_transporte_aplica_tope():
+    """
+    CP-05: Auxilio de transporte aplica (salario en el tope)
+    - Salario base: 2.600.000
+    - Sin horas extras
+    -> Auxilio de transporte = 162.000,0
+    """
+    resultado = liquidar_nomina(
+        salario_base=2_600_000,
+        horas_extras_diurnas=0,
+        horas_extras_nocturnas=0,
+        valor_hora=10_000
+    )
+    assert resultado["auxilio_transporte"] == 162_000.0
+
+
+def test_cp06_auxilio_transporte_no_aplica():
+    """
+    CP-06: Auxilio de transporte no aplica (salario sobre el tope)
+    - Salario base: 2.600.001
+    - Sin horas extras
+    -> Auxilio de transporte = 0.0
+    """
+    resultado = liquidar_nomina(
+        salario_base=2_600_001,
+        horas_extras_diurnas=0,
+        horas_extras_nocturnas=0,
+        valor_hora=10_000
+    )
+    assert resultado["auxilio_transporte"] == 0.0
+
+
+def test_cp10_calculo_completo():
+    """
+    CP-10: Cálculo completo de nómina
+    - Salario base: 2.400.000
+    - HE diurnas: 6
+    - HE nocturnas: 3
+    - Valor hora: 10.000
+    -> Recargo diurno = 75.000,0
+    -> Recargo nocturno = 52.500,0
+    -> Total devengado = 2.527.500,0
+    -> Descuento salud = 101.100,0
+    -> Descuento pensión = 101.100,0
+    -> Auxilio transporte = 162.000,0
+    -> Total a pagar = 2.487.300,0
+    """
+    resultado = liquidar_nomina(
+        salario_base=2_400_000,
+        horas_extras_diurnas=6,
+        horas_extras_nocturnas=3,
+        valor_hora=10_000
+    )
+    assert resultado["recargo_diurno"] == 75_000.0
+    assert resultado["recargo_nocturno"] == 52_500.0
+    assert resultado["total_devengado"] == 2_527_500.0
+    assert resultado["descuento_salud"] == 101_100.0
+    assert resultado["descuento_pension"] == 101_100.0
+    assert resultado["auxilio_transporte"] == 162_000.0
+    assert resultado["total_a_pagar"] == 2_487_300.0
+
+
+def test_cp11_sin_horas_extras():
+    """
+    CP-11: Horas extras en cero (sin recargos)
+    - Salario base: 1.500.000
+    - Sin horas extras
+    -> Recargos en 0, total devengado = salario base
+    """
+    resultado = liquidar_nomina(
+        salario_base=1_500_000,
+        horas_extras_diurnas=0,
+        horas_extras_nocturnas=0,
+        valor_hora=10_000
+    )
+    assert resultado["recargo_diurno"] == 0.0
+    assert resultado["recargo_nocturno"] == 0.0
+    assert resultado["total_devengado"] == 1_500_000.0
+
+
+def test_cp14_salario_exactamente_smmlv():
+    """
+    CP-14: Salario exactamente en SMMLV (caso límite)
+    - Salario base: 1.300.000
+    - Sin horas extras
+    -> Auxilio de transporte = 162.000,0
+    -> No debe lanzar excepción
+    """
+    resultado = liquidar_nomina(
+        salario_base=1_300_000,
+        horas_extras_diurnas=0,
+        horas_extras_nocturnas=0,
+        valor_hora=10_000
+    )
+    assert resultado["auxilio_transporte"] == 162_000.0
+
+
+# ----------------------------------------------------------------------
+# Escenarios de validación (ValueError)
+# ----------------------------------------------------------------------
+
+def test_cp07_salario_inferior_smmlv():
+    """
+    CP-07: Salario inferior al SMMLV lanza ValueError
+    - Salario base: 500.000
+    - Sin horas extras
+    -> Debe lanzar ValueError con mensaje indicando salario inferior al SMMLV
+    """
+    with pytest.raises(ValueError, match="inferior al SMMLV"):
+        liquidar_nomina(
+            salario_base=500_000,
+            horas_extras_diurnas=0,
+            horas_extras_nocturnas=0,
+            valor_hora=10_000
+        )
+
+
+def test_cp08_he_diurnas_negativas():
+    """
+    CP-08: Horas extras diurnas negativas lanza ValueError
+    - Salario base: 2.000.000
+    - HE diurnas: -3
+    -> Debe lanzar ValueError con mensaje indicando que las horas no pueden ser negativas
+    """
+    with pytest.raises(ValueError, match="horas no pueden ser negativas"):
+        liquidar_nomina(
+            salario_base=2_000_000,
+            horas_extras_diurnas=-3,
+            horas_extras_nocturnas=0,
+            valor_hora=10_000
+        )
+
+
+def test_cp09_he_nocturnas_negativas():
+    """
+    CP-09: Horas extras nocturnas negativas lanza ValueError
+    - Salario base: 2.000.000
+    - HE nocturnas: -2
+    -> Debe lanzar ValueError con mensaje indicando que las horas no pueden ser negativas
+    """
+    with pytest.raises(ValueError, match="horas no pueden ser negativas"):
+        liquidar_nomina(
+            salario_base=2_000_000,
+            horas_extras_diurnas=0,
+            horas_extras_nocturnas=-2,
+            valor_hora=10_000
+        )
+
+
+def test_cp12_valor_hora_cero():
+    """
+    CP-12: Valor de hora en cero lanza ValueError
+    - Salario base: 1.500.000
+    - Valor hora: 0
+    -> Debe lanzar ValueError con mensaje indicando que el valor de la hora debe ser positivo
+    """
+    with pytest.raises(ValueError, match="valor de la hora debe ser positivo"):
+        liquidar_nomina(
+            salario_base=1_500_000,
+            horas_extras_diurnas=0,
+            horas_extras_nocturnas=0,
+            valor_hora=0
+        )
+
+
+def test_cp13_valor_hora_negativo():
+    """
+    CP-13: Valor de hora negativo lanza ValueError
+    - Salario base: 1.500.000
+    - Valor hora: -5.000
+    -> Debe lanzar ValueError con mensaje indicando que el valor de la hora debe ser positivo
+    """
+    with pytest.raises(ValueError, match="valor de la hora debe ser positivo"):
+        liquidar_nomina(
+            salario_base=1_500_000,
+            horas_extras_diurnas=0,
+            horas_extras_nocturnas=0,
+            valor_hora=-5_000
+        )
+```

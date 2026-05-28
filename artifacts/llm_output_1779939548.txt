@@ -1,0 +1,104 @@
+```python
+import pytest
+from src.engine import liquidar_nomina
+
+
+def test_cp_01_recargo_diurno_25():
+    """Test CP-01: Recargo diurno 25%"""
+    resultado = liquidar_nomina(2_000_000, 10, 0, vlr_hora=10_000)
+    assert resultado["recargo_diurno"] == 125_000.0
+    assert resultado["recargo_nocturno"] == 0.0
+    assert resultado["total_devengado"] == 2_125_000.0
+
+
+def test_cp_02_recargo_nocturno_75():
+    """Test CP-02: Recargo nocturno 75%"""
+    resultado = liquidar_nomina(2_000_000, 0, 8, vlr_hora=12_000)
+    assert resultado["recargo_nocturno"] == 168_000.0
+    assert resultado["recargo_diurno"] == 0.0
+    assert resultado["total_devengado"] == 2_168_000.0
+
+
+def test_cp_03_recargos_simultaneos():
+    """Test CP-03: Recargos diurno y nocturno simultáneos"""
+    resultado = liquidar_nomina(3_000_000, 5, 4, vlr_hora=15_000)
+    assert resultado["recargo_diurno"] == 93_750.0
+    assert resultado["recargo_nocturno"] == 105_000.0
+    assert resultado["total_devengado"] == 3_198_750.0
+
+
+def test_cp_04_deducciones_sobre_total_devengado():
+    """Test CP-04: Deducciones sobre total devengado"""
+    resultado = liquidar_nomina(2_500_000, 5, 2, vlr_hora=10_000)
+    assert resultado["total_devengado"] == 2_597_500.0
+    assert resultado["descuento_salud"] == 103_900.0
+    assert resultado["descuento_pension"] == 103_900.0
+
+
+def test_cp_05_auxilio_transporte_aplica():
+    """Test CP-05: Auxilio de transporte aplica (salario en el tope)"""
+    resultado = liquidar_nomina(2_600_000, 0, 0, vlr_hora=10_000)
+    assert resultado["auxilio_transporte"] == 162_000.0
+
+
+def test_cp_06_auxilio_transporte_no_aplica():
+    """Test CP-06: Auxilio de transporte no aplica (salario sobre el tope)"""
+    resultado = liquidar_nomina(2_600_001, 0, 0, vlr_hora=10_000)
+    assert resultado["auxilio_transporte"] == 0.0
+
+
+def test_cp_07_salario_inferior_smmlv():
+    """Test CP-07: Salario inferior al SMMLV lanza ValueError"""
+    with pytest.raises(ValueError, match="inferior al SMMLV"):
+        liquidar_nomina(500_000, 0, 0, vlr_hora=10_000)
+
+
+def test_cp_08_horas_extras_diurnas_negativas():
+    """Test CP-08: Horas extras diurnas negativas lanza ValueError"""
+    with pytest.raises(ValueError, match="horas no pueden ser negativas"):
+        liquidar_nomina(2_000_000, -3, 0, vlr_hora=10_000)
+
+
+def test_cp_09_horas_extras_nocturnas_negativas():
+    """Test CP-09: Horas extras nocturnas negativas lanza ValueError"""
+    with pytest.raises(ValueError, match="horas no pueden ser negativas"):
+        liquidar_nomina(2_000_000, 0, -2, vlr_hora=10_000)
+
+
+def test_cp_10_calculo_completo():
+    """Test CP-10: Cálculo completo de nómina"""
+    resultado = liquidar_nomina(2_400_000, 6, 3, vlr_hora=10_000)
+    assert resultado["recargo_diurno"] == 75_000.0
+    assert resultado["recargo_nocturno"] == 52_500.0
+    assert resultado["total_devengado"] == 2_527_500.0
+    assert resultado["descuento_salud"] == 101_100.0
+    assert resultado["descuento_pension"] == 101_100.0
+    assert resultado["auxilio_transporte"] == 162_000.0
+    assert resultado["total_pagar"] == 2_487_300.0
+
+
+def test_cp_11_sin_horas_extras():
+    """Test CP-11: Horas extras en cero (sin recargos)"""
+    resultado = liquidar_nomina(1_500_000, 0, 0, vlr_hora=10_000)
+    assert resultado["recargo_diurno"] == 0.0
+    assert resultado["recargo_nocturno"] == 0.0
+    assert resultado["total_devengado"] == 1_500_000.0
+
+
+def test_cp_12_valor_hora_cero():
+    """Test CP-12: Valor de hora en cero lanza ValueError"""
+    with pytest.raises(ValueError, match="valor de la hora debe ser positivo"):
+        liquidar_nomina(1_500_000, 0, 0, vlr_hora=0)
+
+
+def test_cp_13_valor_hora_negativo():
+    """Test CP-13: Valor de hora negativo lanza ValueError"""
+    with pytest.raises(ValueError, match="valor de la hora debe ser positivo"):
+        liquidar_nomina(1_500_000, 0, 0, vlr_hora=-5_000)
+
+
+def test_cp_14_salario_exacto_smmlv():
+    """Test CP-14: Salario exactamente en SMMLV (caso límite)"""
+    resultado = liquidar_nomina(1_300_000, 0, 0, vlr_hora=10_000)
+    assert resultado["auxilio_transporte"] == 162_000.0
+```

@@ -1,0 +1,21 @@
+```python
+import pytest
+from src.engine import liquidar_nomina
+
+def test_cp_01():
+    """CP-01: Recargo diurno 25%."""
+    result = liquidar_nomina(salario_base=2_000_000, horas_extras_diurnas=10, horas_extras_nocturnas=0, vlr_hora=10_000)
+    assert result["recargo_diurno"] == 125_000.0
+    assert result["recargo_nocturno"] == 0.0
+    assert result["total_devengado"] == 2_125_000.0
+
+def test_cp_02():
+    """CP-02: Recargo nocturno 75%."""
+    result = liquidar_nomina(salario_base=2_000_000, horas_extras_diurnas=0, horas_extras_nocturnas=8, vlr_hora=12_000)
+    assert result["recargo_nocturno"] == 168_000.0
+    assert result["recargo_diurno"] == 0.0
+    assert result["total_devengado"] == 2_168_000.0
+
+def test_cp_03():
+    """CP-03: Recargos diurno y nocturno simultáneos."""
+    result = liquidar_nomina(salario_base=3_000_

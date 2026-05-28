@@ -1,0 +1,14 @@
+LLM_EXCEPTION:
+No se pudo completar la inferencia tras 3 intentos.
+TimeoutError: Timeout tras 60s (intento 3)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/salazar/Documentos/QualityGuardian-NominaPro/QualityGuardian-NominaPro/src/guardian_client.py", line 92, in generate_test_engine_from_llm
+    result = inferir(prompt, system_prompt=SYSTEM_PROMPT)
+  File "/home/salazar/Documentos/QualityGuardian-NominaPro/QualityGuardian-NominaPro/src/guardia_api.py", line 108, in inferir
+    raise RuntimeError(
+        f"No se pudo completar la inferencia tras {1 + MAX_RETRIES} intentos."
+    ) from last_error
+RuntimeError: No se pudo completar la inferencia tras 3 intentos.

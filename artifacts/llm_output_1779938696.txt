@@ -1,0 +1,51 @@
+```python
+"""
+Pruebas unitarias para el motor de nómina colombiano.
+Cada función test_* corresponde a un escenario Gherkin definido en el oráculo de pruebas.
+"""
+
+import pytest
+from engine import liquidar_nomina
+
+# ---------------------------------------------------------------------
+# CP-01: Recargo diurno 25%
+# ---------------------------------------------------------------------
+def test_cp01_recargo_diurno_25():
+    """
+    CP-01: Recargo diurno 25%
+    salario = 2_000_000, horas_diurnas = 10, horas_nocturnas = 0, valor_hora = 10_000
+    """
+    resultado = liquidar_nomina(
+        salario_base=2_000_000,
+        horas_extras_diurnas=10,
+        horas_extras_nocturnas=0,
+        valor_hora=10_000
+    )
+    assert resultado["recargo_diurno"] == 125_000.0
+    assert resultado["recargo_nocturno"] == 0.0
+    assert resultado["total_devengado"] == 2_125_000.0
+
+# ---------------------------------------------------------------------
+# CP-02: Recargo nocturno 75%
+# ---------------------------------------------------------------------
+def test_cp02_recargo_nocturno_75():
+    """
+    CP-02: Recargo nocturno 75%
+    salario = 2_000_000, horas_diurnas = 0, horas_nocturnas = 8, valor_hora = 12_000
+    """
+    resultado = liquidar_nomina(
+        salario_base=2_000_000,
+        horas_extras_diurnas=0,
+        horas_extras_nocturnas=8,
+        valor_hora=12_000
+    )
+    assert resultado["recargo_nocturno"] == 168_000.0
+    assert resultado["recargo_diurno"] == 0.0
+    assert resultado["total_devengado"] == 2_168_000.0
+
+# ---------------------------------------------------------------------
+# CP-03: Recargos diurno y nocturno simultáneos
+# ---------------------------------------------------------------------
+def test_cp03_recargos_simultaneos():
+    """
+    CP-03: Recargos diurn

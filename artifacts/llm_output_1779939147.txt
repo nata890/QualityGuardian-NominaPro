@@ -1,0 +1,100 @@
+```python
+# test_engine.py
+import pytest
+from src.engine import liquidar_nomina
+
+# ------------------------------------------------------------------------------
+# CP-01: Recargo diurno 25%
+# ------------------------------------------------------------------------------
+def test_cp_01_recargo_diurno():
+    """
+    CP-01 — Recargo diurno 25%
+    Dado salario_base=2_000_000, horas_extras_diurnas=10, vlr_hora=10_000
+    -> recargo_diurno=125_000, recargo_nocturno=0, total_devengado=2_125_000
+    """
+    resultado = liquidar_nomina(
+        salario_base=2_000_000.0,
+        horas_extras_diurnas=10,
+        horas_extras_nocturnas=0,
+        vlr_hora=10_000.0,
+    )
+    assert resultado["recargo_diurno"] == 125_000.0
+    assert resultado["recargo_nocturno"] == 0.0
+    assert resultado["total_devengado"] == 2_125_000.0
+
+# ------------------------------------------------------------------------------
+# CP-02: Recargo nocturno 75%
+# ------------------------------------------------------------------------------
+def test_cp_02_recargo_nocturno():
+    """
+    CP-02 — Recargo nocturno 75%
+    Dado salario_base=2_000_000, horas_extras_nocturnas=8, vlr_hora=12_000
+    -> recargo_nocturno=168_000, recargo_diurno=0, total_devengado=2_168_000
+    """
+    resultado = liquidar_nomina(
+        salario_base=2_000_000.0,
+        horas_extras_diurnas=0,
+        horas_extras_nocturnas=8,
+        vlr_hora=12_000.0,
+    )
+    assert resultado["recargo_nocturno"] == 168_000.0
+    assert resultado["recargo_diurno"] == 0.0
+    assert resultado["total_devengado"] == 2_168_000.0
+
+# ------------------------------------------------------------------------------
+# CP-03: Recargos diurno y nocturno simultáneos
+# ------------------------------------------------------------------------------
+def test_cp_03_recargos_simultaneos():
+    """
+    CP-03 — Recargos diurno y nocturno simultáneos
+    Dado salario_base=3_000_000, horas_diurnas=5, horas_nocturnas=4, vlr_hora=15_000
+    -> recargo_diurno=93_750, recargo_nocturno=105_000, total_devengado=3_198_750
+    """
+    resultado = liquidar_nomina(
+        salario_base=3_000_000.0,
+        horas_extras_diurnas=5,
+        horas_extras_nocturnas=4,
+        vlr_hora=15_000.0,
+    )
+    assert resultado["recargo_diurno"] == 93_750.0
+    assert resultado["recargo_nocturno"] == 105_000.0
+    assert resultado["total_devengado"] == 3_198_750.0
+
+# ------------------------------------------------------------------------------
+# CP-04: Deducciones sobre total devengado
+# ------------------------------------------------------------------------------
+def test_cp_04_deducciones():
+    """
+    CP-04 — Deducciones sobre total devengado
+    Dado salario_base=2_500_000, horas_diurnas=5, horas_nocturnas=2, vlr_hora=10_000
+    -> total_devengado=2_597_500, descuento_salud=103_900, descuento_pension=103_900
+    """
+    resultado = liquidar_nomina(
+        salario_base=2_500_000.0,
+        horas_extras_diurnas=5,
+        horas_extras_nocturnas=2,
+        vlr_hora=10_000.0,
+    )
+    assert resultado["total_devengado"] == 2_597_500.0
+    assert resultado["descuento_salud"] == 103_900.0
+    assert resultado["descuento_pension"] == 103_900.0
+
+# ------------------------------------------------------------------------------
+# CP-05: Auxilio de transporte aplica (salario en el tope)
+# ------------------------------------------------------------------------------
+def test_cp_05_auxilio_transporte_aplica():
+    """
+    CP-05 — Auxilio de transporte aplica (salario en el tope)
+    Dado salario_base=2_600_000, 0 horas extras, vlr_hora=10_000
+    -> auxilio_transporte=162_000
+    """
+    resultado = liquidar_nomina(
+        salario_base=2_600_000.0,
+        horas_extras_diurnas=0,
+        horas_extras_nocturnas=0,
+        vlr_hora=10_000.0,
+    )
+    assert resultado["auxilio_transporte"] == 162_000.0
+
+# ------------------------------------------------------------------------------
+# CP-06: Auxilio de transporte no aplica (salario
