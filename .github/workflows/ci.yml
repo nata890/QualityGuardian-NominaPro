@@ -69,7 +69,7 @@ with open('veredicto.json', 'w') as f:
         'escenarios': escenarios,
         'resumen': {'total': total, 'pasaron': pasaron, 'fallaron': fallaron, 'cobertura': '0.0%'},
         'metadata': {
-            'modelo': 'baidu/cobuddy:free',
+            'modelo': 'deepseek/deepseek-v4-flash:free',
             'timestamp': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()),
             'oraculo': 'casos_prueba.md',
             'duracion_total_ms': sum(e['duracion_ms'] for e in escenarios),

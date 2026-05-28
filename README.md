@@ -214,7 +214,7 @@ El archivo `veredicto.json` sigue el schema definido en AGENTS.md sección 4:
     "cobertura": "95.2%"
   },
   "metadata": {
-    "modelo": "baidu/cobuddy:free",
+    "modelo": "deepseek/deepseek-v4-flash:free",
     "timestamp": "2026-05-27T00:00:00Z",
     "oraculo": "casos_prueba.md",
     "duracion_total_ms": 45

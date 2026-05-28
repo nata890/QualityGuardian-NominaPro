@@ -14,7 +14,7 @@ from typing import Optional
 import requests
 
 OPENROUTER_ENDPOINT = "https://openrouter.ai/api/v1/chat/completions"
-OPENROUTER_MODEL = "baidu/cobuddy:free"
+OPENROUTER_MODEL = "deepseek/deepseek-v4-flash:free"
 TIMEOUT_SECONDS = 60
 MAX_RETRIES = 2
 
@@ -32,7 +32,7 @@ def get_api_key() -> str:
 
 def inferir(prompt: str, system_prompt: Optional[str] = None) -> str:
     """
-    Envía un prompt al modelo baidu/cobuddy vía OpenRouter y retorna
+    Envía un prompt al modelo deepseek/deepseek-v4-flash vía OpenRouter y retorna
     la respuesta de texto.
 
     Maneja timeouts, rate limits y errores HTTP 4xx/5xx con

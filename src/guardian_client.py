@@ -4,7 +4,7 @@ test_engine.py con Pytest vía OpenRouter API.
 
 Flujo:
   1. Lee casos_prueba.md
-  2. Envía cada escenario Gherkin al modelo baidu/cobuddy
+  2. Envía cada escenario Gherkin al modelo deepseek/deepseek-v4-flash
   3. Genera funciones test_* en test_engine.py
 """
 
@@ -262,7 +262,7 @@ def generar_veredicto(resultados: dict) -> dict:
             "cobertura": "N/A",
         },
         "metadata": {
-            "modelo": "baidu/cobuddy:free",
+            "modelo": "deepseek/deepseek-v4-flash:free",
             "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
             "oraculo": "casos_prueba.md",
             "duracion_total_ms": 0,
@@ -409,7 +409,7 @@ def ejecutar_y_veredicto():
             "cobertura": cobertura,
         },
         "metadata": {
-            "modelo": "baidu/cobuddy:free",
+            "modelo": "deepseek/deepseek-v4-flash:free",
             "timestamp": __import__("time").strftime("%Y-%m-%dT%H:%M:%SZ", __import__("time").gmtime()),
             "oraculo": "casos_prueba.md",
             "duracion_total_ms": sum(e["duracion_ms"] for e in escenarios),

@@ -203,7 +203,7 @@ with open('$VEREDICTO', 'w') as f:
             'cobertura': 'N/A',
         },
         'metadata': {
-            'modelo': 'baidu/cobuddy:free',
+            'modelo': 'deepseek/deepseek-v4-flash:free',
             'timestamp': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()),
             'oraculo': 'casos_prueba.md',
             'duracion_total_ms': 0,

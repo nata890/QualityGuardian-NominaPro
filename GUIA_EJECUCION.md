@@ -66,7 +66,7 @@ python scripts/validar_conexion.py
 
 Deberías ver:
 ```
-== Validación OpenRouter (modelo: baidu/cobuddy) ==
+== Validación OpenRouter (modelo: deepseek/deepseek-v4-flash) ==
 
 [SEGURID] ✓ No hay API KEY hardcodeada en código
 [PING]    ✓ CONECTADO — https://openrouter.ai/api/v1/chat/completions
@@ -184,7 +184,7 @@ Esto ejecuta el siguiente flujo:
 
 ```
 1. Lee casos_prueba.md (oráculo)
-2. Intenta generar test_engine.py con OpenRouter API (modelo baidu/cobuddy:free)
+2. Intenta generar test_engine.py con OpenRouter API (modelo deepseek/deepseek-v4-flash:free)
    ↓ Si falla la API → usa generación por plantilla (fallback)
 3. Guarda test_engine.py en .planning/fix-all-audit-issues/
 4. Ejecuta pytest con cobertura y reporte JUnit

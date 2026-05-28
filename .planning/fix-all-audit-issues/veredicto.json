@@ -4,103 +4,91 @@
       "id": "test_R1_Nominal",
       "descripcion": "Test test_R1_Nominal",
       "resultado": "PASS",
-      "duracion_ms": 1
+      "duracion_ms": 2,
+      "error": null
     },
     {
       "id": "test_R1_Cero",
       "descripcion": "Test test_R1_Cero",
       "resultado": "PASS",
-      "duracion_ms": 1
+      "duracion_ms": 1,
+      "error": null
     },
     {
       "id": "test_R2_Nominal",
       "descripcion": "Test test_R2_Nominal",
       "resultado": "PASS",
-      "duracion_ms": 1
+      "duracion_ms": 1,
+      "error": null
     },
     {
       "id": "test_R2_Cero",
       "descripcion": "Test test_R2_Cero",
       "resultado": "PASS",
-      "duracion_ms": 1
+      "duracion_ms": 1,
+      "error": null
     },
     {
       "id": "test_R3_Nominal",
       "descripcion": "Test test_R3_Nominal",
       "resultado": "PASS",
-      "duracion_ms": 1
+      "duracion_ms": 1,
+      "error": null
     },
     {
       "id": "test_R3_Sin_Extras",
       "descripcion": "Test test_R3_Sin_Extras",
       "resultado": "PASS",
-      "duracion_ms": 1
+      "duracion_ms": 1,
+      "error": null
     },
     {
       "id": "test_R4_Aplica",
       "descripcion": "Test test_R4_Aplica",
       "resultado": "PASS",
-      "duracion_ms": 1
+      "duracion_ms": 1,
+      "error": null
     },
     {
       "id": "test_R4_En_El_Tope",
       "descripcion": "Test test_R4_En_El_Tope",
       "resultado": "PASS",
-      "duracion_ms": 1
+      "duracion_ms": 1,
+      "error": null
     },
     {
       "id": "test_R4_No_Aplica",
       "descripcion": "Test test_R4_No_Aplica",
       "resultado": "PASS",
-      "duracion_ms": 1
+      "duracion_ms": 1,
+      "error": null
     },
     {
       "id": "test_R5_Salario_Invalido",
       "descripcion": "Test test_R5_Salario_Invalido",
       "resultado": "PASS",
-      "duracion_ms": 1
+      "duracion_ms": 2,
+      "error": null
     },
     {
       "id": "test_R5_Horas_Negativas",
       "descripcion": "Test test_R5_Horas_Negativas",
       "resultado": "PASS",
-      "duracion_ms": 1
-    },
-    {
-      "id": "test_R5_VlrHora_Cero",
-      "descripcion": "Test test_R5_VlrHora_Cero",
-      "resultado": "PASS",
-      "duracion_ms": 1
-    },
-    {
-      "id": "test_R5_VlrHora_Negativa",
-      "descripcion": "Test test_R5_VlrHora_Negativa",
-      "resultado": "PASS",
-      "duracion_ms": 1
-    },
-    {
-      "id": "test_R5_VlrHora_NaN",
-      "descripcion": "Test test_R5_VlrHora_NaN",
-      "resultado": "PASS",
-      "duracion_ms": 1
-    },
-    {
-      "id": "test_R5_VlrHora_Infinito",
-      "descripcion": "Test test_R5_VlrHora_Infinito",
-      "resultado": "PASS",
-      "duracion_ms": 1
+      "duracion_ms": 1,
+      "error": null
     }
   ],
   "resumen": {
-    "total": 15,
-    "pasaron": 15,
+    "total": 11,
+    "pasaron": 11,
     "fallaron": 0,
-    "cobertura": "100.0%"
+    "cobertura": "92.0%"
   },
   "metadata": {
     "modelo": "baidu/cobuddy:free",
-    "timestamp": "2026-05-28T02:09:14Z",
+    "timestamp": "2026-05-28T02:35:05Z",
     "oraculo": "casos_prueba.md",
-    "duracion_total_ms": 15
+    "duracion_total_ms": 13,
+    "llm_raw_path": "artifacts/llm_output_1779935704.txt"
   }
 }

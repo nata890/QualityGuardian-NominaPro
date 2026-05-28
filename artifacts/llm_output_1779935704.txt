@@ -1,0 +1,20 @@
+LLM_EXCEPTION:
+Error HTTP 404 de OpenRouter: {"error":{"message":"No endpoints found for baidu/cobuddy:free.","code":404},"user_id":"user_3C0MZ3itGmQpwwtPQkqhLKV12s3"}
+Traceback (most recent call last):
+  File "/home/salazar/Documentos/QualityGuardian-NominaPro/QualityGuardian-NominaPro/src/guardia_api.py", line 76, in inferir
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/salazar/anaconda3/lib/python3.13/site-packages/requests/models.py", line 1024, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 404 Client Error: Not Found for url: https://openrouter.ai/api/v1/chat/completions
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/salazar/Documentos/QualityGuardian-NominaPro/QualityGuardian-NominaPro/src/guardian_client.py", line 64, in generate_test_engine_from_llm
+    result = inferir(prompt, system_prompt=SYSTEM_PROMPT)
+  File "/home/salazar/Documentos/QualityGuardian-NominaPro/QualityGuardian-NominaPro/src/guardia_api.py", line 96, in inferir
+    raise RuntimeError(
+        f"Error HTTP {status} de OpenRouter: {response.text}"
+    ) from e
+RuntimeError: Error HTTP 404 de OpenRouter: {"error":{"message":"No endpoints found for baidu/cobuddy:free.","code":404},"user_id":"user_3C0MZ3itGmQpwwtPQkqhLKV12s3"}

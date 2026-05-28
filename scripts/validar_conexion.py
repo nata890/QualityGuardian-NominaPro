@@ -1,6 +1,6 @@
 """
 validar_conexion.py — Valida conectividad, latencia y manejo de errores
-contra OpenRouter API (modelo baidu/cobuddy).
+contra OpenRouter API (modelo deepseek/deepseek-v4-flash).
 
 Uso: python validar_conexion.py
 """
